@@ -1,0 +1,7 @@
+.asso-ins-heading{
+        
+    color: white;
+    font-size: clamp(1rem, 5vw, 3rem); /* Responsive font size */
+    font-weight: bold;
+    line-height: 1.2;
+}

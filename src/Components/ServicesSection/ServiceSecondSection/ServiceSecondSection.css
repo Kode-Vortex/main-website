@@ -1,0 +1,47 @@
+.bg-service-sec-col{
+    background: linear-gradient(180deg , #056777 14% , #54677B 100%);
+}
+
+
+
+/* Existing styles */
+
+/* Circular Snake Border Animation */
+.circularBorder {
+    position: absolute;
+    inset: -1px;
+    border-radius: 50%;
+    padding: 1px;
+    background: conic-gradient(
+      #0c002b 0%, 
+      #1779ff 25%, 
+      #1779ff 50%, 
+      #0c002b 75%, 
+      #0c002b 100%
+    );
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 15;
+    animation: rotateBorder 2s linear infinite;
+  }
+  
+  @keyframes rotateBorder {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Add a glow effect */
+  .circularBorder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    filter: blur(5px);
+  }

@@ -1,0 +1,157 @@
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: black;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 70px 0;
+  }
+  
+  .career-form {
+    background-color: #181739;
+    padding: 10px 40px;
+    border-radius: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex ;
+    flex-direction: column;
+    margin-top: 60px;
+    
+  }
+  
+  .career-form h2 {
+    color: white;
+    margin : 5px 0 ;
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    font-family: "Outfit", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    text-align: center;
+    font-style: normal;
+  }
+
+  .form-container h1{
+    color: white;
+    font-family: "Outfit", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    text-align: center;
+    font-style: normal;
+    font-size: 30px;
+  }
+  
+  .form-container h3{
+    color: white;
+    font-family: "Outfit", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    width: 80%;
+    margin: 20px auto;
+    letter-spacing: normal;
+    font-size: 20px;
+    padding-left: 100px;
+  }
+  
+  .form-field {
+    margin-bottom: clamp(0.75rem, 3vw, 1rem);
+  }
+
+  .form-field label{
+    color: white;
+    font-size: 20px;
+    padding-bottom: 10px;
+  }
+  
+  .form-field input {
+    width: 100%;
+    padding: clamp(0.5rem, 2vw, 0.2rem);
+    border: none;
+    border-radius: 10px;
+    background-color: #5D7284;
+    color: white;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    box-sizing: border-box;
+  }
+  
+  .form-field input::placeholder {
+    color: #a0a0a0;
+  }
+  
+  .form-field input:focus {
+    outline: none;
+    background-color: #5D7284;
+  }
+  
+  .apply-button {
+    /* width: 100%; */
+    margin: 4px auto;
+    
+    padding: 8px 35px;
+    border: none;
+    border-radius: 20px;
+    background-color: #056777;
+    color: white;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    cursor: pointer;
+    
+    transition: background-color 0.3s;
+  }
+  
+  .apply-button:hover {
+    background-color: #056777;
+  }
+  
+  .login-text {
+    color: white;
+    margin-top: 3px;
+    text-align: center;
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+  }
+  
+  .login-link {
+    color: #056777;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .login-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Media Queries for different screen sizes */
+  @media screen and (max-width: 480px) {
+    .form-container {
+      padding: 15px;
+    }
+    
+    .career-form {
+      padding: 1.25rem;
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    .form-container {
+      padding: 10px;
+    }
+    
+    .career-form {
+      padding: 1rem;
+    }
+  }
+  
+  /* Touch device optimizations */
+  @media (hover: none) {
+    .apply-button {
+      padding: clamp(0.8rem, 3vw, 1rem);
+    }
+    
+    .form-field input {
+      padding: clamp(0.8rem, 3vw, 1rem);
+    }
+  }

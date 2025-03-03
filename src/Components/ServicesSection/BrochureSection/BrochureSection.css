@@ -1,0 +1,16 @@
+.bg-broc-col1{
+    background-color: #9CC6C9;
+}
+
+.bg-broc-col2{
+    background-color: #38357F;
+}
+
+
+.text-font{
+    font-family: "Outfit", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    text-align: center;
+    font-style: normal;
+}

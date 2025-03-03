@@ -1,0 +1,77 @@
+ /* Quotes Section */
+ .quotes-slider {
+    width: 70%;
+    margin: 40px auto; /* Add margin for spacing */
+  }
+  
+  .quote-card {
+    /* background: #0b1121; */
+    color: white;
+    padding: 20px;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .quote-card h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .quote-card p {
+    font-size: 2rem;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .quote-card .author {
+    font-size: 0.9rem;
+    text-align: right;
+    color: #ccc;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .hero-text {
+      font-size: clamp(1.5rem, 6vw, 3rem); /* Smaller font size for mobile */
+    }
+  
+    .hero-text-container {
+      width: 95%; /* Adjust width for smaller screens */
+    }
+  
+    .quotes-slider {
+      width: 95%;
+    }
+  
+    .quote-card h2 {
+      font-size: 1.2rem;
+    }
+  
+    .quote-card p {
+      font-size: 0.9rem;
+    }
+  
+    .quote-card .author {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-text {
+      font-size: clamp(1.2rem, 5vw, 2rem); /* Even smaller font size for very small screens */
+    }
+  }
+
+
+
+  .different-des{
+    color: white;
+    font-size: clamp(1rem, 5vw, 3rem); /* Responsive font size */
+    font-weight: bold;
+    line-height: 1.2;
+  }

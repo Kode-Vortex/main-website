@@ -1,0 +1,203 @@
+.text-font {
+    font-family: "Outfit", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    text-align: center;
+    font-style: normal;
+  }
+  
+  .bg-algo-col {
+    overflow: hidden; /* Prevent content from overflowing */
+  }
+
+  .training-heading{
+    
+    color: white;
+    font-size: clamp(1rem, 5vw, 3rem); /* Responsive font size */
+    font-weight: bold;
+    line-height: 1.2;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .text-font {
+      font-size: 2.5rem; /* Adjust font size for tablets */
+    }
+  
+    .bg-algo-col {
+      width: 90% !important; /* Make boxes wider on tablets */
+      margin: 0 auto; /* Center the boxes */
+      height: auto !important; /* Allow height to adjust */
+      padding: 1.5rem; /* Adjust padding */
+    }
+  
+    .w-24 {
+      width: 4rem !important; /* Adjust icon size */
+      height: 4rem !important;
+    }
+  
+    .text-3xl {
+      font-size: 1.5rem !important; /* Adjust icon font size */
+    }
+  
+    .text-xl {
+      font-size: 1rem !important; /* Adjust text size for details */
+    }
+  
+    .px-10 {
+      padding-left: 1rem !important; /* Adjust padding for details box */
+      padding-right: 1rem !important;
+    }
+  
+    .py-4 {
+      padding-top: 1rem !important; /* Adjust padding for details box */
+      padding-bottom: 1rem !important;
+    }
+  
+    .mt-24 {
+      margin-top: 2rem !important; /* Adjust top margin */
+    }
+  
+    .pb-16 {
+      padding-bottom: 2rem !important; /* Adjust bottom padding */
+    }
+  
+    .space-y-3 {
+      gap: 0.5rem !important; /* Adjust gap between list items */
+    }
+  
+    .list-disc {
+      padding-left: 1rem !important; /* Adjust list padding */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .text-font {
+      font-size: 2rem; /* Adjust font size for smaller tablets */
+    }
+  
+    .bg-algo-col {
+      width: 95% !important; /* Make boxes even wider */
+      padding: 1rem; /* Reduce padding */
+    }
+  
+    .w-24 {
+      width: 3.5rem !important; /* Further reduce icon size */
+      height: 3.5rem !important;
+    }
+  
+    .text-3xl {
+      font-size: 1.25rem !important; /* Further reduce icon font size */
+    }
+  
+    .text-xl {
+      font-size: 0.875rem !important; /* Further reduce text size for details */
+    }
+  
+    .px-10 {
+      padding-left: 0.75rem !important; /* Further reduce padding for details box */
+      padding-right: 0.75rem !important;
+    }
+  
+    .py-4 {
+      padding-top: 0.75rem !important; /* Further reduce padding for details box */
+      padding-bottom: 0.75rem !important;
+    }
+  
+    .mt-24 {
+      margin-top: 1.5rem !important; /* Further reduce top margin */
+    }
+  
+    .pb-16 {
+      padding-bottom: 1.5rem !important; /* Further reduce bottom padding */
+    }
+  
+    .space-y-3 {
+      gap: 0.25rem !important; /* Further reduce gap between list items */
+    }
+  
+    .list-disc {
+      padding-left: 0.75rem !important; /* Further adjust list padding */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .text-font {
+      font-size: 1.75rem; /* Adjust font size for mobile phones */
+    }
+  
+    .bg-algo-col {
+      width: 100% !important; /* Make boxes full width */
+      padding: 0.75rem; /* Reduce padding */
+    }
+  
+    .w-24 {
+      width: 3rem !important; /* Further reduce icon size */
+      height: 3rem !important;
+    }
+  
+    .text-3xl {
+      font-size: 1rem !important; /* Further reduce icon font size */
+    }
+  
+    .text-xl {
+      font-size: 0.75rem !important; /* Further reduce text size for details */
+    }
+  
+    .px-10 {
+      padding-left: 0.5rem !important; /* Further reduce padding for details box */
+      padding-right: 0.5rem !important;
+    }
+  
+    .py-4 {
+      padding-top: 0.5rem !important; /* Further reduce padding for details box */
+      padding-bottom: 0.5rem !important;
+    }
+  
+    .mt-24 {
+      margin-top: 1rem !important; /* Further reduce top margin */
+    }
+  
+    .pb-16 {
+      padding-bottom: 1rem !important; /* Further reduce bottom padding */
+    }
+  
+    .space-y-3 {
+      gap: 0.125rem !important; /* Further reduce gap between list items */
+    }
+  
+    .list-disc {
+      padding-left: 0.5rem !important; /* Further adjust list padding */
+    }
+  }
+
+
+  /* Unique shadow effect on hover */
+.hover-shadow {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+/* Improved content card styling */
+.content-card {
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.content-card:hover {
+  transform: scale(1.02);
+}
+
+/* List item styling */
+.list-item {
+  transition: color 0.3s ease-in-out;
+}
+
+.list-item:hover {
+  color: #60a5fa;
+}

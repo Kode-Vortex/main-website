@@ -1,0 +1,54 @@
+.training-card {
+  width: 90%;
+  height: 300px;
+  margin: 10px auto;
+  position: relative;
+  perspective: 1000px; /* Remove if not needed */
+}
+
+.training-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d; /* Remove if not needed */
+  transition: transform 0.6s ease-in-out; /* Remove if not needed */
+}
+
+.training-front {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.training-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .training-card {
+    height: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  .training-card {
+    height: 200px;
+  }
+
+  
+}
+
+.training-heading{
+  color: white;
+  font-size: clamp(1rem, 5vw, 3rem); /* Responsive font size */
+  font-weight: bold;
+  line-height: 1.2;
+}

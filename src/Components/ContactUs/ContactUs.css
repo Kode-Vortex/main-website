@@ -1,0 +1,122 @@
+
+.contact-container {
+    
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    padding: 20px;
+  }
+  
+  .contact-content {
+    background: linear-gradient(180deg , #056777 0% , #181739 61% ,  #181739 100%);
+    border-radius: 20px;
+    padding:  40px;
+    display: flex;
+    gap: 40px;
+    max-width: 1000px;
+    width: 100%;
+  }
+  
+  .contact-info {
+    flex: 1;
+    color: white;
+  }
+  
+  .contact-info h2 {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+  
+  .info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .icon-container {
+    background: #555;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+  }
+  
+  .icon-container svg {
+    width: 40px;
+    height: 40px;
+    color: white;
+  }
+  
+  .info-text h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .info-text p {
+    margin: 5px 0 0;
+    color: #888;
+    font-size: 14px;
+  }
+  
+  .contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: black ;
+  }
+
+
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 12px 15px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background-color: #54677B;
+
+    font-size: 16px;
+  }
+  
+  .contact-form textarea {
+    height: 150px;
+    resize: none;
+  }
+  
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #999;
+  }
+  
+  .contact-form button {
+    background: #CF9274;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .contact-form button:hover {
+    background: #da9c7e;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-content {
+      flex-direction: column;
+      padding: 20px;
+    }
+    
+    .contact-info,
+    .contact-form {
+      width: 100%;
+    }
+  }

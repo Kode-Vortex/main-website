@@ -1,0 +1,72 @@
+.cwo-font{
+    font-family: "Outfit", serif;
+
+}
+
+.bg-box-col{
+    background-color: #D9D9D9;
+}
+
+
+.animated-border-box {
+    position: relative;
+    width: 300px; /* Adjust as needed */
+    height: 400px; /* Adjust as needed */
+    background-color: #222; /* Dark background */
+    border-radius: 20px; /* Rounded corners */
+    overflow: hidden;
+  }
+  
+  .animated-border-box::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    border: 2px solid transparent;
+    animation: move-border 5s linear infinite;
+  }
+  
+  @keyframes move-border {
+    0% {
+      border-top: 2px solid cyan;
+      border-right: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      border-left: 2px solid transparent;
+    }
+    25% {
+      border-top: 2px solid transparent;
+      border-right: 2px solid cyan;
+      border-bottom: 2px solid transparent;
+      border-left: 2px solid transparent;
+    }
+    50% {
+      border-top: 2px solid transparent;
+      border-right: 2px solid transparent;
+      border-bottom: 2px solid cyan;
+      border-left: 2px solid transparent;
+    }
+    75% {
+      border-top: 2px solid transparent;
+      border-right: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      border-left: 2px solid cyan;
+    }
+    100% {
+      border-top: 2px solid cyan;
+      border-right: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      border-left: 2px solid transparent;
+    }
+  }
+  
+
+
+  .course-heading{
+    color: white;
+    font-size: clamp(1rem, 5vw, 3rem); /* Responsive font size */
+    font-weight: bold;
+    line-height: 1.2;
+  }

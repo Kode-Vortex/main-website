@@ -1,0 +1,161 @@
+/* Custom styles for the team slider */
+.team-slider .slick-dots {
+  bottom: -40px;
+}
+
+.team-slider .slick-dots li button:before {
+  font-size: 12px;
+  color: #CF9274;
+  opacity: 0.3;
+}
+
+.team-slider .slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #CF9274;
+}
+
+/* Add some gap between slides */
+.team-slider .slick-slide > div {
+  margin: 0 15px;
+}
+
+/* Fix for carousel overflow issues */
+.team-slider {
+  margin: 0 -15px;
+}
+
+/* Custom navigation arrows */
+.team-slider .slick-prev,
+.team-slider .slick-next {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(207, 146, 116, 0.3);
+  border-radius: 50%;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.team-slider .slick-prev {
+  left: -5px;
+}
+
+.team-slider .slick-next {
+  right: -5px;
+}
+
+.team-slider .slick-prev:hover,
+.team-slider .slick-next:hover {
+  background-color: rgba(207, 146, 116, 0.8);
+}
+
+.team-slider .slick-prev:before,
+.team-slider .slick-next:before {
+  font-size: 20px;
+  opacity: 1;
+}
+
+/* Highlight active slide */
+.active-slide {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+/* Decorative pulse animation for active slides */
+@keyframes pulse-border {
+  0% {
+    box-shadow: 0 0 0 0 rgba(207, 146, 116, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(207, 146, 116, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(207, 146, 116, 0);
+  }
+}
+
+.active-slide .rounded-2xl {
+  animation: pulse-border 2s infinite;
+}
+
+/* Custom animation for hover effects */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Badge shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+
+
+/* Additional responsive fixes */
+@media (max-width: 768px) {
+  .team-slider .slick-slide > div {
+    margin: 0 10px;
+  }
+  
+  .slick-list {
+    margin: 0 -10px; /* Compensate for the margin added to slides */
+  }
+
+
+  .ourteam-heading{
+    color: white;
+    font-size: clamp(1rem, 5vw, 3rem); /* Responsive font size */
+    font-weight: bold;
+    line-height: 1.2;
+  }
+  .team-slider {
+    margin: 0 -10px;
+  }
+  
+  /* Adjust position of name badge on mobile */
+  .absolute.top-6.left-0 {
+    top: 4px;
+  }
+  
+  .absolute.top-16.right-0 {
+    top: 12px;
+  }
+  
+  /* Make arrows more visible on mobile */
+  .team-slider .slick-prev {
+    left: 10px;
+  }
+  
+  .team-slider .slick-next {
+    right: 10px;
+  }
+  
+  /* Increase contrast for better visibility */
+  .bg-black.bg-opacity-80 {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* Tablet-specific adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Optimize image height for tablets */
+  .rounded-2xl.overflow-hidden.shadow-xl {
+    height: 380px !important;
+  }
+  
+  /* Adjust spacing */
+  .px-3.md\:px-4.py-2 {
+    padding: 0.75rem 1rem;
+  }
+}

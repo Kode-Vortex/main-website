@@ -1,0 +1,19 @@
+.defi-col{
+    color: rgb(89, 203, 221);
+
+}
+
+.in-sha{
+    box-shadow: 20px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+
+}
+
+.btn-bg-col button{
+    background: linear-gradient(90deg, #202141 0%, #3b7f84 40.22%);
+    width: 250px;
+    height: 50px;
+    border-radius: 20px;
+    color: black;
+    font-size: 20px;
+
+}

@@ -1,0 +1,51 @@
+.bg-color{
+   background: linear-gradient(180deg, #5D7284 0%, #151A1E 100%);
+    
+}
+
+.bg-color-1{
+    background: linear-gradient(180deg, #056777 0%, #AAD9D9 100%);
+
+}
+
+.bg-color-2{
+    background: linear-gradient(180deg, #181739 0%, #AAD9D9 100%);
+
+}
+
+.bg-color-mentor{
+
+    background: rgba(170, 217, 217, 1);
+
+}
+
+
+
+.bg-grad1 {
+    background: linear-gradient(185.09deg, #277E8B 4.09%, #38357F 97.63%);
+    border-radius: 50%;
+    font-size: 250px;
+    height: 250px; /* Adjust height if needed */
+    width: 400px; /* Adjust width if needed */
+    filter: blur(100px);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.bg-grad-purple{
+    background: rgba(56, 53, 127, 1);
+    border-radius: 50%;
+    font-size: 250px;
+    height: 350px; /* Adjust height if needed */
+    width: 300px; /* Adjust width if needed */
+    filter: blur(100px);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+

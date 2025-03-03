@@ -1,0 +1,17 @@
+.bg-login-grad{
+    background: linear-gradient(201.68deg, #728191 -1.75%, #0D315C 49%);
+
+}
+
+.bg-grad-loginPage{
+    background: #4275B2;
+    border-radius: 50%;
+    font-size: 250px;
+    height: 350px; /* Adjust height if needed */
+    width: 300px; /* Adjust width if needed */
+    filter: blur(100px);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
