@@ -630,7 +630,7 @@ const Testimonials = () => {
                     {/* Content */}
                     <div className="flex flex-col h-full">
                       {/* Quote section */}
-                      <div className="flex-grow mb-4 max-h-36 overflow-y-auto">
+                      <div className="flex-grow mb-4 max-h-36  pb-10">
                         <p className="text-gray-300 text-sm sm:text-base italic leading-relaxed relative z-10">
                           "{testimonial.feedback}"
                         </p>
