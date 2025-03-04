@@ -16,6 +16,7 @@ import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 import KodeBumps from "./pages/KodeBumps/KodeBumps";
 import HomePage from "./pages/HomePage/HomePage";
 import GridBackground from "./Components/GridBackground/GridBackground";
+import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 
 const App = () => {
   const [user, setUser] = useState();
@@ -57,6 +58,7 @@ const App = () => {
   return (
     <div className="overflow-hidden">
       <Toaster position="top-center" reverseOrder={false} />
+        <ScrollToTop/>
       <div>
         <Routes>
           <Route path="/" element={<MainLayout />}>
