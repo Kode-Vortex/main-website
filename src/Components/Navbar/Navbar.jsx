@@ -16,6 +16,18 @@ const Navbar = ({ user, setUser }) => {
   const accountRef = useRef(null);
   const mobileMenuRef = useRef(null);
 
+  const [text, setText] = useState("Joint Venture");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setText((prevText) =>
+        prevText === "Joint Venture" ? "KodeBumps" : "Joint Venture"
+      );
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
   // Close mobile menu when screen size exceeds 768px (tablet) or 1100px (desktop)
   useEffect(() => {
     const handleResize = () => {
@@ -33,13 +45,13 @@ const Navbar = ({ user, setUser }) => {
   // Handle body scrolling when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
-    
+
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [isMobileMenuOpen]);
 
@@ -93,14 +105,18 @@ const Navbar = ({ user, setUser }) => {
       <div className="flex items-center">
         <Link to="/" className="flex h-24 items-center">
           <div className="flex items-center">
-            <img 
-              src={logo1} 
-              alt="logo.png" 
-              className="w-8 sm:w-12 md:w-16 lg:w-[55%] h-auto" 
+            <img
+              src={logo1}
+              alt="logo.png"
+              className="w-8 sm:w-12 md:w-16 lg:w-[55%] h-auto"
             />
             <h1 className="kodev-font">
-              <span className="kode-col text-xs sm:text-sm md:text-lg lg:text-xl">KODE</span>
-              <span className="text-white text-xs sm:text-sm md:text-lg lg:text-xl">VORTEX</span>
+              <span className="kode-col text-xs sm:text-sm md:text-lg lg:text-xl">
+                KODE
+              </span>
+              <span className="text-white text-xs sm:text-sm md:text-lg lg:text-xl">
+                VORTEX
+              </span>
             </h1>
           </div>
         </Link>
@@ -198,14 +214,21 @@ const Navbar = ({ user, setUser }) => {
                 <span></span>
                 <span></span>
                 <span></span>
-                <span>Kodebumps</span>
+                <span>
+                  {" "}
+                  <h1
+                    key={text} // Key change ensures re-animation
+                  >
+                    {text}
+                  </h1>
+                </span>
               </div>
             </Link>
           )}
         </div>
 
         {/* Mobile View - Account/Kodebumps button and Hamburger */}
-        <div className="lg:hidden flex items-center space-x-2 sm:space-x-4">
+        <div className="lg:hidden flex items-center ">
           {user ? (
             <div className="relative" ref={accountRef}>
               <MdAccountCircle
@@ -235,14 +258,21 @@ const Navbar = ({ user, setUser }) => {
                 <span></span>
                 <span></span>
                 <span></span>
-                <span className="text-xs sm:text-sm">Kodebumps</span>
+                <span className="text-xs sm:text-sm">
+                  {" "}
+                  <h1
+                    key={text} // Key change ensures re-animation
+                  >
+                    {text}
+                  </h1>
+                </span>
               </div>
             </Link>
           )}
-          
+
           {/* Hamburger Menu Icon */}
-          <button 
-            onClick={toggleMobileMenu} 
+          <button
+            onClick={toggleMobileMenu}
             className="text-white text-2xl z-50"
             aria-label="Toggle navigation menu"
           >
@@ -253,21 +283,17 @@ const Navbar = ({ user, setUser }) => {
 
       {/* Mobile Menu - Semi-transparent Overlay */}
       {isMobileMenuOpen && (
-        <div 
+        <div
           ref={mobileMenuRef}
           className="lg:hidden fixed inset-0 z-40 flex justify-center items-center"
-          style={{ 
-            backdropFilter: 'blur(8px)',
-            backgroundColor: 'rgba(0, 0, 0, 0.85)'
+          style={{
+            backdropFilter: "blur(8px)",
+            backgroundColor: "rgba(0, 0, 0, 0.85)",
           }}
         >
           <div className="flex flex-col items-center justify-center bg-black bg-opacity-80 rounded-xl py-8 px-6 mx-4 max-w-md w-full border border-[#056777]">
             <div className="flex flex-col items-center mb-8">
-              <img 
-                src={logo} 
-                alt="logo.png" 
-                className="w-16 h-auto mb-3" 
-              />
+              <img src={logo} alt="logo.png" className="w-16 h-auto mb-3" />
               <h1 className="kodev-font">
                 <span className="kode-col text-2xl">KODE</span>
                 <span className="text-white text-2xl">VORTEX</span>
