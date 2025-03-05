@@ -56,57 +56,51 @@ const ServiceSecondSection = () => {
   return (
     <motion.div
       ref={ref}
-      className="flex mb-4 justify-center items-center  text-white relative px-4"
+      className="flex mb-4 justify-center items-center text-white relative px-4"
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       viewport={{ once: false, amount: 0.3 }}
     >
+      {/* Mobile View */}
       <div className="md:hidden w-full mb-10">
         <div className="max-w-sm mx-auto antialiased font-sans px-4">
           <div className="relative grid grid-cols-1 gap-20">
-            <div>
-              <div className="relative h-80 w-full">
-                <AnimatePresence>
-                  {testimonials.map((testimonial, index) => (
-                    <motion.div
-                      key={testimonial.src}
-                      initial={{ opacity: 0, scale: 0.9, rotate: 0 }}
-                      animate={{ opacity: isActive(index) ? 1 : 0.7, scale: isActive(index) ? 1 : 0.95 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                      className="absolute inset-0 origin-bottom"
-                    >
-                      <img
-                        src={testimonial.src}
-                        alt={testimonial.name}
-                        className="h-full w-full rounded-3xl object-cover object-center"
-                      />
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-              </div>
+            {/* Logo */}
+            <div className="flex justify-center">
+              <img src={logodesign} className="w-40 z-10" alt="logo" />
             </div>
-            <div className="flex justify-between flex-col py-4">
-              <div className="flex gap-4 pt-1">
-                <button
-                  onClick={handlePrev}
-                  className="h-7 w-7 rounded-full bg-neutral-800 flex items-center justify-center group/button"
+
+            {/* Circular Items */}
+            <div className="space-y-6">
+              {items.map((text, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.2, duration: 0.5 }}
+                  className="relative w-full"
                 >
-                  <MoveLeft className="h-5 w-5 text-neutral-400 group-hover/button:rotate-12 transition-transform duration-300" />
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="h-7 w-7 rounded-full bg-neutral-800 flex items-center justify-center group/button"
-                >
-                  <MoveRight className="h-5 w-5 text-neutral-400 group-hover/button:-rotate-12 transition-transform duration-300" />
-                </button>
-              </div>
+                  <div className="relative w-full h-32 rounded-full overflow-hidden">
+                    {/* Dark background */}
+                    <div className="absolute inset-1 bg-slate-900 rounded-full z-10"></div>
+                    
+                    {/* Circular snake border */}
+                    <div className="circularBorder"></div>
+                    
+                    {/* Text content */}
+                    <div className="absolute inset-1 z-20 flex items-center justify-center px-4 text-center">
+                      {text}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </div>
       
-      <div className="hidden h-[50rem] md:flex justify-center items-center w-full">
+      {/* Desktop View */}
+      <div className="hidden h-[50rem]  pr-16 md:flex justify-center items-center w-full">
         <img src={logodesign} className="w-40 md:w-60 z-10" alt="logo" />
         
         {items.map((text, index) => {
@@ -117,7 +111,7 @@ const ServiceSecondSection = () => {
           return (
             <motion.div
               key={index}
-              className="absolute w-32 h-32 md:w-64 md:h-64 text-lg text-center text-white p-4 rounded-full flex justify-center items-center overflow-hidden"
+              className="absolute w-32 h-32 md:w-64 md:h-64 text-lg text-center text-white p-4 rounded-full flex justify-center  items-center overflow-hidden"
               initial={{ opacity: 0, x: 0, y: 0 }}
               animate={{ opacity: 1, x, y }}
               transition={{ delay: index * duration, duration: duration }}
