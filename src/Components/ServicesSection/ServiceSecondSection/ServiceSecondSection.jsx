@@ -85,7 +85,7 @@ const ServiceSecondSection = () => {
                     <div className="absolute inset-1 bg-slate-900 rounded-full z-10"></div>
                     
                     {/* Circular snake border */}
-                    <div className="circularBorder"></div>
+                    <div className="circularBorder1"></div>
                     
                     {/* Text content */}
                     <div className="absolute inset-1 z-20 flex items-center justify-center px-4 text-center">

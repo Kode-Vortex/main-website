@@ -122,7 +122,7 @@ const Footer = () => {
           <h2 className="font-bold text-4xl tracking-wider">
             VISIT <span className="text-[#056777]">US</span>
           </h2>
-          <div className="h-1 w-24 bg-[#056777] mx-auto mt-2 rounded-full animate-pulse"></div>
+          <div className="h-1 w-36 bg-[#056777] mx-auto mt-2  animate-pulse"></div>
         </div>
 
         {/* Social Media Icons Section with hover effects */}
@@ -271,10 +271,6 @@ const Footer = () => {
               Terms of Service
             </Link>
 
-            <div> 
-              <h1>hu</h1>
-
-            </div>
           </div>
         </div>
 

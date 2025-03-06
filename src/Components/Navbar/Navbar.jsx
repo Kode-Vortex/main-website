@@ -294,7 +294,7 @@ const Navbar = ({ user, setUser }) => {
           <div className="flex flex-col items-center justify-center bg-black bg-opacity-80 rounded-xl py-8 px-6 mx-4 max-w-md w-full border border-[#056777]">
             <div className="flex flex-col items-center mb-8">
               <img src={logo} alt="logo.png" className="w-16 h-auto mb-3" />
-              <h1 className="kodev-font">
+              <h1 className="kodev-font ">
                 <span className="kode-col text-2xl">KODE</span>
                 <span className="text-white text-2xl">VORTEX</span>
               </h1>

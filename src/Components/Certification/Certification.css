@@ -1,3 +1,43 @@
 .bg-grad-cert{
     background: linear-gradient(180deg , #3B3A66 0% , #54677B 100%);
 }
+
+
+  .perspective-effect {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .certification-content {
+      text-align: center;
+    }
+    
+    .badge-cloud {
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  /* Badge hover effects */
+  .badge {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .badge:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Additional animation for image */
+  .certificate-image img {
+    filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.2));
+    transition: filter 0.5s ease;
+  }
+  
+  .certificate-image:hover img {
+    filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.25));
+  }

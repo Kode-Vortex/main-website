@@ -356,7 +356,7 @@ const ChooseUs = () => {
 
             {/* Animated underline */}
             <motion.div
-              className="h-1 bg-gradient-to-r from-purple-600 via-indigo-500 to-purple-600 rounded-full w-24 md:w-32"
+              className="h-1 bg-gradient-to-r from-purple-600 via-indigo-500 to-purple-600 rounded-full w-60 md:w-32"
               animate={{
                 width: ["4rem", "10rem", "4rem"],
                 opacity: [0.7, 1, 0.7]

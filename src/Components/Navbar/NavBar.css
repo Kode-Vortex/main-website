@@ -252,6 +252,12 @@
 
 }
 
+@media screen and (min-width: 1024px) and (max-width: 1100px) {
+  .kodev-font {
+    display: none !important;
+  }
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

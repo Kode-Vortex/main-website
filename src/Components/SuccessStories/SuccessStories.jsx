@@ -263,14 +263,14 @@ const SuccessStories = () => {
       {/* Header with new animated underline */}
       <div className="relative z-10">
         <motion.h1 
-          className="success-head font-bold text-center tracking-wider pb-6 md:pb-12 pt-8 text-center text-white"
+          className="success-head font-bold  tracking-wider pb-6 md:pb-12 pt-8 text-center text-white"
           variants={headerVariants}
         >
           Success Stories
         </motion.h1>
         
         <motion.div 
-          className="w-24 h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-400 mx-auto mb-6 md:mb-12" // Enhanced gradient
+          className="w-44 h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-400 mx-auto mb-6 md:mb-12" // Enhanced gradient
           initial={{ width: 0, opacity: 0 }}
           animate={inView ? { width: 96, opacity: 1 } : { width: 0, opacity: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
