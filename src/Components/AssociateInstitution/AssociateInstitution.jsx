@@ -47,8 +47,6 @@ const AssociateInstitution = () => {
     ],
   };
 
- 
-
   // Animation for each slide
   const slideVariants = {
     hidden: { opacity: 0, scale: 0.8 },

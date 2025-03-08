@@ -180,7 +180,7 @@ const TrainingOffer = () => {
         {/* ------------ FIRST COLUMN (Left Box) ------------ */}
         <motion.div
           variants={leftBoxVariants}
-          className="w-full md:w-[40%] lg:w-[32%] bg-gradient-to-tr from-slate-900 to-slate-950 flex flex-col items-center rounded-3xl p-4 md:p-6 text-white transition-all duration-500 h-auto md:h-[70vh] mb-10 md:mb-0 overflow-hidden"
+          className="sm:w-[60%] md:w-[42%] lg:w-[35%] bg-gradient-to-tr from-slate-900 to-slate-950 flex flex-col items-center rounded-3xl p-4 md:p-6 text-white transition-all duration-500 h-[26rem]  md:h-[32rem]  mb-10 md:mb-0 overflow-hidden"
         >
           <motion.div variants={columnVariants} className="flex flex-col h-full w-full">
             <motion.h1
@@ -215,13 +215,13 @@ const TrainingOffer = () => {
               className="p-2 mt-auto text-center w-full"
             >
               <div
-                className="content-card text-xs sm:text-sm md:text-base lg:text-lg border-l-2 w-full bg-slate-850 md:h-[14rem] lg:px-4 px-2 py-4 rounded-xl border-white transform-style-preserve-3d perspective-1000 hover:rotate-y-15 hover:rotate-x-10 transition-transform duration-500 ease-in-out overflow-hidden"
+                className="content-card  flex justify-center flex-col  text-lg  md:text-sm lg:text-lg border-l-2 w-full bg-slate-850   lg:px-4 px-2 py-4 rounded-xl border-white transform-style-preserve-3d h-[15rem] md:h-[18rem] perspective-1000 hover:rotate-y-15 hover:rotate-x-10 transition-transform duration-500 ease-in-out overflow-hidden"
                 style={{
                   transformStyle: "preserve-3d",
                   perspective: "1000px",
                 }}
               >
-                <h2 className="font-bold mb-2 transform translate-z-20">
+                <h2 className="font-bold mb-2 text-2xl transform translate-z-20">
                   {trainingData1[currentDetailsIndex].category}
                 </h2>
                 <ul className="list-disc flex flex-col pt-2 space-y-1 md:space-y-2 list-inside transform translate-z-10">
@@ -229,7 +229,7 @@ const TrainingOffer = () => {
                     <motion.li
                       key={idx}
                       variants={listItemVariants}
-                      className="list-item transform translate-z-5 text-left break-words"
+                      className="list-item  lg:text-2xl text-xl  transform translate-z-5 text-left break-words"
                     >
                       {point}
                     </motion.li>
@@ -243,7 +243,7 @@ const TrainingOffer = () => {
         {/* ------------ SECOND COLUMN (Right Box) ------------ */}
         <motion.div
           variants={rightBoxVariants}
-          className="w-full md:w-[40%] lg:w-[32%] bg-gradient-to-tr from-slate-900 to-slate-950 flex flex-col items-center rounded-3xl p-4 md:p-6 text-white transition-all duration-500 h-auto md:h-[70vh] overflow-hidden"
+          className="sm:w-[60%] md:w-[42%] lg:w-[35%] bg-gradient-to-tr from-slate-900 to-slate-950 flex flex-col items-center rounded-3xl p-4 md:p-6 text-white transition-all duration-500 h-[26rem] md:h-[32rem] mb-10 md:mb-0 overflow-hidden"
         >
           <motion.div variants={columnVariants} className="flex flex-col h-full w-full">
             <motion.h1
@@ -278,13 +278,13 @@ const TrainingOffer = () => {
               className="p-2 mt-auto text-center w-full"
             >
               <div
-                className="content-card text-xs sm:text-sm md:text-base lg:text-lg border-l-2 w-full bg-slate-850 md:h-[14rem] lg:px-4 px-2 py-4 rounded-xl border-white transform-style-preserve-3d perspective-1000 hover:rotate-y-15 hover:rotate-x-10 transition-transform duration-500 ease-in-out overflow-hidden"
+                className="content-card flex justify-center flex-col text-xs sm:text-sm md:text-sm lg:text-lg border-l-2 w-full bg-slate-850 h-[15rem] md:h-[18rem]  lg:px-4 px-2 py-4 rounded-xl border-white transform-style-preserve-3d perspective-1000 hover:rotate-y-15 hover:rotate-x-10 transition-transform duration-500 ease-in-out overflow-hidden"
                 style={{
                   transformStyle: "preserve-3d",
                   perspective: "1000px",
                 }}
               >
-                <h2 className="font-bold mb-2 transform translate-z-20">
+                <h2 className="font-bold mb-2 text-2xl  transform translate-z-20">
                   {trainingData2[currentDetailsIndex].category}
                 </h2>
                 <ul className="list-disc flex flex-col pt-2 space-y-1 md:space-y-2 list-inside transform translate-z-10">
@@ -292,7 +292,7 @@ const TrainingOffer = () => {
                     <motion.li
                       key={idx}
                       variants={listItemVariants}
-                      className="list-item transform translate-z-5 text-left break-words"
+                      className="list-item lg:text-2xl text-xl  transform translate-z-5 text-left break-words"
                     >
                       {point}
                     </motion.li>

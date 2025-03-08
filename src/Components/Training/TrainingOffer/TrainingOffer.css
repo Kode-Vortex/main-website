@@ -1,203 +1,80 @@
 .text-font {
-    font-family: "Outfit", serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    text-align: center;
-    font-style: normal;
-  }
-  
-  .bg-algo-col {
-    overflow: hidden; /* Prevent content from overflowing */
-  }
+  font-family: "Outfit", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  text-align: center;
+  font-style: normal;
+}
 
-  .training-heading{
-    
-    color: white;
-    font-size: clamp(1rem, 5vw, 3rem); /* Responsive font size */
-    font-weight: bold;
-    line-height: 1.2;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 1024px) {
-    .text-font {
-      font-size: 2.5rem; /* Adjust font size for tablets */
-    }
-  
-    .bg-algo-col {
-      width: 90% !important; /* Make boxes wider on tablets */
-      margin: 0 auto; /* Center the boxes */
-      height: auto !important; /* Allow height to adjust */
-      padding: 1.5rem; /* Adjust padding */
-    }
-  
-    .w-24 {
-      width: 4rem !important; /* Adjust icon size */
-      height: 4rem !important;
-    }
-  
-    .text-3xl {
-      font-size: 1.5rem !important; /* Adjust icon font size */
-    }
-  
-    .text-xl {
-      font-size: 1rem !important; /* Adjust text size for details */
-    }
-  
-    .px-10 {
-      padding-left: 1rem !important; /* Adjust padding for details box */
-      padding-right: 1rem !important;
-    }
-  
-    .py-4 {
-      padding-top: 1rem !important; /* Adjust padding for details box */
-      padding-bottom: 1rem !important;
-    }
-  
-    .mt-24 {
-      margin-top: 2rem !important; /* Adjust top margin */
-    }
-  
-    .pb-16 {
-      padding-bottom: 2rem !important; /* Adjust bottom padding */
-    }
-  
-    .space-y-3 {
-      gap: 0.5rem !important; /* Adjust gap between list items */
-    }
-  
-    .list-disc {
-      padding-left: 1rem !important; /* Adjust list padding */
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .text-font {
-      font-size: 2rem; /* Adjust font size for smaller tablets */
-    }
-  
-    .bg-algo-col {
-      width: 95% !important; /* Make boxes even wider */
-      padding: 1rem; /* Reduce padding */
-    }
-  
-    .w-24 {
-      width: 3.5rem !important; /* Further reduce icon size */
-      height: 3.5rem !important;
-    }
-  
-    .text-3xl {
-      font-size: 1.25rem !important; /* Further reduce icon font size */
-    }
-  
-    .text-xl {
-      font-size: 0.875rem !important; /* Further reduce text size for details */
-    }
-  
-    .px-10 {
-      padding-left: 0.75rem !important; /* Further reduce padding for details box */
-      padding-right: 0.75rem !important;
-    }
-  
-    .py-4 {
-      padding-top: 0.75rem !important; /* Further reduce padding for details box */
-      padding-bottom: 0.75rem !important;
-    }
-  
-    .mt-24 {
-      margin-top: 1.5rem !important; /* Further reduce top margin */
-    }
-  
-    .pb-16 {
-      padding-bottom: 1.5rem !important; /* Further reduce bottom padding */
-    }
-  
-    .space-y-3 {
-      gap: 0.25rem !important; /* Further reduce gap between list items */
-    }
-  
-    .list-disc {
-      padding-left: 0.75rem !important; /* Further adjust list padding */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .text-font {
-      font-size: 1.75rem; /* Adjust font size for mobile phones */
-    }
-  
-    .bg-algo-col {
-      width: 100% !important; /* Make boxes full width */
-      padding: 0.75rem; /* Reduce padding */
-    }
-  
-    .w-24 {
-      width: 3rem !important; /* Further reduce icon size */
-      height: 3rem !important;
-    }
-  
-    .text-3xl {
-      font-size: 1rem !important; /* Further reduce icon font size */
-    }
-  
-    .text-xl {
-      font-size: 0.75rem !important; /* Further reduce text size for details */
-    }
-  
-    .px-10 {
-      padding-left: 0.5rem !important; /* Further reduce padding for details box */
-      padding-right: 0.5rem !important;
-    }
-  
-    .py-4 {
-      padding-top: 0.5rem !important; /* Further reduce padding for details box */
-      padding-bottom: 0.5rem !important;
-    }
-  
-    .mt-24 {
-      margin-top: 1rem !important; /* Further reduce top margin */
-    }
-  
-    .pb-16 {
-      padding-bottom: 1rem !important; /* Further reduce bottom padding */
-    }
-  
-    .space-y-3 {
-      gap: 0.125rem !important; /* Further reduce gap between list items */
-    }
-  
-    .list-disc {
-      padding-left: 0.5rem !important; /* Further adjust list padding */
-    }
-  }
+.training-heading {
+  color: white;
+  font-size: clamp(1.5rem, 3vw, 3rem); /* Better responsive font scaling */
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
 
-
-  /* Unique shadow effect on hover */
+/* Unique shadow effect on hover */
 .hover-shadow {
-  transition: box-shadow 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .hover-shadow:hover {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 25px rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px);
 }
 
 /* Improved content card styling */
 .content-card {
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease-in-out;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .content-card:hover {
-  transform: scale(1.02);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* List item styling */
 .list-item {
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, transform 0.2s ease;
+  position: relative;
+  padding-left: 0.25rem;
 }
 
 .list-item:hover {
   color: #60a5fa;
+  transform: translateX(3px);
+}
+
+/* Responsive breakpoints - Mobile first approach */
+@media (max-width: 480px) {
+  .content-card {
+    padding: 0.75rem !important;
+  }
+  
+  
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .content-card {
+    padding: 1rem !important;
+  }
+  
+ 
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  
+}
+
+/* Apply 3D transform styles only on larger screens where hover is available */
+@media (min-width: 1024px) {
+  .content-card:hover {
+    transform: translateY(-5px) rotateY(5deg) rotateX(3deg);
+  }
 }
