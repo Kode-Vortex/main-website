@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaYoutube } from "react-icons/fa";
 import insta from "./insta.png";
 import linkedin from "./linkedin.png";
 import x from "./x.png";
@@ -237,49 +237,43 @@ const ContactUsPage = () => {
           </motion.div>
           
           <div className="flex flex-col space-y-4 pt-6">
-            <motion.button 
+            <a 
+            href="https://youtube.com/@kodevortex?si=PKz-yTp_5tH5QLFW"
               className="flex items-center bg-[#23565F] w-44 h-12 rounded-full justify-center space-x-2"
-              variants={socialButtonVariants}
-              initial="initial"
-              whileHover="hover"
-              whileTap="tap"
+              target="_blank"
             >
-              <FaGoogle className="text-xl text-white" />
+              <FaYoutube className="text-3xl text-red-600" />
               <span className="text-white">kodevortex</span>
-            </motion.button>
+            </a>
             
-            <motion.button 
+            <a 
+              href="https://www.instagram.com/kodevortex"
               className="flex items-center bg-[#23565F] w-44 h-12 rounded-full justify-center space-x-2"
-              variants={socialButtonVariants}
-              initial="initial"
-              whileHover="hover"
-              whileTap="tap"
+              target="_blank"
             >
               <img className="w-8" src={insta} alt="Instagram" />
               <span className="text-white">kodevortex</span>
-            </motion.button>
+            </a>
             
-            <motion.button 
+            <a 
+            
+              href="https://www.linkedin.com/company/kodevortex"
               className="flex items-center bg-[#23565F] w-44 h-12 rounded-full justify-center space-x-2"
-              variants={socialButtonVariants}
-              initial="initial"
-              whileHover="hover"
-              whileTap="tap"
+              target="_blank"
+           
             >
               <img className="w-8" src={linkedin} alt="LinkedIn" />
               <span className="text-white">KodeVortex</span>
-            </motion.button>
+            </a>
             
-            <motion.button 
+            <a
+              href="https://twitter.com/kodeVortex"
               className="flex items-center bg-[#23565F] w-44 h-12 rounded-full justify-center space-x-2"
-              variants={socialButtonVariants}
-              initial="initial"
-              whileHover="hover"
-              whileTap="tap"
+             target="_blank"
             >
               <img className="w-8" src={x} alt="X" />
               <span className="text-white">KodeVortex</span>
-            </motion.button>
+            </a>
           </div>
         </div>
       </motion.div>
