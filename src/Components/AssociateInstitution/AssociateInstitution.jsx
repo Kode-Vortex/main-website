@@ -61,35 +61,51 @@ const AssociateInstitution = () => {
   // useInView to re-trigger animation when section enters the viewport
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.3 });
 
+  // Add a pulsing effect to highlight featured institutions
+  const [featuredIndex, setFeaturedIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFeaturedIndex((prev) => (prev + 1) % AssociateInstitutionContent.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [AssociateInstitutionContent.length]);
+
   return (
     <>
-       <h2 className="course-heading text-center tracking-wider pb-12 md:pb-14">
-        ASSOCIATED INSTITUTION
+      <h2 className="course-heading text-center tracking-wider pb-12 md:pb-14">
+        ASSOCIATED INSTITUTIONS
       </h2>
-    
-    <div className="overflow-hidden my-16  bg-gray-400 py-5">
-      
-      <motion.div
-        className="flex space-x-24 items-center w-max"
-        animate={{ x: ["0%", "-50%"] }} // Moves images seamlessly
-        transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-      >
-        {[...AssociateInstitutionContent, ...AssociateInstitutionContent].map(
-          (image, index) => (
-            <div key={index} className="flex-shrink-0">
-              <img
-                src={image}
-                alt={`Institution ${index + 1}`}
-                className="h-28 w-28 md:h-44 md:w-44 object-contain"
-              />
-            </div>
-          )
-        )}
-      </motion.div>
 
-      
-    </div>
-
+      {/* Changed background to a gradient */}
+      <div className="overflow-hidden my-16 bg-gradient-to-r  py-8 shadow-lg rounded-lg">
+       
+        
+        <motion.div
+          className="flex space-x-24 items-center w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+        >
+          {[...AssociateInstitutionContent, ...AssociateInstitutionContent].map(
+            (image, index) => (
+              <motion.div 
+                key={index} 
+                className="flex-shrink-0 bg-white p-4 rounded-lg mx-2"
+                whileHover={{ y: -10, scale: 1.05 }}
+                animate={index % AssociateInstitutionContent.length === featuredIndex ? 
+                  { scale: [1, 1.05, 1], boxShadow: ["0px 0px 0px rgba(255,255,255,0.2)", "0px 0px 20px rgba(255,255,255,0.8)", "0px 0px 0px rgba(255,255,255,0.2)"] } : {}}
+                transition={{ duration: 1.5, repeat: index % AssociateInstitutionContent.length === featuredIndex ? Infinity : 0 }}
+              >
+                <img
+                  src={image}
+                  alt={`Institution ${index + 1}`}
+                  className="h-28 w-28 md:h-44 md:w-44 object-contain"
+                />
+              </motion.div>
+            )
+          )}
+        </motion.div>
+      </div>
     </>
   );
 };
