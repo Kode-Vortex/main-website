@@ -65,25 +65,21 @@ const Footer = () => {
       url: "https://twitter.com/kodeVortex",
       name: "Twitter",
       icon: fo3,
-      hoverColor: "hover:bg-zinc-900",
     },
     {
       url: "https://www.instagram.com/kodevortex",
       name: "Instagram",
       icon: fo2,
-      hoverColor: "hover:bg-pink-500",
     },
     {
       url: "https://youtube.com/@kodevortex?si=PKz-yTp_5tH5QLFW",
       name: "YouTube",
       icon: fo1,
-      hoverColor: "hover:bg-red-600",
     },
     {
       url: "https://www.linkedin.com/company/kodevortex",
       name: "LinkedIn",
       icon: fo4,
-      hoverColor: "hover:bg-[#0077B5]",
     },
   ];
 
@@ -135,7 +131,7 @@ const Footer = () => {
               <a
                 href={social.url}
                 target="_blank"
-                className={`inline-block p-4 rounded-full transition-all duration-300 ${social.hoverColor}`}
+                className={`inline-block p-4 rounded-full transition-all duration-300 `}
               >
                 <img
                   src={social.icon}
@@ -153,7 +149,7 @@ const Footer = () => {
         <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-500 to-transparent mb-12"></div>
 
         {/* Main Footer Content */}
-        <div className="flex flex-wrap lg:px-24 justify-center sm:justify-between gap-12 text-center sm:text-left">
+        <div className="flex flex-wrap lg:px-24  justify-center sm:justify-between gap-12  text-center sm:text-left">
           {/* Logo Section with animation */}
           <div className="w-full sm:w-auto flex flex-col items-center justify-center mb-9">
             <img
@@ -204,6 +200,44 @@ const Footer = () => {
             ))}
           </div>
 
+          {/* Join Us Section with improved form */}
+          <div className="flex flex-col items-center mx-auto space-y-4 text-center sm:text-left w-full sm:w-auto max-w-xs">
+            <h3 className="font-bold text-2xl mb-2 text-[#056777]">
+              Join Our Newsletter
+            </h3>
+            <p className="text-sm text-gray-300 mb-2">
+              Stay updated with our latest news and offers
+            </p>
+            <form onSubmit={handleSubmit} className="relative">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email Address"
+                className="py-3 px-4 pr-32 text-white bg-gray-800 border border-gray-700 rounded-full w-full focus:outline-none focus:ring-2 focus:ring-[#056777] transition-all"
+                required
+              />
+              <button
+                type="submit"
+                disabled={isSubmitting || submitted}
+                className={`absolute right-0 top-0 py-3 px-6 rounded-r-full font-bold transition-all duration-300 h-full
+                  ${
+                    submitted
+                      ? "bg-green-600 text-white"
+                      : isSubmitting
+                      ? "bg-gray-600 text-gray-300"
+                      : "bg-[#056777] text-white hover:bg-[#045666]"
+                  }`}
+              >
+                {submitted ? "SENT ✓" : isSubmitting ? "SENDING..." : "SUBMIT"}
+              </button>
+            </form>
+            {/* GDPR compliance note */}
+            <p className="text-xs text-gray-400 mt-2">
+              By subscribing, you agree to our privacy policy and consent to
+              receive updates.
+            </p>
+          </div>
         </div>
 
         {/* Footer Bottom Section with SSL badge */}
