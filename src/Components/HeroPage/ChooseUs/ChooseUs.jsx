@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
+ 
 import BoxSection from "./BoxSection/BoxSection";
 import "./ChooseUs.css";
 import chooseus from "./chooseus.jpg";
@@ -135,7 +137,7 @@ const ChooseUs = () => {
     }),
     hover: {
       scale: 1.05,
-      boxShadow: "0px 15px 30px rgba(139, 92, 246, 0.35)",
+      boxShadow: "0px 15px 30px rgba(139, 78, 246, 0.35)",
       transition: { duration: 0.3 }
     }
   };
@@ -263,7 +265,7 @@ const ChooseUs = () => {
     <>
       <motion.div
         ref={sectionRef}
-        className="text-white px-4 md:px-[10%] pt-16 pb-20 rounded-t-[40px] bg-gradient-to-b from-black via-[#0D0217] to-[#150025] relative overflow-hidden"
+        className="text-white px-4 md:px-[10%] pt-16 pb-20 rounded-t-[40px] bg-gradient-to-b from-black via-[#000000] to-[#050505] relative overflow-hidden"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -274,7 +276,7 @@ const ChooseUs = () => {
         <div className="absolute inset-0 overflow-hidden opacity-30">
           {/* Large circle */}
           <motion.div
-            className="absolute w-[600px] h-[600px] rounded-full border-2 border-purple-500/30 -right-[200px] -top-[200px]"
+            className="absolute w-[600px] h-[600px] rounded-full border-2 border-cyan-400/30 -right-[200px] -top-[200px]"
             animate={{
               rotate: 360,
             }}
@@ -287,7 +289,7 @@ const ChooseUs = () => {
          
           {/* Small circle */}
           <motion.div
-            className="absolute w-[300px] h-[300px] rounded-full border border-indigo-400/20 -left-[150px] bottom-[10%]"
+            className="absolute w-[300px] h-[300px] rounded-full border border-violet-400/20 -left-[150px] bottom-[10%]"
             animate={{
               rotate: -360,
             }}
@@ -306,7 +308,7 @@ const ChooseUs = () => {
         {Array.from({ length: 20 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-gradient-to-b from-purple-400 to-indigo-500 opacity-10"
+            className="absolute rounded-full bg-gradient-to-b from-cyan-400 to-violet-500 opacity-10"
             style={{
               width: Math.random() * 25 + 5,
               height: Math.random() * 25 + 5,
@@ -337,12 +339,12 @@ const ChooseUs = () => {
            
            
             <motion.h1
-              className="relative text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-purple-400 to-indigo-400 font-sans text-4xl md:text-6xl font-bold tracking-tight text-center z-10 leading-tight"
+              className="relative text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-violet-400 font-sans text-4xl md:text-6xl font-bold tracking-tight text-center z-10 leading-tight"
               animate={{
                 textShadow: [
-                  "0 0 8px rgba(168, 85, 247, 0.4)",
-                  "0 0 16px rgba(168, 85, 247, 0.6)",
-                  "0 0 8px rgba(168, 85, 247, 0.4)"
+                  "0 0 8px rgba(85, 168, 247, 0.4)",
+                  "0 0 16px rgba(85, 168, 247, 0.6)",
+                  "0 0 8px rgba(85, 168, 247, 0.4)"
                 ]
               }}
               transition={{
@@ -356,7 +358,7 @@ const ChooseUs = () => {
 
             {/* Animated underline */}
             <motion.div
-              className="h-1 bg-gradient-to-r from-purple-600 via-indigo-500 to-purple-600 rounded-full w-60 md:w-32"
+              className="h-1 bg-gradient-to-r from-cyan-600 via-violet-500 to-cyan-600 rounded-full w-24 md:w-32"
               animate={{
                 width: ["4rem", "10rem", "4rem"],
                 opacity: [0.7, 1, 0.7]
@@ -371,7 +373,7 @@ const ChooseUs = () => {
 
           {/* Light glow behind the title */}
           <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-40 rounded-full bg-purple-600 blur-[100px] opacity-20"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-40 rounded-full bg-violet-600 blur-[100px] opacity-20"
             animate={{
               scale: [1, 1.3, 1],
               opacity: [0.1, 0.25, 0.1]
@@ -397,7 +399,7 @@ const ChooseUs = () => {
               className="transform transition-all duration-300"
             >
               <motion.div
-                className="bg-gradient-to-br from-[#1c1033] to-[#130926] p-6 md:p-8 rounded-2xl border border-purple-900/30 h-full relative group overflow-hidden"
+                className="bg-gradient-to-br from-[#000000] to-[#050505] p-6 md:p-8 rounded-2xl border border-violet-900/30 h-full relative group overflow-hidden"
                 whileHover={{
                   backgroundPosition: ["0% 0%", "100% 100%"],
                   transition: { duration: 1.5 }
@@ -405,16 +407,16 @@ const ChooseUs = () => {
               >
                 {/* Hover effect glow */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 bg-gradient-to-br from-cyan-600/10 to-violet-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
                
                 {/* Corner accent */}
                 <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden">
-                  <div className="absolute rotate-45 bg-gradient-to-r from-purple-500/20 to-indigo-500/20 w-10 h-10 -right-5 -top-5 transform origin-bottom-left" />
+                  <div className="absolute rotate-45 bg-gradient-to-r from-cyan-500/20 to-violet-500/20 w-10 h-10 -right-5 -top-5 transform origin-bottom-left" />
                 </div>
                
                 <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 text-3xl md:text-4xl bg-gradient-to-br from-purple-400 to-indigo-500 p-3 md:p-4 rounded-2xl shadow-lg shadow-purple-900/20">
+                  <div className="flex-shrink-0 text-3xl md:text-4xl bg-gradient-to-br from-cyan-400 to-violet-500 p-3 md:p-4 rounded-2xl shadow-lg shadow-violet-900/20">
                     {content.icon}
                   </div>
                  
@@ -422,7 +424,7 @@ const ChooseUs = () => {
                     <h3 className="text-lg md:text-xl font-bold text-white mb-2 tracking-wide">
                       {content.text}
                     </h3>
-                    <p className="text-purple-200/70 text-sm md:text-base">
+                    <p className="text-cyan-200/70 text-sm md:text-base">
                       {content.description}
                     </p>
                   </div>
@@ -430,7 +432,7 @@ const ChooseUs = () => {
                
                 {/* Bottom accent line */}
                 <motion.div
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-purple-500/50 to-indigo-500/50 w-0 group-hover:w-full transition-all duration-500 ease-out"
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-cyan-500/50 to-violet-500/50 w-0 group-hover:w-full transition-all duration-500 ease-out"
                 />
               </motion.div>
             </motion.div>
@@ -448,7 +450,7 @@ const ChooseUs = () => {
           >
             <div className="space-y-6">
               <motion.h2
-                className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-indigo-400"
+                className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-violet-400"
                 custom={0}
                 variants={paragraphVariants}
               >
@@ -456,17 +458,17 @@ const ChooseUs = () => {
               </motion.h2>
              
               <motion.p
-                className="text-base md:text-lg tracking-wide leading-relaxed text-purple-100/90"
+                className="text-base md:text-lg tracking-wide leading-relaxed text-cyan-100/90"
                 custom={1}
                 variants={paragraphVariants}
               >
-                At <span className="text-purple-400 font-semibold">Kodevortex</span>, our mission is to bridge the gap between academic learning and industry needs.
+                At <span className="text-cyan-400 font-semibold">Kodevortex</span>, our mission is to bridge the gap between academic learning and industry needs.
                 We believe in empowering students and professionals with the right skills to succeed in today's competitive
                 technology-driven world.
               </motion.p>
              
               <motion.p
-                className="text-base md:text-lg tracking-wide leading-relaxed text-purple-100/80"
+                className="text-base md:text-lg tracking-wide leading-relaxed text-cyan-100/80"
                 custom={2}
                 variants={paragraphVariants}
               >
@@ -488,7 +490,7 @@ const ChooseUs = () => {
                 ].map((item, i) => (
                   <motion.li
                     key={i}
-                    className="flex items-center gap-3 text-purple-100/80"
+                    className="flex items-center gap-3 text-cyan-100/80"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{
                       opacity: 1,
@@ -500,7 +502,7 @@ const ChooseUs = () => {
                     }}
                     viewport={{ once: true }}
                   >
-                    <span className="text-purple-500">✓</span> {item}
+                    <span className="text-cyan-500">✓</span> {item}
                   </motion.li>
                 ))}
               </motion.ul>
@@ -512,10 +514,10 @@ const ChooseUs = () => {
             className="w-full lg:w-[55%] h-[450px] rounded-3xl overflow-hidden relative"
             variants={slideInRightVariants}
           >
-            <motion.div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-indigo-500 to-purple-600 opacity-70" />
+            <motion.div className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-violet-500 to-cyan-600 opacity-70" />
             
             {/* GIF carousel container */}
-            <motion.div className="absolute inset-0 bg-[#0D0217] rounded-3xl overflow-hidden flex items-center justify-center">
+            <motion.div className="absolute inset-0 bg-[#000000] rounded-3xl overflow-hidden flex items-center justify-center">
               {/* Display each GIF with animation */}
               {carouselGifs.map((gif, index) => (
                 <motion.div
@@ -543,7 +545,7 @@ const ChooseUs = () => {
             {/* Navigation arrows */}
             <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4">
               <motion.button 
-                className="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center text-white hover:bg-purple-600/50 transition-colors duration-300"
+                className="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center text-white hover:bg-cyan-600/50 transition-colors duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handlePrevSlide}
@@ -554,7 +556,7 @@ const ChooseUs = () => {
               </motion.button>
               
               <motion.button 
-                className="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center text-white hover:bg-purple-600/50 transition-colors duration-300"
+                className="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center text-white hover:bg-cyan-600/50 transition-colors duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleNextSlide}
@@ -572,7 +574,7 @@ const ChooseUs = () => {
                   key={index}
                   onClick={() => setCurrentCarouselIndex(index)}
                   className={`w-3 h-3 rounded-full transition-all ${
-                    currentCarouselIndex === index ? "bg-purple-500 scale-110" : "bg-purple-200/30 hover:bg-purple-300/50"
+                    currentCarouselIndex === index ? "bg-cyan-500 scale-110" : "bg-cyan-200/30 hover:bg-cyan-300/50"
                   }`}
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
@@ -587,7 +589,7 @@ const ChooseUs = () => {
           variants={fadeInVariants}
         >
           <motion.h2
-            className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-indigo-300"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-violet-300"
             whileInView={{
               y: [20, 0],
               opacity: [0, 1],
@@ -599,17 +601,17 @@ const ChooseUs = () => {
           </motion.h2>
          
           <motion.p
-            className="py-6 text-base md:text-xl text-center leading-relaxed max-w-4xl mx-auto text-purple-100/90"
+            className="py-6 text-base md:text-xl text-center leading-relaxed max-w-4xl mx-auto text-cyan-100/90"
             animate={{
               color: [
-                "rgba(243, 232, 255, 0.9)",
-                "rgba(233, 213, 255, 0.9)",
-                "rgba(243, 232, 255, 0.9)"
+                "rgba(232, 243, 255, 0.9)",
+                "rgba(213, 233, 255, 0.9)",
+                "rgba(232, 243, 255, 0.9)"
               ]
             }}
             transition={{ duration: 5, repeat: Infinity }}
           >
-            Joining <span className="text-purple-400 font-semibold">Kodevortex</span> means more than just attending classes. It's about becoming part of a growing community
+            Joining <span className="text-cyan-400 font-semibold">Kodevortex</span> means more than just attending classes. It's about becoming part of a growing community
             of innovators and problem-solvers who are shaping the future of technology.
           </motion.p>
          
@@ -622,16 +624,16 @@ const ChooseUs = () => {
             viewport={{ once: true }}
           >
             <motion.button
-              className="relative py-4 px-10 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full font-semibold text-lg overflow-hidden group"
+              className="relative py-4 px-10 bg-gradient-to-r from-cyan-600 to-violet-600 text-white rounded-full font-semibold text-lg overflow-hidden group"
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0px 15px 30px rgba(139, 92, 246, 0.3)"
+                boxShadow: "0px 15px 30px rgba(92, 139, 246, 0.3)"
               }}
               whileTap={{ scale: 0.97 }}
             >
               {/* Button background animation */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 animate={{
                   backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                 }}
@@ -654,7 +656,7 @@ const ChooseUs = () => {
             </motion.button>
            
             <motion.button
-              className="py-4 px-8 bg-transparent border border-purple-500/40 hover:border-purple-500 text-purple-300 rounded-full font-medium text-lg group"
+              className="py-4 px-8 bg-transparent border border-cyan-500/40 hover:border-cyan-500 text-cyan-300 rounded-full font-medium text-lg group"
               whileHover={{
                 scale: 1.05,
                 color: "white"
