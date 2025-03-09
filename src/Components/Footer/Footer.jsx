@@ -205,7 +205,7 @@ const Footer = () => {
           </div>
 
           {/* Join Us Section with improved form */}
-          <div className="flex flex-col space-y-4 text-center sm:text-left w-full sm:w-auto max-w-xs">
+          <div className="flex flex-col items-center mx-auto space-y-4 text-center sm:text-left w-full sm:w-auto max-w-xs">
             <h3 className="font-bold text-2xl mb-2 text-[#056777]">
               Join Our Newsletter
             </h3>

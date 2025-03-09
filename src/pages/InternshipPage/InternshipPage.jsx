@@ -491,13 +491,16 @@ const InternshipPage = () => {
                 </div>
                 
                 <div className="flex gap-4 mt-6">
+                  <a className="flex-1 bg-gradient-to-r from-[#6764C9] to-[#CF9274] text-white py-3 rounded-full flex justify-center items-center text-2xl"  href="https://docs.google.com/forms/d/e/1FAIpQLSfJr0b5Pm0FJ-bu_F4nYoJI95ueqyu7qepCJaqyXCml5YRJ8A/viewform" target="_blank">
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex-1 bg-gradient-to-r from-[#6764C9] to-[#CF9274] text-white py-3 rounded-full"
+                    
                   >
                     Apply Now
                   </motion.button>
+
+                  </a>
                   
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
