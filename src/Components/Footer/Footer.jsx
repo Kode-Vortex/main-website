@@ -204,44 +204,6 @@ const Footer = () => {
             ))}
           </div>
 
-          {/* Join Us Section with improved form */}
-          <div className="flex flex-col items-center mx-auto space-y-4 text-center sm:text-left w-full sm:w-auto max-w-xs">
-            <h3 className="font-bold text-2xl mb-2 text-[#056777]">
-              Join Our Newsletter
-            </h3>
-            <p className="text-sm text-gray-300 mb-2">
-              Stay updated with our latest news and offers
-            </p>
-            <form onSubmit={handleSubmit} className="relative">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email Address"
-                className="py-3 px-4 pr-32 text-white bg-gray-800 border border-gray-700 rounded-full w-full focus:outline-none focus:ring-2 focus:ring-[#056777] transition-all"
-                required
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting || submitted}
-                className={`absolute right-0 top-0 py-3 px-6 rounded-r-full font-bold transition-all duration-300 h-full
-                  ${
-                    submitted
-                      ? "bg-green-600 text-white"
-                      : isSubmitting
-                      ? "bg-gray-600 text-gray-300"
-                      : "bg-[#056777] text-white hover:bg-[#045666]"
-                  }`}
-              >
-                {submitted ? "SENT ✓" : isSubmitting ? "SENDING..." : "SUBMIT"}
-              </button>
-            </form>
-            {/* GDPR compliance note */}
-            <p className="text-xs text-gray-400 mt-2">
-              By subscribing, you agree to our privacy policy and consent to
-              receive updates.
-            </p>
-          </div>
         </div>
 
         {/* Footer Bottom Section with SSL badge */}
