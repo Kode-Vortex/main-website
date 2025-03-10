@@ -5,6 +5,7 @@ import fo1 from "../../../public/cropped-image_1.svg";
 import fo2 from "../../../public/cropped-image_2.svg";
 import fo3 from "../../../public/cropped-image_3.svg";
 import fo4 from "../../../public/cropped-image_4.svg";
+import ssl from "../../../public/SSL.jpg"
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -246,9 +247,9 @@ const Footer = () => {
             <span className="text-gray-400">
               © 2024 KodeVortex. All rights reserved.
             </span>
-            <div className="flex items-center space-x-2 bg-gray-800 px-3 py-1 rounded-full">
+            <div className="flex items-center space-x-2 bg-black px-3 py-1 rounded-full">
               <img
-                src="../../../public/SSL.jpg"
+                src={ssl}
                 alt="Secured with SSL"
                 className="w-5 h-5"
               />
