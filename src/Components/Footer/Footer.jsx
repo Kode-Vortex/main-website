@@ -6,7 +6,7 @@ import fo2 from "../../../public/cropped-image_2.svg";
 import fo3 from "../../../public/cropped-image_3.svg";
 import fo4 from "../../../public/cropped-image_4.svg";
 import ssl from "../../../public/SSL.jpg"
-
+import gmail from "./gmail.png"
 const Footer = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -93,21 +93,21 @@ const Footer = () => {
   ];
 
   const contactLinks = [
-    { href: "mailto:info@kodevortex.com", label: "Email", icon: "✉" },
+    { href: "mailto:info@kodevortex.com", label: "Email", icon: gmail },
     {
       href: "https://www.linkedin.com/company/kodevortex",
       label: "LinkedIn",
-      icon: "🔗",
+      icon: fo4,
     },
     {
       href: "https://www.instagram.com/kodevortex",
       label: "Instagram",
-      icon: "📸",
+      icon: fo2,
     },
     {
       href: "https://twitter.com/kodeVortex",
       label: "Twitter (X)",
-      icon: "🐦",
+      icon: fo3,
     },
   ];
 
@@ -185,7 +185,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Section with icons */}
-          <div className="flex flex-col space-y-3 text-center sm:text-left">
+          <div className="flex flex-col space-y-5 text-center sm:text-left">
             <h3 className="font-bold text-2xl mb-2 text-[#056777]">Contact</h3>
             {contactLinks.map((link, index) => (
               <a
@@ -195,7 +195,8 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="mr-2">{link.icon}</span>
+                <img className="mr-2 w-6 h-6" src={link.icon} alt="" />
+                
                 {link.label}
               </a>
             ))}
