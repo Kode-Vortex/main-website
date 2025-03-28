@@ -57,7 +57,7 @@ const AboutUsPage = () => {
           image: "/api/placeholder/300/300",
           social: {
             linkedin: "https://www.linkedin.com/in/suraj-nayak",
-            github: "https://github.com/surajnayak"
+            twitter: "https://twitter.com/surajnayak"
           }
         }
       ],
