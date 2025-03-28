@@ -43,7 +43,7 @@ const AboutUsPage = () => {
     team: {
       leadership: [
         { 
-          name: "Shivam Paisall", 
+          name: "Shivam Paisal", 
           role: "CEO & Founder",
           image: "/api/placeholder/300/300",
           social: {
