@@ -1,255 +1,234 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { 
+  Target, 
+   
+  Lightbulb, 
+  Users, 
+  Code, 
+  Trophy,
+  Linkedin,
+  Twitter,
+  Github,
+  Instagram,
+  Eye
+} from 'lucide-react';
 
 const AboutUsPage = () => {
   const [activeSection, setActiveSection] = useState('mission');
 
-  // Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 50,
-      scale: 0.95
+  const sections = {
+    mission: {
+      title: "Our Mission",
+      icon: Target,
+      description: [
+        "At KodeVortex, we bridge the gap between academia and industry by providing high-tech, hands-on training in competitive programming, data structures, and algorithms.",
+        "Our dynamic learning environment fosters growth, confidence, and career readiness.",
+        "We are committed to transforming students into industry-ready professionals through innovative, practical learning approaches.",
+        "By combining cutting-edge curriculum with real-world problem-solving techniques, we equip our students with the skills needed to excel in today's competitive tech landscape.",
+        "Our mission extends beyond traditional education – we aim to create a community of lifelong learners who are passionate about technology and continuous improvement."
+      ]
     },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        type: "spring",
-        stiffness: 100
-      }
+    vision: {
+      title: "Our Vision",
+      icon: Eye,
+      description: [
+        "To become the global leader in tech education, pioneering a revolutionary approach to learning that seamlessly connects passionate learners with industry demands.",
+        "We envision a future where every aspiring technologist has access to world-class, practical learning experiences that prepare them for the most challenging and innovative roles in the tech industry.",
+        "Our vision is to create an ecosystem that nurtures talent, encourages innovation, and empowers individuals to become architects of technological transformation.",
+        "We aim to break down traditional barriers in tech education, making advanced learning accessible, engaging, and directly aligned with the rapidly evolving global tech landscape."
+      ]
+    },
+    team: {
+      leadership: [
+        { 
+          name: "Shivam Paisall", 
+          role: "CEO & Founder",
+          image: "/api/placeholder/300/300",
+          social: {
+            linkedin: "https://www.linkedin.com/in/shivam-pasial",
+            twitter: "https://twitter.com/shivampasial"
+          }
+        },
+        { 
+          name: "Suraj Nayak", 
+          role: "Co-Founder & Project Manager",
+          image: "/api/placeholder/300/300",
+          social: {
+            linkedin: "https://www.linkedin.com/in/suraj-nayak",
+            github: "https://github.com/surajnayak"
+          }
+        }
+      ],
+      developers: [
+        { 
+          name: "Harsh Verma", 
+          role: "FullStack Developer",
+          image: "/api/placeholder/300/300"
+        },
+        { 
+          name: "Rishabh Tripathi", 
+          role: "FullStack & ML Developer ",
+          image: "/api/placeholder/300/300"
+        },
+        { 
+          name: "Sanskrati Agrawal", 
+          role: "UI/UX Designer",
+          image: "/api/placeholder/300/300"
+        },
+        { 
+          name: "Sonal Mittal", 
+          role: "FullStack Developer",
+          image: "/api/placeholder/300/300"
+        }
+      ]
     }
   };
-
-  // Particle Background Effect
-  const generateParticles = (count) => {
-    return [...Array(count)].map((_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      opacity: Math.random() * 0.4 + 0.1,
-      delay: Math.random() * 2
-    }));
-  };
-
-  const particles = generateParticles(40);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-black via-[#001f3f] to-[#1a1a2e] text-white overflow-hidden">
-      {/* Particle Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        {particles.map(particle => (
-          <motion.div
-            key={particle.id}
-            className="absolute rounded-full bg-cyan-500/20"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              opacity: particle.opacity
-            }}
-            animate={{
-              y: [0, particle.size * 30, 0],
-              x: [0, particle.size * 20, 0],
-              opacity: [particle.opacity, particle.opacity * 1.5, particle.opacity]
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 8 + particle.size * 5,
-              delay: particle.delay,
-              ease: "easeInOut"
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Main Content Container */}
-      <motion.div 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.1 }}
-        variants={containerVariants}
-        className="relative z-10 container mx-auto px-4 py-16"
-      >
-        {/* Header Section */}
-        <motion.div 
-          variants={itemVariants}
-          className="text-center mb-16"
-        >
-          <h1 className="text-5xl lg:text-6xl font-bold">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500">
-              KODE VORTEX
-            </span>
+    <div className="min-h-screen bg-gradient-to-br from-[#0A192F] via-[#112240] to-[#233554] text-white p-8">
+      <div className="container mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold text-[#64FFDA]">
+            KODE VORTEX
           </h1>
-          <div className="h-1 w-32 mx-auto mt-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-500 rounded-full"></div>
-        </motion.div>
+          <p className="text-xl text-[#8892B0] mt-4">
+            Transforming Tech Education, Empowering Future Innovators
+          </p>
+        </div>
 
-        {/* Navigation Tabs */}
-        <motion.div 
-          variants={itemVariants}
-          className="flex justify-center mb-12 space-x-4"
-        >
-          {['Mission', 'Vision', 'Team'].map((section) => (
+        {/* Navigation */}
+        <div className="flex justify-center mb-12 space-x-4">
+          {['mission', 'vision', 'team'].map((section) => (
             <button
               key={section}
-              onClick={() => setActiveSection(section.toLowerCase())}
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${
-                activeSection === section.toLowerCase() 
-                  ? 'bg-gradient-to-r from-cyan-600 to-violet-600 text-white' 
-                  : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+              onClick={() => setActiveSection(section)}
+              className={`px-6 py-2 rounded-full ${
+                activeSection === section 
+                  ? 'bg-[#64FFDA]/20 text-[#64FFDA]' 
+                  : 'bg-[#112240] text-[#8892B0]'
               }`}
             >
-              {section}
+              {section.charAt(0).toUpperCase() + section.slice(1)}
             </button>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Mission Section */}
+        {/* Content */}
         {activeSection === 'mission' && (
-          <motion.div 
-            variants={itemVariants}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <div className="relative">
-              <div className="absolute -inset-4 bg-cyan-600/20 rounded-xl blur-2xl"></div>
-              <div className="relative bg-[#001f3f] border border-cyan-900/30 rounded-xl overflow-hidden shadow-2xl">
-                <div className="aspect-video bg-gradient-to-br from-black to-[#001f3f] flex items-center justify-center">
-                  <svg className="w-48 h-48 text-cyan-500/20" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500">
-                Our Mission
-              </h2>
-              <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                At KodeVortex, we are dedicated to transforming aspiring tech professionals into industry-ready innovators. 
-                Our comprehensive training programs are meticulously designed to bridge the gap between academic knowledge and real-world technological challenges.
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6 text-[#64FFDA]">
+              Our Mission
+            </h2>
+            {sections.mission.description.map((para, index) => (
+              <p key={index} className="text-[#8892B0] mb-4">
+                {para}
               </p>
-              <p className="text-lg text-gray-300 leading-relaxed">
-                Through intensive coding bootcamps, mentorship programs, and hands-on project experiences, we empower individuals 
-                to develop cutting-edge skills in software development, competitive programming, and emerging technologies.
-              </p>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Vision Section (currently hidden) */}
-        {activeSection === 'vision' && (
-          <motion.div 
-            variants={itemVariants}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <div className="order-2 md:order-1">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500">
-                Our Vision
-              </h2>
-              <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                We envision a future where technology education transcends traditional boundaries, 
-                creating a global ecosystem of continuous learning, innovation, and collaborative problem-solving.
-              </p>
-              <p className="text-lg text-gray-300 leading-relaxed">
-                By leveraging cutting-edge curriculum, industry partnerships, and personalized mentorship, 
-                we aim to cultivate a generation of tech leaders who can drive meaningful technological advancements.
-              </p>
-            </div>
-            <div className="relative order-1 md:order-2">
-              <div className="absolute -inset-4 bg-cyan-600/20 rounded-xl blur-2xl"></div>
-              <div className="relative bg-[#001f3f] border border-cyan-900/30 rounded-xl overflow-hidden shadow-2xl">
-                <div className="aspect-video bg-gradient-to-br from-black to-[#001f3f] flex items-center justify-center">
-                  <svg className="w-48 h-48 text-cyan-500/20" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Team Section (currently hidden) */}
-        {activeSection === 'team' && (
-          <motion.div 
-            variants={itemVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {[
-              { 
-                name: "Sophia Chen", 
-                role: "Chief Technology Officer", 
-                description: "Former Google engineer with 12+ years of experience in machine learning and AI innovation."
-              },
-              { 
-                name: "Raj Patel", 
-                role: "Head of Curriculum", 
-                description: "PhD in Computer Science with expertise in algorithmic design and competitive programming strategies."
-              },
-              { 
-                name: "Elena Rodriguez", 
-                role: "Industry Partnerships Director", 
-                description: "Tech startup founder with a passion for bridging academic talent with industry needs."
-              }
-            ].map((member) => (
-              <div 
-                key={member.name}
-                className="bg-[#001f3f] border border-cyan-900/30 rounded-xl p-6 text-center hover:scale-105 transition-transform"
-              >
-                <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-cyan-500 to-violet-500 rounded-full flex items-center justify-center">
-                  <svg className="w-20 h-20 text-white/30" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500">
-                  {member.name}
-                </h3>
-                <p className="text-gray-400 mb-2">{member.role}</p>
-                <p className="text-gray-300 text-sm">{member.description}</p>
-              </div>
             ))}
-          </motion.div>
+          </div>
         )}
 
-        {/* Call to Action */}
-        <motion.div 
-          variants={itemVariants}
-          className="text-center max-w-3xl mx-auto mt-16"
-        >
-          <h3 className="text-3xl lg:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500">
-            Accelerate Your Tech Journey
-          </h3>
-          <p className="text-xl text-gray-300 mb-8">
-            Unlock your potential, master cutting-edge technologies, and transform your career 
-            with our immersive learning experiences and industry-driven programs.
-          </p>
-          <div className="flex justify-center space-x-4">
-            <button className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-violet-600 text-white rounded-full hover:scale-105 transition-transform">
-              Explore Programs
-            </button>
-            <button className="px-8 py-3 border border-cyan-600 text-cyan-300 rounded-full hover:bg-cyan-900/30 transition-colors">
-              Contact Advisor
-            </button>
+        {activeSection === 'vision' && (
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6 text-[#64FFDA]">
+              Our Vision
+            </h2>
+            {sections.vision.description.map((para, index) => (
+              <p key={index} className="text-[#8892B0] mb-4">
+                {para}
+              </p>
+            ))}
           </div>
-        </motion.div>
-      </motion.div>
+        )}
 
-      {/* Footer Placeholder */}
-      <div className="h-16 bg-gradient-to-r from-black to-[#001f3f] mt-16"></div>
+        {activeSection === 'team' && (
+          <div>
+            {/* Leadership Section */}
+            <h2 className="text-3xl font-bold mb-8 text-center text-[#64FFDA]">
+              Leadership Team
+            </h2>
+            <div className="flex justify-center space-x-8 mb-12">
+              {sections.team.leadership.map((leader, index) => (
+                <div 
+                  key={index} 
+                  className="bg-[#112240] p-6 rounded-lg text-center w-64"
+                >
+                  <img 
+                    src={leader.image} 
+                    alt={leader.name} 
+                    className="w-48 h-48 rounded-full mx-auto mb-4 object-cover"
+                  />
+                  <h3 className="text-xl font-bold text-[#CCD6F6]">
+                    {leader.name}
+                  </h3>
+                  <p className="text-[#8892B0] mb-4">
+                    {leader.role}
+                  </p>
+                  <div className="flex justify-center space-x-4">
+                    {leader.social?.linkedin && (
+                      <a 
+                        href={leader.social.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[#8892B0] hover:text-[#64FFDA]"
+                      >
+                        <Linkedin />
+                      </a>
+                    )}
+                    {leader.social?.twitter && (
+                      <a 
+                        href={leader.social.twitter} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[#8892B0] hover:text-[#64FFDA]"
+                      >
+                        <Twitter />
+                      </a>
+                    )}
+                    {leader.social?.github && (
+                      <a 
+                        href={leader.social.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[#8892B0] hover:text-[#64FFDA]"
+                      >
+                        <Github />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Developers Section */}
+            <h2 className="text-3xl font-bold mb-8 text-center text-[#64FFDA]">
+              Our Developers
+            </h2>
+            <div className="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {sections.team.developers.map((developer, index) => (
+                <div 
+                  key={index} 
+                  className="bg-[#112240] p-6 rounded-lg text-center"
+                >
+                  <img 
+                    src={developer.image} 
+                    alt={developer.name} 
+                    className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                  />
+                  <h3 className="text-xl font-bold text-[#CCD6F6]">
+                    {developer.name}
+                  </h3>
+                  <p className="text-[#8892B0]">
+                    {developer.role}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
