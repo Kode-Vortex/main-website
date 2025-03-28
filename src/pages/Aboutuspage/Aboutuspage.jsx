@@ -92,10 +92,10 @@ const AboutUsPage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-[#64FFDA]">
-            KODE VORTEX
+            KODEVORTEX
           </h1>
           <p className="text-xl text-[#8892B0] mt-4">
-            Transforming Tech Education, Empowering Future Innovators
+           Revolutionizing Software Solutions, Empowering Tomorrow's Innovators
           </p>
         </div>
 
