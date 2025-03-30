@@ -31,7 +31,7 @@ const Otp = ({ setUser }) => {
   // Function to send OTP
   const sendOtp = async () => {
     try {
-      const url = `http://localhost:4444/send-otp`;
+      const url = `https://main-server-mu.vercel.app/send-otp`;
 
 
       const response = await axios.post(url, { email }, { withCredentials: true });
@@ -50,7 +50,7 @@ const Otp = ({ setUser }) => {
   // Function to verify OTP
   const VerifyOtp = async (otpValue) => {
     try {
-      const url = `http://localhost:4444/verify-otp`;
+      const url = `https://main-server-mu.vercel.app/verify-otp`;
 
       const response = await axios.post(url, { email, otp: otpValue }, { withCredentials: true });
       console.log(response, "rees");
@@ -71,7 +71,7 @@ const Otp = ({ setUser }) => {
 
   const fetchUser = async () => {
     try {
-      const response = await axios.get("http://localhost:4444/get-user", {
+      const response = await axios.get("https://main-server-mu.vercel.app/get-user", {
         withCredentials: true,
       });
       if (response.status === 200) {

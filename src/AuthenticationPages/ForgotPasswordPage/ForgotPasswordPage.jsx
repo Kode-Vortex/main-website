@@ -24,7 +24,7 @@ const ForgotPasswordPage = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_REACT_APP_URL}/send-otp`,
+        `https://main-server-mu.vercel.app/send-otp`,
         { email },
         {
           headers: { "Content-Type": "application/json" },
@@ -53,7 +53,7 @@ const ForgotPasswordPage = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_REACT_APP_URL}/verify-otp`,
+        `https://main-server-mu.vercel.app/verify-otp`,
         { email, otp },
         {
           headers: { "Content-Type": "application/json" },
@@ -92,7 +92,7 @@ const ForgotPasswordPage = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_REACT_APP_URL}/reset-password`,
+        `https://main-server-mu.vercel.app/reset-password`,
         { email, newPassword },
         {
           headers: { "Content-Type": "application/json" },

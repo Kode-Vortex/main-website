@@ -36,13 +36,10 @@ const Register1 = () => {
     try {
       const { fullname , email , phone_no , password , message } = registerCredentials;
 
-      console.log(fullname , email , phone_no , password , message);
-
-      console.log(`${import.meta.env.VITE_REACT_APP_URL}/register`);
-      
+     
       
   
-      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_URL}/register`, 
+      const response = await axios.post(`https://main-server-mu.vercel.app/register`, 
         { fullname , email , phone_no , password , message }, 
         {
           headers: { "Content-Type": "application/json" },

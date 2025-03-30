@@ -46,7 +46,7 @@ const LoginPage1 = () => {
     
         try {
           const response = await axios.post(
-            `${import.meta.env.VITE_REACT_APP_URL}/login`,
+            `https://main-server-mu.vercel.app/login`,
             { email, password },
             {
               headers: { "Content-Type": "application/json" },
