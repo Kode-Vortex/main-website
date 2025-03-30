@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { MdAccountCircle, MdMenu, MdClose } from "react-icons/md";
+import { FaUser, FaSignOutAlt, FaCog } from "react-icons/fa";
 import logo from "./logo.png";
 import logo1 from "./logo1.png";
+import { VscAccount } from "react-icons/vsc";
 
 const Navbar = ({ user, setUser }) => {
   const navigate = useNavigate();
@@ -15,6 +17,8 @@ const Navbar = ({ user, setUser }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const accountRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userProfile, setuserProfile] = useState(null);
 
   const [text, setText] = useState("Joint Venture");
 
@@ -23,9 +27,9 @@ const Navbar = ({ user, setUser }) => {
       setText((prevText) =>
         prevText === "Joint Venture" ? "KodeBumps" : "Joint Venture"
       );
-    }, 3000); // Change every 3 seconds
+    }, 3000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, []);
 
   // Close mobile menu when screen size exceeds 768px (tablet) or 1100px (desktop)
@@ -37,8 +41,6 @@ const Navbar = ({ user, setUser }) => {
     };
 
     window.addEventListener("resize", handleResize);
-
-    // Cleanup the event listener
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -69,26 +71,53 @@ const Navbar = ({ user, setUser }) => {
     };
   }, []);
 
-  const handleLogout = async () => {
-    try {
-      const url = "http://localhost:4444/logout";
-      const response = await axios.post(url, {}, { withCredentials: true });
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_REACT_APP_URL}/get-user`,
+          {
+            withCredentials: true,
+          }
+        );
 
+        if (response.status === 200) {
+          setIsLoggedIn(true);
+          setuserProfile(response.data.user);
+        }
+      } catch (error) {
+        console.error(error);
+        setIsLoggedIn(false);
+        setuserProfile(null);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
+  const handleLogout = async () => {
+    console.log("logout functionality .... ");
+
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_REACT_APP_URL}/logout`,
+        {
+          withCredentials: true,
+        }
+      );
       if (response.status === 200) {
+        setIsLoggedIn(false);
+        setuserProfile(null);
         toast.success(response.data.message);
-        setUser(null);
         navigate("/");
-      } else {
-        toast.error("Error while logging out!!!");
       }
     } catch (error) {
-      console.error("Logout error:", error);
+      console.log("Error while Logout", error);
     }
   };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    // If opening the menu, also close the account dropdown
     if (!isMobileMenuOpen) {
       setopenAccount(false);
     }
@@ -96,12 +125,17 @@ const Navbar = ({ user, setUser }) => {
 
   // Function to handle link clicks
   const handleLinkClick = (path) => {
-    setIsMobileMenuOpen(false); // Close the mobile menu
-    navigate(path); // Navigate to the desired route
+    setIsMobileMenuOpen(false);
+    navigate(path);
+  };
+
+  // Get first letter of username for avatar display
+  const getUserInitial = () => {
+    return userProfile?.fullname?.charAt(0).toUpperCase() || "U";
   };
 
   return (
-    <nav className="flex fixed z-50  w-full bg-black  justify-between px-[4%] mb-4 pt-4 items-center font-sans ">
+    <nav className="flex fixed z-50 w-full bg-black justify-between px-[4%] mb-4 pt-4 items-center font-sans">
       <div className="flex items-center">
         <Link to="/" className="flex h-24 items-center">
           <div className="flex items-center">
@@ -185,86 +219,153 @@ const Navbar = ({ user, setUser }) => {
             Contact us
           </Link>
 
-          {user ? (
-            <div className="relative" ref={accountRef}>
-              <MdAccountCircle
-                onClick={() => setopenAccount(!openAccount)}
-                className="text-4xl cursor-pointer bg-col-7"
-              />
+          <Link to="/kodebumps">
+                <div className="butt text-white rounded-full">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span>
+                    <h1 key={text}>{text}</h1>
+                  </span>
+                </div>
+              </Link>
+
+          {isLoggedIn && userProfile ? (
+            <div className="relative ml-4 z-50" ref={accountRef}>
+              <div
+                onClick={() => setopenAccount(!openAccount)} // Toggle openAccount state
+                className="flex items-center cursor-pointer  transition-colors duration-300 rounded-full px-4 py-2"
+              >
+                <div className="w-10 h-10 rounded-full text-xl bg-[#056777] rrounded-full flex items-center justify-center text-white">
+                  {getUserInitial()}
+                </div>
+                <span className="text-white text-sm">{userProfile.name}</span>
+              </div>
+
               {openAccount && (
-                <div className="absolute bg-zinc-800 rounded-xl w-36 top-full mt-2 z-50">
-                  <div className="flex flex-col items-center">
-                    <h1 className="py-3 rounded-t-xl w-full h-full hover:bg-zinc-900 cursor-pointer text-center">
-                      {user.name}
-                    </h1>
+                <div className="absolute bg-zinc-800 border border-[#056777] rounded-xl w-56 top-full right-0 mt-2 z-50 shadow-lg overflow-hidden">
+                  <div className="py-4 px-2  bg-zinc-900 border-b border-[#056777]">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-9 h-9 rounded-full bg-[#1d3e64] flex items-center justify-center text-white">
+                        {getUserInitial()}
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-white font-medium">
+                          {userProfile.fullname}
+                        </span>
+                        <span className="text-gray-400 text-xs">
+                          {userProfile.email}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col text-sm">
+                    <Link
+                      to="/profile"
+                      className="flex items-center gap-3 px-4 py-3 text-white hover:bg-zinc-700 transition-colors"
+                      onClick={() => setopenAccount(false)}
+                    >
+                      <FaUser /> My Profile
+                    </Link>
+                    <Link
+                      to="/settings"
+                      className="flex items-center gap-3 px-4 py-3 text-white hover:bg-zinc-700 transition-colors"
+                      onClick={() => setopenAccount(false)}
+                    >
+                      <FaCog /> Account Settings
+                    </Link>
                     <button
                       onClick={handleLogout}
-                      className="py-3 rounded-b-xl h-full cursor-pointer hover:bg-zinc-900 w-full text-center"
+                      className="flex items-center gap-3 px-4 py-3 text-white hover:bg-zinc-700 transition-colors w-full text-left border-t border-zinc-700"
                     >
-                      Logout
+                      <FaSignOutAlt /> Logout
                     </button>
                   </div>
                 </div>
               )}
             </div>
           ) : (
-            <Link to="/kodebumps">
-              <div className="butt text-white rounded-full">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span>
-                  {" "}
-                  <h1
-                    key={text} // Key change ensures re-animation
-                  >
-                    {text}
-                  </h1>
-                </span>
-              </div>
-            </Link>
+            <>
+             
+              <Link
+                to="/login"
+                className="text-3xl px-4 flex items-center hover:text-[#3da9b9] transition-colors"
+              >
+                <VscAccount />
+                <span className="ml-1 text-sm">Login</span>
+              </Link>
+            </>
           )}
         </div>
 
         {/* Mobile View - Account/Kodebumps button and Hamburger */}
-        <div className="lg:hidden flex items-center ">
-          {user ? (
-            <div className="relative" ref={accountRef}>
-              <MdAccountCircle
+        <div className="lg:hidden flex items-center">
+          {isLoggedIn && userProfile ? (
+            <div className="relative mr-4" ref={accountRef}>
+              <div
                 onClick={() => setopenAccount(!openAccount)}
-                className="text-3xl cursor-pointer bg-col-7"
-              />
+                className="w-8 h-8 rounded-full bg-[#1d3e64] flex items-center justify-center text-white cursor-pointer"
+              >
+                {getUserInitial()}
+              </div>
+
               {openAccount && (
-                <div className="absolute bg-zinc-800 rounded-xl w-36 right-0 top-full mt-2 z-50">
-                  <div className="flex flex-col items-center">
-                    <h1 className="py-3 rounded-t-xl w-full h-full hover:bg-zinc-900 cursor-pointer text-center">
-                      {user.name}
-                    </h1>
+                <div className="absolute bg-zinc-800 border border-[#056777] rounded-xl w-56 right-0 top-full mt-2 z-50 shadow-lg overflow-hidden">
+                  <div className="p-4 bg-zinc-900 border-b border-[#056777]">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-[#1d3e64] flex items-center justify-center text-white">
+                        {getUserInitial()}
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-white font-medium">
+                          {userProfile.name}
+                        </span>
+                        <span className="text-gray-400 text-xs">
+                          {userProfile.email}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col text-sm">
+                    <Link
+                      to="/profile"
+                      className="flex items-center gap-3 px-4 py-3 text-white hover:bg-zinc-700 transition-colors"
+                      onClick={() => setopenAccount(false)}
+                    >
+                      <FaUser /> My Profile
+                    </Link>
+                    <Link
+                      to="/settings"
+                      className="flex items-center gap-3 px-4 py-3 text-white hover:bg-zinc-700 transition-colors"
+                      onClick={() => setopenAccount(false)}
+                    >
+                      <FaCog /> Account Settings
+                    </Link>
                     <button
                       onClick={handleLogout}
-                      className="py-3 rounded-b-xl h-full cursor-pointer hover:bg-zinc-900 w-full text-center"
+                      className="flex items-center gap-3 px-4 py-3 text-white hover:bg-zinc-700 transition-colors w-full text-left border-t border-zinc-700"
                     >
-                      Logout
+                      <FaSignOutAlt /> Logout
                     </button>
                   </div>
                 </div>
               )}
             </div>
           ) : (
-            <Link to="/kodebumps" className="transform scale-75 sm:scale-90">
+            <Link
+              to="/kodebumps"
+              className="transform scale-75 sm:scale-90 mr-4"
+            >
               <div className="butt text-white rounded-full">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 <span className="text-xs sm:text-sm">
-                  {" "}
-                  <h1
-                    key={text} // Key change ensures re-animation
-                  >
-                    {text}
-                  </h1>
+                  <h1 key={text}>{text}</h1>
                 </span>
               </div>
             </Link>
@@ -294,14 +395,13 @@ const Navbar = ({ user, setUser }) => {
           <div className="flex flex-col items-center justify-center bg-black bg-opacity-80 rounded-xl py-8 px-6 mx-4 max-w-md w-full border border-[#056777]">
             <div className="flex flex-col items-center mb-8">
               <img src={logo} alt="logo.png" className="w-16 h-auto mb-3" />
-              <h1 className="kodev-font ">
+              <h1 className="kodev-font">
                 <span className="kode-col text-2xl">KODE</span>
                 <span className="text-white text-2xl">VORTEX</span>
               </h1>
             </div>
 
             <div className="flex flex-col items-center space-y-4 w-full">
-              {/* Adding horizontal rules between nav items, just like desktop */}
               <Link
                 to="/"
                 onClick={() => handleLinkClick("/")}
@@ -365,6 +465,39 @@ const Navbar = ({ user, setUser }) => {
               >
                 Contact us
               </Link>
+
+              {/* Add login/profile options to mobile menu */}
+              <hr className="w-full h-[1px] bg-white opacity-20" />
+
+              {isLoggedIn && userProfile ? (
+                <div className="w-full flex  flex-col items-center">
+                  <Link
+                    to="/profile"
+                    onClick={() => handleLinkClick("/profile")}
+                    className="w-full text-center text-white px-4 text-lg py-2 flex items-center  justify-center gap-2"
+                  >
+                    <FaUser size={16} /> My Profile
+                  </Link>
+                  <hr className="w-full h-[1px] bg-white opacity-20" />
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full text-center text-white px-4 text-lg py-2 flex items-center justify-center gap-2"
+                  >
+                    <FaSignOutAlt size={16} /> Logout
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={() => handleLinkClick("/login")}
+                  className="w-full text-center text-white px-4 text-lg py-2 flex items-center justify-center gap-2"
+                >
+                  <VscAccount size={18} /> Login
+                </Link>
+              )}
             </div>
           </div>
         </div>

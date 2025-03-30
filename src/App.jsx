@@ -17,7 +17,11 @@ import KodeBumps from "./pages/KodeBumps/KodeBumps";
 import HomePage from "./pages/HomePage/HomePage";
 import GridBackground from "./Components/GridBackground/GridBackground";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
-
+import LoginPage1 from "./AuthenticationPages/LoginPage/LoginPage1";
+import Register1 from "./AuthenticationPages/Register/Register1";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import ForgotPasswordPage from "./AuthenticationPages/ForgotPasswordPage/ForgotPasswordPage";
+import PageNotFound from "./Components/PageNotFound/PageNotFound";
 const App = () => {
   const [user, setUser] = useState();
 
@@ -56,11 +60,14 @@ const App = () => {
     </div>
   );
   return (
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
     <div className="overflow-hidden">
       <Toaster position="top-center" reverseOrder={false} />
         <ScrollToTop/>
       <div>
         <Routes>
+        <Route path="*" element={<PageNotFound/>} />
+
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
 
@@ -82,7 +89,7 @@ const App = () => {
             element={
               <div className="bg-black px-[10%]">
                 {" "}
-                <Navbar1 /> <LoginPage />{" "}
+                <Navbar1 /> <LoginPage1 />{" "}
               </div>
             }
           />
@@ -91,7 +98,16 @@ const App = () => {
             element={
               <div className="bg-black px-[10%]">
                 {" "}
-                <Navbar1 /> <Register />{" "}
+                <Navbar1 /> <Register1 />{" "}
+              </div>
+            }
+          />
+          <Route
+            path="/forgot-password"
+            element={
+              <div className="bg-black px-[10%]">
+                {" "}
+                <Navbar1 /> <ForgotPasswordPage />{" "}
               </div>
             }
           />
@@ -100,6 +116,8 @@ const App = () => {
         </Routes>
       </div>
     </div>
+
+    </GoogleOAuthProvider>
   );
 };
 

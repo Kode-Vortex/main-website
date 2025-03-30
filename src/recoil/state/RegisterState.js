@@ -1,9 +1,9 @@
 import { atom } from "recoil";
 
 const RegisterState = atom({
-  key: "register",
+  key: "RegisterState",
   default: {
-    name:"",
+    fullname:"",
     email: "",
     password: "",
     phone_no :"",

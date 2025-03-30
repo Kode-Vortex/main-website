@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { useRecoilState } from "recoil";
+import UserState from "../../recoil/state/UserState";
 import LoginState from "../../recoil/state/LoginState";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -10,40 +12,88 @@ import youtube from "./youtube.png"
 import toast from "react-hot-toast";
 import "./LoginPage.css"
 import logo3 from "./logo3.png"
-const LoginPage = () => {
-  const navigate = useNavigate();
-
-  const [LoginPayload, setPayload] = useRecoilState(LoginState);
-
-  const handlePayload = (event) => {
-    const { name, value } = event.target;
-    setPayload({
-      ...LoginPayload,
-      [name]: value,
-    });
-  };
+import { Eye } from "lucide-react";
+import { EyeOff } from "lucide-react";
+import googleicons from "./Google_Icons.webp"
+import {useGoogleLogin} from "@react-oauth/google" 
+import { googleAuth } from "./api.js";
 
 
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
-    try {
-      const url = "http://localhost:4444/login";
-      const response = await axios.post(url, LoginPayload, {
-        withCredentials: true,
+const LoginPage1 = () => {
+
+    const navigate = useNavigate();
+    const [paswordVisibility, setpaswordVisibility] = useState(false);
+
+    const [userCredentials , setusercredentials] = useRecoilState(UserState)
+
+    const [loginCredentials, setloginCredentials] = useRecoilState(LoginState);
+
+    const handleCredentials = (event) => {
+        setloginCredentials((prev) => ({
+          ...prev,
+          [event.target.name]: event.target.value,
+        }));
+      };
+
+
+
+      const handleLogin = async (event) => {
+        event.preventDefault();
+        console.log("ihbshx");
+    
+        const { email, password } = loginCredentials;
+    
+        try {
+          const response = await axios.post(
+            `${import.meta.env.VITE_REACT_APP_URL}/login`,
+            { email, password },
+            {
+              headers: { "Content-Type": "application/json" },
+              withCredentials: true,
+            }
+          );
+    
+          if(response.status === 200){
+            toast.success("Login SuccessFully!!!");
+            setusercredentials(response.data.user);
+            navigate("/")
+          }
+          else if([201,400].includes(response.status)){
+            toast.error(response.data.message)
+          }
+        } catch (error) {
+          console.log("Login failed ", error);
+        }
+      };
+
+      const responseGoogle = async (authResult) => {
+        try {
+          if (!authResult?.code) {
+            throw new Error("No authorization code received.");
+          }
+          const result = await googleAuth(authResult.code);
+          if (result.status === 200) {
+            // const { email, firstname, lastname, username, token } = result.data.user;
+            // const user = { email, firstname, lastname, username, token };
+            setusercredentials(result.data.user)
+            toast.success("Login successful!");
+            navigate("/");
+          } else if(result.status === 201) {
+            toast.error(result.data.message)
+            navigate("/register")
+          }
+        } catch (error) {
+          console.error("Google Auth Error:", error);
+          toast.error(error.message || "Authentication failed");
+        }
+      };
+      
+      const googleLogin = useGoogleLogin({
+        onSuccess: (response) => responseGoogle(response),
+        onError: (error) => console.error("Google Login Error:", error),
+        flow: "auth-code",
       });
-      if (response.status === 200) {
-        toast.success(response.data.message);
-        
-
-        navigate("/sendotp");
-      } else if ([201, 202, 203].includes(response.status)) {
-        toast.error(response.data.message);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className="flex h-[630px]  bg-black items-center relative">
@@ -69,7 +119,7 @@ const LoginPage = () => {
               </label>
               <input
                 className="w-[95%] px-2 py-2 rounded-xl bg-[#8FA0B1] text-black placeholder-black focus:outline-0"
-                onChange={handlePayload}
+                onChange={handleCredentials}
                 type="email"
                 name="email"
                 id="email"
@@ -84,18 +134,34 @@ const LoginPage = () => {
               >
                 Password
               </label>
-              <input
-                className="w-[95%] px-2 py-2 rounded-xl bg-[#8FA0B1] text-black placeholder-black focus:outline-0"
-                onChange={handlePayload}
-                type="password"
-                name="password"
-                id="password"
-                required
-              />
+              <div className="relative">
+                <input
+                    className="w-[95%] px-2 py-2 rounded-xl bg-[#8FA0B1] text-black placeholder-black focus:outline-0"
+                    onChange={handleCredentials}
+                    type={paswordVisibility ? "text" : "password"}
+
+                    name="password"
+                    id="password"
+                    required
+                />
+                 <div
+                    onClick={() => setpaswordVisibility(!paswordVisibility)}
+                    className="absolute right-10 cursor-pointer   top-3"
+                  >
+                    {paswordVisibility ? (
+                      <Eye size={16} />
+                    ) : (
+                      <EyeOff size={16} />
+                    )}
+                  </div>
+              </div>
             </div>
-            <p className="font-outfit w-[95%] pr-2 text-[14px] font-normal pt-1 underline leading-[23.87px] text-right text-white hover:underline">
-              Forgot Password
-            </p>
+            <Link 
+  to="/forgot-password" 
+  className="font-outfit w-[95%] pr-2 text-[14px] font-normal pt-1 underline leading-[23.87px] text-right text-white hover:underline cursor-pointer"
+>
+  Forgot Password
+</Link>
 
             <div className="justify-center item-center pt-4">
               <button
@@ -107,7 +173,7 @@ const LoginPage = () => {
             </div>
 
             <div className="flex gap-x-4 mt-3 justify-center pr-4">
-              <img className="w-8" src={x} alt="" />
+              <img onClick={googleLogin} className="w-8 cursor-pointer" src={googleicons} alt="" />
               <img className="w-8" src={insta} alt="" />
               <img className="w-8" src={youtube} alt="" />
               <img className="w-8" src={linkedin} alt="" />
@@ -150,4 +216,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginPage1;
