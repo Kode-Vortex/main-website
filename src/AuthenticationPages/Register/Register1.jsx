@@ -16,6 +16,7 @@ import "./Register.css";
 const Register1 = () => {
   const navigate = useNavigate();
   const [paswordVisibility, setpaswordVisibility] = useState(false);
+  const [loading, setLoading] = useState(false); // 🔄 Loading state
 
   const [registerCredentials , setregisterCredentials] = useRecoilState(RegisterState);
 
@@ -32,6 +33,9 @@ const Register1 = () => {
 
   const handleRegistration = async (event) => {
     event.preventDefault();
+
+    setLoading(true); // Start loading
+
   
     try {
       const { fullname , email , phone_no , password , message } = registerCredentials;
@@ -67,6 +71,8 @@ const Register1 = () => {
       }
     } catch (error) {
       console.error("Error during registration:", error);
+    }finally {
+      setLoading(false); // Stop loading
     }
   };
   
@@ -246,7 +252,8 @@ const Register1 = () => {
                   type="submit "
                   className="w-full py-2.5 rounded-3xl bg-[#0D315C]"
                 >
-                  Submit Form
+                  {loading ? <span className="loader"></span> : "register Here"}
+                  
                 </button>
                 <h1 className="text-center pt-3">
                   Already Have an Account ?{" "}

@@ -20,6 +20,7 @@ import { googleAuth } from "./api.js";
 const LoginPage1 = () => {
   const navigate = useNavigate();
   const [paswordVisibility, setpaswordVisibility] = useState(false);
+  const [loading, setLoading] = useState(false); // 🔄 Loading state
 
   const [userCredentials, setusercredentials] = useRecoilState(UserState);
 
@@ -34,6 +35,7 @@ const LoginPage1 = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setLoading(true); // Start loading
 
     const { email, password } = loginCredentials;
 
@@ -56,6 +58,8 @@ const LoginPage1 = () => {
       }
     } catch (error) {
       console.log("Login failed ", error);
+    }finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -150,12 +154,9 @@ const LoginPage1 = () => {
             </Link>
 
             <div className="justify-center item-center pt-4">
-              <button
-                type="submit"
-                className="bg-[#1D3E64] border-none justify-center text-white text-lg rounded-2xl py-2 cursor-pointer item-center my-2 w-96"
-              >
-                Sign In
-              </button>
+            <button type="submit" className="bg-[#1D3E64] border-none flex justify-center text-white text-lg rounded-2xl py-2 cursor-pointer items-center my-2 w-96" disabled={loading}>
+              {loading ? <span className="loader"></span> : "Sign In"}
+            </button>
             </div>
 
             <div className="flex gap-x-4 mt-3 justify-center pr-4">

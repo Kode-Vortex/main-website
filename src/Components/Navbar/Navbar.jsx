@@ -58,18 +58,19 @@ const Navbar = ({ user, setUser }) => {
   }, [isMobileMenuOpen]);
 
   // Close dropdown menus when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (accountRef.current && !accountRef.current.contains(event.target)) {
-        setopenAccount(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (accountRef.current && !accountRef.current.contains(event.target)) {
+  //       setopenAccount(false);
+  //     }
+  //   };
+  
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
+  
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -112,6 +113,7 @@ const Navbar = ({ user, setUser }) => {
       if (response.status === 200) {
         setIsLoggedIn(false);
         setuserProfile(null);
+        setopenAccount(false);
         toast.success(response.data.message);
         navigate("/");
       }
