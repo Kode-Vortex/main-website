@@ -78,7 +78,7 @@ const Navbar = ({ user, setUser }) => {
       
       try {
         const response = await axios.get(
-          `https://main-server-mu.vercel.app/get-user`,
+          "https://main-server-mu.vercel.app/get-user",
           {
             headers: { "Content-Type": "application/json" },
             withCredentials: true,
