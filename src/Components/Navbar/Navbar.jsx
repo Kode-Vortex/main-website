@@ -73,10 +73,14 @@ const Navbar = ({ user, setUser }) => {
 
   useEffect(() => {
     const fetchUserProfile = async () => {
+
+      console.log("harsh berej");
+      
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_URL}/get-user`,
+          `https://main-server-mu.vercel.app/get-user`,
           {
+            headers: { "Content-Type": "application/json" },
             withCredentials: true,
           }
         );
@@ -100,7 +104,7 @@ const Navbar = ({ user, setUser }) => {
 
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_REACT_APP_URL}/logout`,
+        `https://main-server-mu.vercel.app/logout`,
         {
           withCredentials: true,
         }
