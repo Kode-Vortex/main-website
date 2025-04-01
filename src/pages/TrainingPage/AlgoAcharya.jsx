@@ -5,522 +5,371 @@ const AlgoAcharya = () => {
   const [activeTab, setActiveTab] = useState("technology");
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeFeature, setActiveFeature] = useState(null);
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
 
   useEffect(() => {
     setIsLoaded(true);
     const timer = setTimeout(() => {
       if (containerRef.current) {
-        containerRef.current.scrollIntoView({ behavior: 'smooth' });
+        containerRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 1000);
-    return () => clearTimeout(timer);
+
+    const handleMouseMove = (e) => setCursorPos({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
-  // Animation variants
+  // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.4 } },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.7, ease: "easeOut" }
-    }
+    hidden: { y: 60, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 1, type: "spring", bounce: 0.3 } },
   };
 
   const techItems = [
-    { name: "Python", icon: "🐍", description: "Master core concepts and advanced Python programming for industry applications", color: "from-blue-600 to-cyan-500" },
-    { name: "ML & AI", icon: "🧠", description: "Explore foundations of machine learning, neural networks and practical AI implementations", color: "from-violet-600 to-purple-500" },
-    { name: "MERN Stack", icon: "⚛", description: "Build dynamic web applications with MongoDB, Express, React, and Node.js", color: "from-cyan-500 to-teal-400" },
-    { name: "Cybersecurity", icon: "🔒", description: "Learn security fundamentals, threat detection, and ethical hacking methods", color: "from-red-500 to-pink-500" },
-    { name: "Data Analysis", icon: "📊", description: "Visualize and interpret complex datasets using modern analysis tools", color: "from-amber-500 to-orange-500" },
-    { name: "Cloud Computing", icon: "☁", description: "Harness the power of AWS, Azure and Google Cloud platforms", color: "from-indigo-600 to-blue-500" }
+    { name: "Python", icon: "🐍", description: "Master Python with in-depth coverage of core concepts, advanced techniques, and real-world applications.", color: "from-cyan-500 to-blue-600" },
+    { name: "ML & AI", icon: "🧠", description: "Dive into machine learning and AI with neural networks, deep learning, and hands-on projects.", color: "from-violet-500 to-purple-600" },
+    { name: "MERN Stack", icon: "⚛", description: "Build full-stack web applications using MongoDB, Express.js, React, and Node.js.", color: "from-cyan-400 to-teal-500" },
+    { name: "Cybersecurity", icon: "🔒", description: "Learn cybersecurity essentials, ethical hacking, and advanced threat detection strategies.", color: "from-purple-500 to-pink-600" },
+    { name: "Data Analysis", icon: "📊", description: "Analyze and visualize data with modern tools like Pandas, Tableau, and Power BI.", color: "from-cyan-600 to-teal-600" },
+    { name: "Cloud Computing", icon: "☁", description: "Master AWS, Azure, and Google Cloud with practical cloud architecture projects.", color: "from-blue-500 to-indigo-600" },
   ];
 
   const featureItems = [
     {
       id: 1,
       title: "Immersive Learning Experience",
-      description: "Career-focused projects and live coding sessions with real-time feedback from industry experts.",
+      description: "Engage in career-focused projects, live coding sessions, and personalized feedback from industry experts.",
       icon: "🚀",
-      color: "text-emerald-400",
-      bgColor: "from-emerald-700/20 to-teal-500/30"
+      color: "text-cyan-400",
+      bgColor: "from-cyan-700/30 to-teal-500/40",
+      details: "Interactive workshops, real-time problem-solving, and hands-on labs designed to accelerate your learning curve.",
     },
     {
       id: 2,
       title: "Comprehensive Placement Support",
-      description: "End-to-end preparation to excel in technical interviews and land your dream job.",
+      description: "Prepare thoroughly for technical interviews and secure top-tier job opportunities.",
       list: [
-        "Data structures & algorithms mastery (Leetcode-style challenges)",
-        "Company-specific interview preparation",
-        "Mock technical interviews with senior engineers",
-        "Personal branding and portfolio optimization",
-        "Salary negotiation strategies"
+        "Advanced DSA with LeetCode-style challenges",
+        "Tailored company-specific interview prep",
+        "Mock interviews with senior engineers",
+        "Portfolio and LinkedIn optimization",
+        "Expert salary negotiation guidance",
       ],
       icon: "🏆",
-      color: "text-blue-400",
-      bgColor: "from-blue-700/20 to-indigo-500/30"
+      color: "text-violet-400",
+      bgColor: "from-violet-700/30 to-purple-500/40",
+      details: "A structured roadmap to placement success, including resume reviews and job application strategies.",
     },
     {
       id: 3,
       title: "Premium Learning Ecosystem",
-      description: "Access to exclusive resources, mentorship, and a thriving tech community.",
+      description: "Gain access to exclusive resources, mentorship, and a vibrant tech community.",
       list: [
-        "One-on-one mentorship sessions with industry veterans",
-        "Lifetime access to course updates and material",
-        "Exclusive tech community membership",
-        "Job referrals and placement assistance",
-        "Certificate of excellence upon completion"
+        "1:1 mentorship with industry leaders",
+        "Lifetime access to updated course content",
+        "Membership in an elite tech community",
+        "Direct job referrals and placement support",
+        "Globally recognized certification",
       ],
       icon: "💎",
-      color: "text-amber-400",
-      bgColor: "from-orange-700/20 to-yellow-500/30"
-    }
+      color: "text-teal-400",
+      bgColor: "from-teal-700/30 to-cyan-500/40",
+      details: "A holistic ecosystem to support your growth, from learning to networking and career advancement.",
+    },
   ];
 
-  // Generate animated particles
+  // Enhanced Particle System
   const particles = Array(100).fill().map((_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    speed: Math.random() * 1 + 0.5,
-    opacity: Math.random() * 0.5 + 0.1
+    size: Math.random() * 5 + 2,
+    speed: Math.random() * 2 + 0.5,
+    opacity: Math.random() * 0.5 + 0.3,
   }));
 
   return (
-    <div className="relative min-h-screen w-full bg-[#0a0118] overflow-hidden" ref={containerRef}>
-      {/* Animated background particles */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden font-mono" ref={containerRef}>
+      {/* Glowing Cursor Effect */}
+      <motion.div
+        className="fixed w-40 h-40 rounded-full pointer-events-none z-50 hidden md:block"
+        animate={{ x: cursorPos.x - 20, y: cursorPos.y - 20 }}
+        transition={{ type: "spring", stiffness: 250, damping: 25 }}
+        style={{
+          background: "radial-gradient(circle, rgba(0,255,255,0.3) 0%, rgba(147,51,234,0.2) 70%, transparent 100%)",
+          boxShadow: "0 0 50px rgba(0,255,255,0.5), 0 0 100px rgba(147,51,234,0.3)",
+          filter: "blur(10px)",
+        }}
+      />
+
+      {/* Particle System with Cyan and Violet Glow */}
+      <div className="fixed inset-0 pointer-events-none z-0">
         {particles.map((particle) => (
           <motion.div
             key={particle.id}
-            className="absolute rounded-full bg-white z-0"
-            style={{ 
+            className="absolute rounded-full"
+            style={{
               left: `${particle.x}%`,
-              top: `${particle.y}%`, // Fixed the missing backtick
-              width: `${particle.size}px`, 
+              top: `${particle.y}%`,
+              width: `${particle.size}px`,
               height: `${particle.size}px`,
-              opacity: particle.opacity
+              background: particle.id % 2 === 0 ? "#00FFFF" : "#9333EA",
+              boxShadow: `0 0 20px ${particle.id % 2 === 0 ? "#00FFFF" : "#9333EA"}, 0 0 40px ${particle.id % 2 === 0 ? "#00FFFF" : "#9333EA"}`,
+              filter: "blur(2px)",
             }}
             animate={{
-              y: [0, -50, 0],
-              opacity: [particle.opacity, particle.opacity * 1.5, particle.opacity]
+              y: [0, -1200],
+              opacity: [particle.opacity, particle.opacity * 1.3, 0],
+              rotate: [0, 180],
             }}
             transition={{
-              y: { 
-                duration: 5 / particle.speed, 
-                repeat: Infinity,
-                ease: "easeInOut", 
-                delay: Math.random() * 5
-              },
-              opacity: { 
-                duration: 3 / particle.speed, 
-                repeat: Infinity,
-                ease: "easeInOut", 
-                delay: Math.random() * 3
-              }
+              duration: 10 / particle.speed,
+              repeat: Infinity,
+              ease: "easeOut",
+              delay: Math.random() * 6,
             }}
           />
         ))}
       </div>
 
-      {/* Background gradients with reduced glow */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <motion.div 
-          className="absolute top-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-purple-900/20 blur-[80px]"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 10, 0],
-            opacity: [0.2, 0.3, 0.2],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute top-[30%] left-[-20%] w-[60vw] h-[60vw] rounded-full bg-indigo-800/10 blur-[70px]"
-          animate={{
-            scale: [1, 1.15, 1],
-            rotate: [0, -5, 0],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
-        <motion.div 
-          className="absolute bottom-[-10%] right-[20%] w-[50vw] h-[50vw] rounded-full bg-orange-700/10 blur-[90px]"
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.1, 0.15, 0.1],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
-      </div>
+      {/* Gradient Background */}
+      <motion.div
+        className="fixed inset-0 pointer-events-none z-0"
+        animate={{ opacity: [0.15, 0.3, 0.15] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          background: "radial-gradient(circle at 50% 50%, rgba(0,255,255,0.2) 0%, rgba(147,51,234,0.2) 50%, transparent 80%)",
+          filter: "blur(80px)",
+        }}
+      />
 
-      {/* Main content container */}
-      <motion.div 
-        className="relative z-10 min-h-screen flex flex-col justify-center items-center w-full max-w-7xl mx-auto px-6 py-12"
+      {/* Main Content */}
+      <motion.div
+        className="relative z-10 min-h-screen w-full max-w-7xl mx-auto px-6 py-16"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        {/* Hero section */}
-        <motion.div 
-          className="w-full flex flex-col items-center text-center mb-16"
-          variants={itemVariants}
-        >
-          {/* Logo and branding */}
+        {/* Navbar */}
+        <nav className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-lg z-50 px-6 py-4 flex justify-between items-center shadow-[0_0_20px_rgba(0,255,255,0.3)]">
+          <motion.h1
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent"
+            style={{ textShadow: "0 0 15px rgba(0,255,255,0.6)" }}
+          >
+            AlgoAcharya
+          </motion.h1>
+          <ul className="hidden md:flex gap-8">
+            {["Home", "Courses", "Features", "About", "Contact"].map((item) => (
+              <motion.li
+                key={item}
+                whileHover={{ scale: 1.1, color: "#00FFFF", textShadow: "0 0 10px rgba(0,255,255,0.8)" }}
+                className="cursor-pointer text-gray-300"
+              >
+                {item}
+              </motion.li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Hero Section */}
+        <motion.section className="pt-24 pb-16 text-center" variants={itemVariants}>
           <motion.div
-            className="relative mb-12"
-            initial={{ opacity: 0, scale: 0.8 }}
+            className="relative mb-12 mx-auto w-48 h-48"
+            initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 1.5, type: "spring" }}
           >
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-600 opacity-60 blur-[20px] rounded-full"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.4, 0.6, 0.4],
-              }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-violet-600 opacity-60 blur-3xl rounded-full"
+              animate={{ scale: [1, 1.4, 1], opacity: [0.5, 0.8, 0.5] }}
+              transition={{ duration: 4, repeat: Infinity }}
             />
-            <motion.div className="w-32 h-32 md:w-40 md:h-40 relative z-10">
-              <motion.div 
-                className="absolute inset-0 rounded-full border-4 border-orange-500/50"
-                animate={{
-                  boxShadow: [
-                    "0 0 0 0 rgba(249, 115, 22, 0.2)",
-                    "0 0 0 10px rgba(249, 115, 22, 0)",
-                    "0 0 0 0 rgba(249, 115, 22, 0)"
-                  ]
-                }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <img
-                src="/api/placeholder/160/160"
-                alt="AlgoAcharya Logo"
-                className="w-full h-full rounded-full object-cover border-2 border-orange-500/70"
-              />
-            </motion.div>
-          </motion.div>
-
-          {/* Title with animated elements */}
-          <motion.div 
-            className="relative mb-8"
-            variants={itemVariants}
-          >
-            <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight">
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-300"
-              >
-                ALGO
-              </motion.span>
-              <motion.span
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ 
-                  scale: 1, 
-                  opacity: 1,
-                  transition: { duration: 0.6, delay: 0.8 }
-                }}
-                className="inline-block relative mx-1"
-              >
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full" />
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 text-transparent bg-clip-text"
-              >
-                ACHARYA
-              </motion.span>
-            </h1>
-          </motion.div>
-
-          {/* Tagline */}
-          <motion.div 
-            className="max-w-3xl mx-auto mb-12"
-            variants={itemVariants}
-          >
-            <motion.p 
-              className="text-xl md:text-2xl text-gray-300 leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-            >
-              Where <span className="text-orange-400 font-semibold">ancient wisdom</span> meets 
-              <span className="text-purple-400 font-semibold"> modern technology</span> to transform 
-              students into industry-ready professionals
-            </motion.p>
-          </motion.div>
-
-          {/* Program duration badges */}
-          <motion.div 
-            className="flex flex-wrap gap-6 justify-center"
-            variants={itemVariants}
-          >
-            <motion.div 
-              className="relative group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <motion.div
+              className="relative z-10 w-full h-full"
+              whileHover={{ rotate: 360, transition: { duration: 2 } }}
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-amber-600 to-orange-600 blur-sm opacity-60 rounded-xl group-hover:opacity-80"
-                animate={{
-                  scale: [1, 1.03, 1],
-                  transition: { duration: 2, repeat: Infinity }
-                }}
+                className="absolute inset-0 rounded-full border-4 border-cyan-500/60"
+                animate={{ boxShadow: "0 0 25px rgba(0,255,255,0.7), 0 0 50px rgba(147,51,234,0.5)" }}
               />
-              <div className="relative px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl shadow-lg backdrop-blur-sm border border-amber-500/50">
-                <div className="flex items-center gap-4">
-                  <span className="text-5xl font-bold text-white">5</span>
-                  <div className="text-left">
-                    <span className="block text-white font-semibold">Day</span>
-                    <span className="text-amber-100 text-sm">Intensive Program</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="relative group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 blur-sm opacity-60 rounded-xl group-hover:opacity-80"
-                animate={{
-                  scale: [1, 1.03, 1],
-                  transition: { duration: 2, repeat: Infinity, delay: 0.5 }
-                }}
-              />
-              <div className="relative px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl shadow-lg backdrop-blur-sm border border-pink-500/50">
-                <div className="flex items-center gap-4">
-                  <span className="text-5xl font-bold text-white">10</span>
-                  <div className="text-left">
-                    <span className="block text-white font-semibold">Day</span>
-                    <span className="text-pink-100 text-sm">Master Program</span>
-                  </div>
-                </div>
-              </div>
+              <img src="/api/placeholder/192/192" alt="AlgoAcharya Logo" className="w-full h-full rounded-full object-cover border-2 border-cyan-500/80" />
             </motion.div>
           </motion.div>
-        </motion.div>
 
-        {/* Tabs navigation */}
-        <motion.div 
-          className="w-full max-w-5xl mx-auto mb-12"
-          variants={itemVariants}
-        >
-          <div className="flex justify-center mb-8">
-            <div className="bg-slate-800/30 backdrop-blur-md p-2 rounded-xl border border-slate-700/70 shadow-lg">
-              <div className="flex gap-2">
-                <motion.button
-                  className={`py-3 px-8 rounded-lg font-medium text-base transition-all ${
-                    activeTab === "technology" 
-                      ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg" 
-                      : "bg-slate-700/50 text-gray-300 hover:bg-slate-600/50"
-                  }`}
-                  onClick={() => setActiveTab("technology")}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Technology Tracks
-                </motion.button>
-                
-                <motion.button
-                  className={`py-3 px-8 rounded-lg font-medium text-base transition-all ${
-                    activeTab === "features" 
-                      ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg" 
-                      : "bg-slate-700/50 text-gray-300 hover:bg-slate-600/50"
-                  }`}
-                  onClick={() => setActiveTab("features")}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Program Features
-                </motion.button>
-              </div>
+          <motion.h1
+            className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent"
+            style={{ textShadow: "0 0 25px rgba(0,255,255,0.8)" }}
+          >
+            AlgoAcharya
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto"
+            style={{ textShadow: "0 0 10px rgba(0,255,255,0.3)" }}
+          >
+            Unleash your potential with a transformative learning experience blending <span className="text-cyan-400 font-bold">cutting-edge technology</span> and{" "}
+            <span className="text-violet-400 font-bold">timeless wisdom</span>.
+          </motion.p>
+          <motion.div className="flex flex-wrap gap-8 justify-center mt-12">
+            {[
+              { days: "5", label: "Intensive Program", gradient: "from-cyan-500 to-teal-500" },
+              { days: "10", label: "Master Program", gradient: "from-violet-500 to-purple-600" },
+            ].map((badge, i) => (
+              <motion.div
+                key={i}
+                className="relative group"
+                whileHover={{ scale: 1.1, boxShadow: "0 0 35px rgba(0,255,255,0.6)" }}
+              >
+                <motion.div
+                  className={`absolute inset-0 bg-gradient-to-r ${badge.gradient} blur-sm opacity-50 rounded-xl group-hover:opacity-70`}
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <div className={`relative px-8 py-4 bg-gradient-to-r ${badge.gradient} rounded-xl shadow-lg border border-cyan-500/40`}>
+                  <div className="flex items-center gap-4">
+                    <span className="text-5xl font-bold text-white">{badge.days}</span>
+                    <div className="text-left">
+                      <span className="block text-white font-semibold">Day</span>
+                      <span className="text-white text-sm opacity-80">{badge.label}</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.section>
+
+        {/* Tabs Section */}
+        <motion.section className="py-16" variants={itemVariants}>
+          <div className="flex justify-center mb-12">
+            <div className="bg-black/60 backdrop-blur-lg p-3 rounded-xl border border-cyan-500/40 shadow-[0_0_25px_rgba(0,255,255,0.3)]">
+              <motion.button
+                className={`py-3 px-10 rounded-lg font-medium ${activeTab === "technology" ? "bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-[0_0_20px_rgba(0,255,255,0.7)]" : "text-gray-300 hover:text-cyan-400"}`}
+                onClick={() => setActiveTab("technology")}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Technology Tracks
+              </motion.button>
+              <motion.button
+                className={`py-3 px-10 rounded-lg font-medium ${activeTab === "features" ? "bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-[0_0_20px_rgba(147,51,234,0.7)]" : "text-gray-300 hover:text-violet-400"}`}
+                onClick={() => setActiveTab("features")}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Program Features
+              </motion.button>
             </div>
           </div>
 
-          {/* Tab content */}
           <AnimatePresence mode="wait">
             {activeTab === "technology" && (
               <motion.div
-                className="w-full"
-                initial={{ opacity: 0, y: 20 }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.6 }}
                 key="technology"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {techItems.map((item, index) => (
+                {techItems.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    className="relative bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-cyan-500/40 shadow-lg"
+                    initial={{ opacity: 0, y: 60 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.15, duration: 1 }}
+                    whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(0,255,255,0.5), 0 0 60px rgba(147,51,234,0.3)" }}
+                  >
                     <motion.div
-                      key={index}
-                      className="relative group"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 * index, duration: 0.5 }}
-                      whileHover={{ 
-                        scale: 1.02,
-                        transition: { duration: 0.2 }
-                      }}
-                    >
-                      <motion.div 
-                        className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-30 blur-md rounded-2xl`}
-                        animate={{
-                          scale: [1, 1.05, 1],
-                          opacity: [0.3, 0.4, 0.3],
-                        }}
-                        transition={{ duration: 3, repeat: Infinity, delay: index * 0.3 }}
+                      className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 hover:opacity-40 transition-opacity duration-300 rounded-xl`}
+                    />
+                    <div className="relative z-10">
+                      <motion.div
+                        className="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-br from-gray-800 to-black border border-cyan-500/60 mb-6"
+                        whileHover={{ rotate: 360, scale: 1.2 }}
+                        transition={{ duration: 1.2 }}
+                      >
+                        <span className="text-4xl" style={{ textShadow: "0 0 15px rgba(0,255,255,0.7)" }}>{item.icon}</span>
+                      </motion.div>
+                      <h3 className="text-2xl font-bold text-white mb-4" style={{ textShadow: "0 0 10px rgba(0,255,255,0.4)" }}>{item.name}</h3>
+                      <p className="text-gray-300 text-sm">{item.description}</p>
+                      <motion.div
+                        className={`mt-6 h-1 w-24 rounded-full bg-gradient-to-r ${item.color}`}
+                        animate={{ scaleX: [1, 1.3, 1] }}
+                        transition={{ duration: 2.5, repeat: Infinity }}
                       />
-                      
-                      <div className="h-full relative backdrop-blur-lg bg-slate-900/50 rounded-2xl p-6 border border-slate-700/70 shadow-lg flex flex-col">
-                        <div className="mb-4 flex justify-between items-start">
-                          <div className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 shadow-lg">
-                            <motion.span 
-                              className="text-3xl"
-                              animate={{ 
-                                scale: [1, 1.2, 1],
-                                rotate: [0, 5, 0, -5, 0],
-                                transition: { 
-                                  repeat: Infinity, 
-                                  repeatDelay: 2, 
-                                  duration: 1.5,
-                                  delay: index * 0.2
-                                } 
-                              }}
-                            >
-                              {item.icon}
-                            </motion.span>
-                          </div>
-                          
-                          <motion.div 
-                            className={`h-2 w-2 rounded-full bg-gradient-to-r ${item.color}`}
-                            animate={{
-                              scale: [1, 1.5, 1],
-                              opacity: [0.7, 1, 0.7]
-                            }}
-                            transition={{ duration: 2, repeat: Infinity, delay: index * 0.1 }}
-                          />
-                        </div>
-                        
-                        <h3 className="text-xl font-bold text-white mb-2">{item.name}</h3>
-                        <p className="text-gray-300 text-sm mb-4 flex-grow">{item.description}</p>
-                        
-                        <div className="mt-auto">
-                          <div className={`h-1 w-16 rounded-full bg-gradient-to-r ${item.color}`}></div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+                    </div>
+                  </motion.div>
+                ))}
               </motion.div>
             )}
 
             {activeTab === "features" && (
               <motion.div
-                className="w-full"
-                initial={{ opacity: 0, y: 20 }}
+                className="space-y-10"
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.6 }}
                 key="features"
               >
-                <div className="space-y-6">
-                  {featureItems.map((feature, index) => (
+                {featureItems.map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    className="relative bg-gradient-to-br from-gray-900 to-black p-8 rounded-xl border border-violet-500/40 shadow-lg"
+                    initial={{ opacity: 0, y: 60 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.2, duration: 1 }}
+                    whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(147,51,234,0.5), 0 0 60px rgba(0,255,255,0.3)" }}
+                  >
                     <motion.div
-                      key={index}
-                      className="relative overflow-hidden group"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ 
-                        opacity: 1, 
-                        y: 0, 
-                        transition: { delay: 0.15 * index, duration: 0.6 } 
-                      }}
-                      whileHover={{ 
-                        scale: 1.01,
-                        transition: { duration: 0.2 }
-                      }}
-                    >
-                      <motion.div 
-                        className={`absolute inset-0 bg-gradient-to-br ${feature.bgColor} blur-md opacity-50`}
-                        animate={{
-                          scale: [1, 1.05, 1],
-                          opacity: [0.4, 0.5, 0.4],
-                        }}
-                        transition={{ duration: 4, repeat: Infinity, delay: index * 0.5 }}
-                      />
-                      
-                      <div 
-                        className="relative backdrop-blur-md bg-slate-900/50 rounded-2xl p-6 border border-slate-700/70 shadow-lg cursor-pointer"
-                        onClick={() => setActiveFeature(activeFeature === feature.id ? null : feature.id)}
+                      className={`absolute inset-0 bg-gradient-to-br ${feature.bgColor} opacity-0 hover:opacity-50 transition-opacity duration-300 rounded-xl`}
+                    />
+                    <div className="relative z-10 flex items-start gap-6">
+                      <motion.div
+                        className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-gray-800 to-black border border-violet-500/60"
+                        whileHover={{ scale: 1.3, rotate: 360 }}
+                        transition={{ duration: 1.2 }}
                       >
-                        <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 shadow-lg flex-shrink-0">
-                            <motion.span 
-                              className={`text-2xl ${feature.color}`}
-                              animate={{ 
-                                scale: [1, 1.3, 1],
-                                rotate: [0, 10, 0],
-                                transition: { 
-                                  repeat: Infinity, 
-                                  repeatDelay: 2 + index, 
-                                  duration: 2
-                                } 
-                              }}
-                            >
-                              {feature.icon}
-                            </motion.span>
-                          </div>
-                          
-                          <div className="flex-1">
-                            <h3 className="text-xl font-bold text-white">{feature.title}</h3>
-                            <p className="text-gray-300 mt-2">{feature.description}</p>
-                            
+                        <span className={`text-3xl ${feature.color}`} style={{ textShadow: "0 0 15px rgba(147,51,234,0.7)" }}>{feature.icon}</span>
+                      </motion.div>
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold text-white mb-3" style={{ textShadow: "0 0 10px rgba(147,51,234,0.4)" }}>{feature.title}</h3>
+                        <p className="text-gray-300 mb-4">{feature.description}</p>
+                        <p className="text-gray-400 text-sm mb-4">{feature.details}</p>
+                        {feature.list && (
+                          <>
                             <AnimatePresence>
-                              {feature.list && activeFeature === feature.id && (
-                                <motion.div 
-                                  className="mt-6 p-4 bg-slate-800/70 backdrop-blur-md rounded-xl border border-slate-700/90"
-                                  initial={{ opacity: 0, height: 0, overflow: "hidden" }}
-                                  animate={{ 
-                                    opacity: 1, 
-                                    height: "auto",
-                                    transition: { duration: 0.4 }
-                                  }}
-                                  exit={{ 
-                                    opacity: 0, 
-                                    height: 0,
-                                    overflow: "hidden",
-                                    transition: { duration: 0.3 }
-                                  }}
+                              {activeFeature === feature.id && (
+                                <motion.div
+                                  className="mt-6 p-6 bg-black/80 rounded-xl border border-violet-500/50 shadow-[0_0_15px_rgba(147,51,234,0.3)]"
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: "auto" }}
+                                  exit={{ opacity: 0, height: 0 }}
                                 >
-                                  <ul className="space-y-3">
+                                  <ul className="space-y-4">
                                     {feature.list.map((item, i) => (
-                                      <motion.li 
-                                        key={i} 
-                                        className="flex items-start gap-3 text-gray-300"
-                                        initial={{ opacity: 0, x: -10 }}
-                                        animate={{ 
-                                          opacity: 1, 
-                                          x: 0,
-                                          transition: { delay: 0.05 * i, duration: 0.3 } 
-                                        }}
+                                      <motion.li
+                                        key={i}
+                                        className="flex items-start gap-4 text-gray-300"
+                                        initial={{ opacity: 0, x: -30 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: i * 0.15 }}
                                       >
-                                        <span className={`text-lg ${feature.color} mt-0.5`}>•</span>
+                                        <span className={`text-xl ${feature.color}`} style={{ textShadow: "0 0 8px rgba(147,51,234,0.5)" }}>•</span>
                                         <span>{item}</span>
                                       </motion.li>
                                     ))}
@@ -528,91 +377,52 @@ const AlgoAcharya = () => {
                                 </motion.div>
                               )}
                             </AnimatePresence>
-                            
-                            {feature.list && (
-                              <motion.button
-                                className={`mt-4 px-4 py-2 rounded-lg text-sm ${
-                                  activeFeature === feature.id 
-                                    ? "bg-gray-800/70 text-gray-300"
-                                    : `${feature.color} bg-slate-800/70`
-                                } flex items-center gap-2 border border-slate-700/70`}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setActiveFeature(activeFeature === feature.id ? null : feature.id);
-                                }}
-                              >
-                                {activeFeature === feature.id ? "Show less" : "View details"}
-                                <span className="text-xs">
-                                  {activeFeature === feature.id ? "↑" : "↓"}
-                                </span>
-                              </motion.button>
-                            )}
-                          </div>
-                        </div>
+                            <motion.button
+                              className={`mt-6 px-6 py-2 rounded-lg text-sm ${activeFeature === feature.id ? "bg-gray-800/70 text-gray-300" : `${feature.color} bg-black/70`} border border-violet-500/50`}
+                              whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(147,51,234,0.6)" }}
+                              whileTap={{ scale: 0.95 }}
+                              onClick={() => setActiveFeature(activeFeature === feature.id ? null : feature.id)}
+                            >
+                              {activeFeature === feature.id ? "Show Less" : "View Details"} <span>{activeFeature === feature.id ? "↑" : "↓"}</span>
+                            </motion.button>
+                          </>
+                        )}
                       </div>
-                    </motion.div>
-                  ))}
-                </div>
+                    </div>
+                  </motion.div>
+                ))}
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.div>
+        </motion.section>
 
-        {/* CTA section */}
-        <motion.div 
-          className="w-full max-w-md mx-auto text-center mt-12"
-          variants={itemVariants}
-        >
-          <motion.div
-            className="relative group mb-6"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-r from-amber-500 via-orange-500 to-pink-500 rounded-full blur-sm opacity-70 group-hover:opacity-90"
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.7, 0.9, 0.7],
-                transition: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-              }}
+        {/* CTA Section */}
+        <motion.section className="py-16 text-center" variants={itemVariants}>
+          <motion.div className="relative group mb-8 max-w-md mx-auto">
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-teal-500 to-violet-600 rounded-full blur-md opacity-70 group-hover:opacity-90"
+              animate={{ scale: [1, 1.2, 1], opacity: [0.7, 0.9, 0.7] }}
+              transition={{ duration: 4, repeat: Infinity }}
             />
-            <button className="relative py-4 px-12 w-full bg-gradient-to-r from-amber-500 via-orange-500 to-pink-500 rounded-full text-white text-lg font-bold shadow-lg border border-orange-500/50">
-              Enroll Now
-            </button>
-          </motion.div>
-          
-          <motion.div
-            className="flex justify-center items-center gap-2 text-orange-300"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2 }}
-          >
-            <motion.span
-              animate={{
-                scale: [1, 1.2, 1],
-                transition: { duration: 1.5, repeat: Infinity }
-              }}
+            <motion.button
+              className="relative py-4 px-12 w-full bg-gradient-to-r from-cyan-500 via-teal-500 to-violet-600 rounded-full text-white text-lg font-bold shadow-[0_0_25px_rgba(0,255,255,0.5)]"
+              whileHover={{ scale: 1.1, boxShadow: "0 0 50px rgba(0,255,255,0.7)" }}
+              whileTap={{ scale: 0.95 }}
             >
-              🔥
-            </motion.span>
-            <p className="text-sm">Limited seats available. Batch starting on March 15, 2025</p>
+              Enroll Now
+            </motion.button>
           </motion.div>
-          
-          <motion.div 
+          <motion.div
             className="mt-8 flex flex-wrap gap-4 justify-center text-sm text-gray-400"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2.2 }}
+            transition={{ delay: 0.8 }}
           >
-            <span>100% Placement Assistance</span>
-            <span>•</span>
-            <span>Industry Recognized Certificate</span>
-            <span>•</span>
-            <span>Lifetime Access</span>
+            <span>100% Placement Assistance</span> • <span>Industry Recognized Certificate</span> • <span>Lifetime Access</span>
           </motion.div>
-        </motion.div>
+        </motion.section>
+
+        {/* Footer */}
       </motion.div>
     </div>
   );
