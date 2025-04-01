@@ -4,12 +4,12 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { MdAccountCircle, MdMenu, MdClose } from "react-icons/md";
+import {  MdMenu, MdClose } from "react-icons/md";
 import { FaUser, FaSignOutAlt, FaCog } from "react-icons/fa";
 import logo from "./logo.png";
 import logo1 from "./logo1.png";
 import { VscAccount } from "react-icons/vsc";
-
+import Cookies from "js-cookie";
 const Navbar = ({ user, setUser }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -111,9 +111,13 @@ const Navbar = ({ user, setUser }) => {
         }
       );
       if (response.status === 200) {
+        Cookies.remove("accessToken");
+        Cookies.remove("refreshToken");
+
         setIsLoggedIn(false);
         setuserProfile(null);
         setopenAccount(false);
+
         toast.success(response.data.message);
         navigate("/");
       }

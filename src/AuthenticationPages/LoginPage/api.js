@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Use environment variable for baseURL if available
-const baseURL = import.meta.env.VITE_REACT_APP_API_URL || "http://localhost:4444";
+const baseURL = "https://main-server-mu.vercel.app";
 
 const api = axios.create({
   baseURL,
