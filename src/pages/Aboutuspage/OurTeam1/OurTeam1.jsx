@@ -306,16 +306,8 @@ const OurTeam = () => {
               className="text-5xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 perspective-text"
               variants={textVariants}
             >
-              <span className="relative inline-block">
-                The Team Behind
-                {/* <motion.div
-                  initial={{ width: "0%" }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  className="absolute -bottom-3 left-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-                ></motion.div> */}
-              </span>
-              <br />
+             
+             
               <motion.span 
                 initial={{ textShadow: "0 0 10px rgba(99,102,241,0.4)" }}
                 animate={{ textShadow: "0 0 25px rgba(99,102,241,0.7)" }}

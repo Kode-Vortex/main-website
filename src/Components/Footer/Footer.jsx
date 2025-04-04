@@ -469,7 +469,7 @@ const Footer = () => {
       </div>
       
       <div className="bg-gray-900 mt-2 flex justify-between px-10 text-gray-500 text-center py-4">
-        <p>&copy; {currentYear} Kodevortex All Rights Reserved.</p>
+        <p>&copy; 2024 Kodevortex All Rights Reserved.</p>
         <div className="flex space-x-10 text-gray-500">
           <button>Privacy Policy</button>
           <button>Terms of Service</button>
