@@ -8,7 +8,7 @@ import HeroParallax from './HeroParallax'
 import PartnerWithUs from './PartnerWithUs'
 // import Pricing from './Pricing'
 import TechBanner from './TechBanner'
-// import TechnologyExpertise from './TechnologyExpertise'
+import TechnologyExpertise from './TechnologyExpertise'
 import Testimonials from './Testimonials'
 import TrainingApproach from './TrainingApproach'
 const KodeBumps = () => {
@@ -18,7 +18,7 @@ const KodeBumps = () => {
         <CenterOfExcellance/>
         {/* <InfoSection/>  */}
         <PartnerWithUs/>
-        {/* <TechnologyExpertise /> */}
+        <TechnologyExpertise />
         <TrainingApproach />
         <TechBanner/>
         <FeatureSection/>

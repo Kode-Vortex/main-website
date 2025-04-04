@@ -280,87 +280,102 @@ const ContactForm = () => {
             whileInView="visible"
             viewport={{ once: false, amount: 0.1 }}
           >
-            <motion.div 
-              className="bg-gradient-to-br from-[#252525] to-[#1a1a1a] p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-gray-800/70 shadow-xl shadow-black/60 relative group overflow-hidden"
-              variants={itemVariants}
-              custom={0}
-              whileHover="hover"
-            >
-              {/* Enhanced hover effect glow */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-[#F28474]/15 to-[#20B2AA]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              />
-              
-              <div className="flex items-center gap-3 sm:gap-4 md:gap-5">
-                <div className="flex-shrink-0 text-2xl sm:text-3xl md:text-4xl bg-gradient-to-br from-[#E05E50] to-[#C54540] p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl shadow-lg shadow-black/50">
-                📱
-                </div>
-                
-                <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
-                  +91-9898765432<br className="block sm:hidden" /> / +91-9876543210
-                </p>
-              </div>
-              
-              {/* Enhanced bottom accent line */}
-              <motion.div 
-                className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#FF8A71]/80 to-[#20B2AA]/80 w-0 group-hover:w-full transition-all duration-500 ease-out"
-              />
-            </motion.div>
+            {/* Phone Section */}
+<motion.div 
+  className="bg-gradient-to-br from-[#252525] to-[#1a1a1a] p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-gray-800/70 shadow-xl shadow-black/60 relative group overflow-hidden"
+  variants={itemVariants}
+  custom={0}
+  whileHover="hover"
+>
+  {/* Enhanced hover effect glow */}
+  <motion.div
+    className="absolute inset-0 bg-gradient-to-br from-[#F28474]/15 to-[#20B2AA]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+  />
+  
+  <div className="flex items-center gap-3 sm:gap-4">
+    <div className="flex-shrink-0 text-2xl sm:text-3xl bg-gradient-to-br from-[#E05E50] to-[#C54540] p-2 sm:p-3 rounded-xl sm:rounded-2xl shadow-lg shadow-black/50">
+      📱
+    </div>
+    
+    <div className="min-w-0 flex-1">
+      <p className="text-gray-300 text-sm sm:text-base whitespace-nowrap overflow-visible">
+        +91-9898765432
+      </p>
+      <p className="text-gray-300 text-sm sm:text-base whitespace-nowrap overflow-visible">
+        +91-9876543210
+      </p>
+    </div>
+  </div>
+  
+  {/* Enhanced bottom accent line */}
+  <motion.div 
+    className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#FF8A71]/80 to-[#20B2AA]/80 w-0 group-hover:w-full transition-all duration-500 ease-out"
+  />
+</motion.div>
 
-            <motion.div 
-              className="bg-gradient-to-br from-[#252525] to-[#1a1a1a] p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-gray-800/70 shadow-xl shadow-black/60 relative group overflow-hidden"
-              variants={itemVariants}
-              custom={1}
-              whileHover="hover"
-            >
-              {/* Enhanced hover effect glow */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-[#F28474]/15 to-[#20B2AA]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              />
-              
-              <div className="flex items-center gap-3 sm:gap-4 md:gap-5">
-                <div className="flex-shrink-0 text-2xl sm:text-3xl md:text-4xl bg-gradient-to-br from-[#E05E50] to-[#C54540] p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl shadow-lg shadow-black/50">
-                  ✉️
-                </div>
-                
-                <div className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
-                  <p>info@kodebumps.com</p>
-                  <p>support@kodebumps.com</p>
-                </div>
-              </div>
-              
-              {/* Enhanced bottom accent line */}
-              <motion.div 
-                className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#FF8A71]/80 to-[#20B2AA]/80 w-0 group-hover:w-full transition-all duration-500 ease-out"
-              />
-            </motion.div>
+{/* Email Section */}
+<motion.div 
+  className="bg-gradient-to-br from-[#252525] to-[#1a1a1a] p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-gray-800/70 shadow-xl shadow-black/60 relative group overflow-hidden"
+  variants={itemVariants}
+  custom={1}
+  whileHover="hover"
+>
+  {/* Enhanced hover effect glow */}
+  <motion.div
+    className="absolute inset-0 bg-gradient-to-br from-[#F28474]/15 to-[#20B2AA]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+  />
+  
+  <div className="flex items-center gap-3 sm:gap-4">
+    <div className="flex-shrink-0 text-2xl sm:text-3xl bg-gradient-to-br from-[#E05E50] to-[#C54540] p-2 sm:p-3 rounded-xl sm:rounded-2xl shadow-lg shadow-black/50">
+      ✉️
+    </div>
+    
+    <div className="min-w-0 flex-1">
+      <p className="text-gray-300 text-sm sm:text-base whitespace-nowrap overflow-visible">
+        contact.kodebumps@gmail.com
+      </p>
+    </div>
+  </div>
+  
+  {/* Enhanced bottom accent line */}
+  <motion.div 
+    className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#FF8A71]/80 to-[#20B2AA]/80 w-0 group-hover:w-full transition-all duration-500 ease-out"
+  />
+</motion.div>
 
-            <motion.div 
-              className="bg-gradient-to-br from-[#252525] to-[#1a1a1a] p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-gray-800/70 shadow-xl shadow-black/60 relative group overflow-hidden"
-              variants={itemVariants}
-              custom={1}
-              whileHover="hover"
-            >
-              {/* Enhanced hover effect glow */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-[#F28474]/15 to-[#20B2AA]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              />
-              
-              <div className="flex items-center gap-3 sm:gap-4 md:gap-5">
-                <div className="flex-shrink-0 text-2xl sm:text-3xl md:text-4xl bg-gradient-to-br from-[#E05E50] to-[#C54540] p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl shadow-lg shadow-black/50">
-                🏢
-                </div>
-                
-                <div className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
-                  <p>RNO74/5FLA/104, Legacy Fortune Exotica, Ravet, Pune, Maharashtra, 412101</p>
-                </div>
-              </div>
-              
-              {/* Enhanced bottom accent line */}
-              <motion.div 
-                className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#FF8A71]/80 to-[#20B2AA]/80 w-0 group-hover:w-full transition-all duration-500 ease-out"
-              />
-            </motion.div>
+{/* Address Section */}
+<motion.div 
+  className="bg-gradient-to-br from-[#252525] to-[#1a1a1a] p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-gray-800/70 shadow-xl shadow-black/60 relative group overflow-hidden"
+  variants={itemVariants}
+  custom={2}
+  whileHover="hover"
+>
+  {/* Enhanced hover effect glow */}
+  <motion.div
+    className="absolute inset-0 bg-gradient-to-br from-[#F28474]/15 to-[#20B2AA]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+  />
+  
+  <div className="flex items-start gap-3 sm:gap-4">
+    <div className="flex-shrink-0 text-2xl sm:text-3xl bg-gradient-to-br from-[#E05E50] to-[#C54540] p-2 sm:p-3 rounded-xl sm:rounded-2xl shadow-lg shadow-black/50 mt-1">
+      🏢
+    </div>
+    
+    <div className="min-w-0 flex-1">
+      <p className="text-gray-300 text-sm sm:text-base">
+        RNO74/5FLA/104, Legacy Fortune Exotica, Ravet, Pune, Maharashtra, 412101
+      </p>
+    </div>
+  </div>
+  
+  {/* Enhanced bottom accent line */}
+  <motion.div 
+    className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#FF8A71]/80 to-[#20B2AA]/80 w-0 group-hover:w-full transition-all duration-500 ease-out"
+  />
+</motion.div>
+
+
+
+
 
             {/* Social Media Logos with Links */}
             <motion.div 
@@ -423,6 +438,11 @@ const ContactForm = () => {
   </motion.a>
 </motion.div>
           </motion.div>
+
+
+
+
+          
           
           {/* Right Side - Contact Form with enhanced styling */}
           <motion.div 
@@ -522,7 +542,7 @@ const ContactForm = () => {
                   custom={3}
                 >
                   <label className="block text-gray-300 mb-1 sm:mb-2 text-base sm:text-lg">
-                    Email *
+                    Email 
                   </label>
                   <div className="relative">
                     <input 

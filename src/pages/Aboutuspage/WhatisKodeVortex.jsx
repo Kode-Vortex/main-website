@@ -215,14 +215,14 @@ const WhatIsKodeVortex = () => {
               
               <motion.p 
                 variants={textRevealVariants}
-                className="text-lg md:text-xl text-zinc-200 leading-relaxed text-center"
+                className="text-2xl md:text-2xl text-zinc-200 leading-relaxed text-center"
               >
                 KodeVortex is a cutting-edge learning platform designed to equip students and professionals with high-tech and industry-relevant skills. We bridge the gap between academic knowledge and real-world applications through expert-led training, hands-on projects, and structured learning paths.
               </motion.p>
               
               <motion.p 
                 variants={textRevealVariants}
-                className="text-lg md:text-xl text-zinc-200 leading-relaxed text-center mt-4"
+                className="text-xl md:text-xl text-zinc-200 leading-relaxed text-center mt-4"
               >
                 Join us to build expertise, gain industry-recognized certifications, and take your career to the next level! 🚀
               </motion.p>

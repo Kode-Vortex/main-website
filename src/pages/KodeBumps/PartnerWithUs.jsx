@@ -181,7 +181,7 @@ const PartnerWithUs = () => {
   return (
     <motion.div
       ref={sectionRef}
-      className="text-white min-h-screen px-4 md:px-[10%] pt-16 pb-20 bg-[#1a1a1a] relative overflow-hidden"
+      className="text-white min-h-screen px-4 sm:px-6 md:px-8 lg:px-10 pt-16 pb-20 bg-[#1a1a1a] relative overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
@@ -191,7 +191,7 @@ const PartnerWithUs = () => {
       <div className="absolute inset-0 overflow-hidden opacity-30">
         {/* Large circle */}
         <motion.div
-          className="absolute w-[600px] h-[600px] rounded-full border-2 border-[#20B2AA]/30 -right-[200px] -top-[200px]"
+          className="absolute w-64 md:w-96 lg:w-[600px] h-64 md:h-96 lg:h-[600px] rounded-full border-2 border-[#20B2AA]/30 -right-32 md:-right-40 lg:-right-[200px] -top-32 md:-top-40 lg:-top-[200px]"
           animate={{
             rotate: 360,
           }}
@@ -204,7 +204,7 @@ const PartnerWithUs = () => {
         
         {/* Small circle */}
         <motion.div
-          className="absolute w-[300px] h-[300px] rounded-full border border-[#F28474]/20 -left-[150px] bottom-[10%]"
+          className="absolute w-32 md:w-48 lg:w-[300px] h-32 md:h-48 lg:h-[300px] rounded-full border border-[#F28474]/20 -left-16 md:-left-24 lg:-left-[150px] bottom-[10%]"
           animate={{
             rotate: -360,
           }}
@@ -221,7 +221,7 @@ const PartnerWithUs = () => {
         }} />
       </div>
       
-      {/* Floating particles in background */}
+      {/* Floating particles in background - Optimized for iPad */}
       {Array.from({ length: 20 }).map((_, i) => (
         <motion.div
           key={i}
@@ -247,14 +247,14 @@ const PartnerWithUs = () => {
         />
       ))}
 
-      {/* Title with enhanced highlight effect */}
+      {/* Title with enhanced highlight effect - Improved for iPad */}
       <motion.div 
         className="relative"
         variants={titleVariants}
       >
         <motion.div className="flex flex-col items-center justify-center space-y-4">
           <motion.h1 
-            className="relative text-[#F28474] font-sans text-4xl md:text-6xl font-bold tracking-tight text-center z-10 leading-tight"
+            className="relative text-[#F28474] font-sans text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-center z-10 leading-tight"
             animate={{
               textShadow: [
                 "0 0 8px rgba(242, 132, 116, 0.4)",
@@ -271,11 +271,11 @@ const PartnerWithUs = () => {
             Become a Partner
           </motion.h1>
 
-          {/* Animated underline */}
+          {/* Animated underline - Responsive for iPad */}
           <motion.div 
-            className="h-1 bg-[#F28474] rounded-full w-24 md:w-32"
+            className="h-1 bg-[#F28474] rounded-full w-20 md:w-24 lg:w-32"
             animate={{
-              width: ["4rem", "10rem", "4rem"],
+              width: ["5rem", "8rem", "5rem"],
               opacity: [0.7, 1, 0.7]
             }}
             transition={{ 
@@ -288,7 +288,7 @@ const PartnerWithUs = () => {
 
         {/* Light glow behind the title */}
         <motion.div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-40 rounded-full bg-[#F28474] blur-[100px] opacity-20"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-40 rounded-full bg-[#F28474] blur-[80px] md:blur-[100px] opacity-20"
           animate={{
             scale: [1, 1.3, 1],
             opacity: [0.1, 0.25, 0.1]
@@ -301,9 +301,9 @@ const PartnerWithUs = () => {
         />
       </motion.div>
 
-      {/* Grid of content boxes with enhanced animations */}
+      {/* Grid of content boxes - Optimized for iPad */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 px-4 md:px-10 lg:px-16 mt-16 md:mt-20 relative z-10"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 px-4 md:px-8 lg:px-16 mt-12 md:mt-16 lg:mt-20 relative z-10"
       >
         {partnerBenefits.map((benefit, index) => (
           <motion.div 
@@ -314,7 +314,7 @@ const PartnerWithUs = () => {
             className="transform transition-all duration-300"
           >
             <motion.div 
-              className="bg-[#2c2c2c] p-6 md:p-8 rounded-2xl border border-gray-800 shadow-lg shadow-black/50 relative group overflow-hidden"
+              className="bg-[#2c2c2c] p-6 md:p-7 lg:p-8 rounded-2xl border border-gray-800 shadow-lg shadow-black/50 relative group overflow-hidden"
               whileHover={{
                 backgroundPosition: ["0% 0%", "100% 100%"],
                 transition: { duration: 1.5 }
@@ -326,20 +326,19 @@ const PartnerWithUs = () => {
               />
               
               {/* Corner accent */}
-              <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden">
-                <div className="absolute rotate-45 bg-[#F28474]/20 w-10 h-10 -right-5 -top-5 transform origin-bottom-left" />
+              <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+                <div className="absolute rotate-45 bg-[#F28474]/20 w-8 h-8 -right-4 -top-4 transform origin-bottom-left" />
               </div>
               
-              <div className="flex items-start gap-5">
-                {/* Modified: Gradient background for icon instead of solid color */}
-                <div className="flex-shrink-0 text-3xl md:text-4xl rounded-2xl p-3 md:p-4 shadow-lg shadow-black/20 relative overflow-hidden">
-                  {/* Gradient background similar to Image 3 */}
+              <div className="flex items-start gap-4">
+                {/* Gradient background for icon - Enhanced for iPad */}
+                <div className="flex-shrink-0 text-2xl md:text-3xl rounded-2xl p-3 md:p-4 shadow-lg shadow-black/20 relative overflow-hidden">
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#f28474] via-[#f28474cc] to-[#20B2AA]" />
                   <span className="relative z-10">{benefit.icon}</span>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg md:text-xl font-bold text-white mb-2 tracking-wide">
+                  <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 tracking-wide">
                     {benefit.title}
                   </h3>
                   <p className="text-gray-300/70 text-sm md:text-base">
@@ -357,9 +356,9 @@ const PartnerWithUs = () => {
         ))}
       </motion.div>
 
-      {/* Partnership process section */}
+      {/* Partnership process section - iPad optimized */}
       <motion.div 
-        className="px-4 md:px-8 lg:px-16 mt-20 text-center"
+        className="px-4 md:px-8 lg:px-16 mt-16 md:mt-20 text-center"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ 
           opacity: 1, 
@@ -372,7 +371,7 @@ const PartnerWithUs = () => {
         viewport={{ once: true }}
       >
         <motion.h2 
-          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-[#F28474]"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-[#F28474]"
           custom={0}
           variants={paragraphVariants}
         >
@@ -380,15 +379,15 @@ const PartnerWithUs = () => {
         </motion.h2>
         
         <motion.p 
-          className="text-base md:text-lg max-w-4xl mx-auto leading-relaxed text-gray-300/80 mb-8"
+          className="text-base md:text-lg max-w-4xl mx-auto leading-relaxed text-gray-300/80 mb-6 md:mb-8"
           custom={1}
           variants={paragraphVariants}
         >
           Begin your journey to becoming an industry-aligned educational institution with our streamlined partnership process.
         </motion.p>
         
-        {/* Process steps */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12 max-w-5xl mx-auto">
+        {/* Process steps - Responsive grid for iPad */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-8 md:mt-12 max-w-5xl mx-auto">
           {[
             {
               title: "Initial Consultation",
@@ -417,7 +416,7 @@ const PartnerWithUs = () => {
           ].map((step, index) => (
             <motion.div 
               key={index}
-              className="bg-[#2c2c2c] p-6 rounded-xl border border-gray-800 text-center shadow-lg shadow-black/30 relative"
+              className="bg-[#2c2c2c] p-4 md:p-5 lg:p-6 rounded-xl border border-gray-800 text-center shadow-lg shadow-black/30 relative"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ 
                 opacity: 1, 
@@ -434,32 +433,32 @@ const PartnerWithUs = () => {
               }}
               viewport={{ once: true }}
             >
-              {/* Step number badge */}
-              <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[#F28474] flex items-center justify-center text-white font-bold shadow-lg">
+              {/* Step number badge - Sized for iPad */}
+              <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#F28474] flex items-center justify-center text-white font-bold shadow-lg text-sm">
                 {step.step}
               </div>
-              {/* Modified: Gradient background for icon */}
-              <div className="relative h-16 flex items-center justify-center mb-4">
+              {/* Gradient background for icon - Enhanced for iPad */}
+              <div className="relative h-12 md:h-14 lg:h-16 flex items-center justify-center mb-3 md:mb-4">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#f28474] via-[#f28474cc] to-[#20B2AA] opacity-70" />
-                <span className="text-4xl relative z-10">{step.icon}</span>
+                <span className="text-2xl md:text-3xl lg:text-4xl relative z-10">{step.icon}</span>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">{step.title}</h3>
-              <p className="text-gray-300/70 text-sm">{step.description}</p>
+              <h3 className="text-sm md:text-base lg:text-lg font-semibold text-white mb-2">{step.title}</h3>
+              <p className="text-gray-300/70 text-xs md:text-sm">{step.description}</p>
             </motion.div>
           ))}
         </div>
       </motion.div>
 
-      {/* MODIFIED: Testimonials section turned into one-line carousel */}
+      {/* Testimonials section - Optimized for iPad */}
       <motion.div
-        className="mt-20 px-4 md:px-10 lg:px-20"
+        className="mt-16 md:mt-20 px-4 md:px-10 lg:px-20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
       >
         <motion.h2 
-          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-10 text-center text-[#F28474]"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 md:mb-10 text-center text-[#F28474]"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -468,62 +467,77 @@ const PartnerWithUs = () => {
           What Our Partners Say
         </motion.h2>
         
-        {/* Carousel container */}
+        {/* Enhanced Testimonial Carousel - iPad optimized */}
         <div 
           className="relative max-w-5xl mx-auto"
           onMouseEnter={() => setAutoplayTestimonials(false)}
           onMouseLeave={() => setAutoplayTestimonials(true)}
         >
-          {/* Testimonial Single Line View */}
-          <div className="bg-[#2c2c2c] p-5 md:p-8 rounded-2xl border border-gray-800 shadow-lg overflow-hidden">
-            <div className="flex items-center gap-4">
-              {/* Modified: Gradient background for avatar */}
-              <div className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-xl relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#f28474] via-[#f28474cc] to-[#20B2AA]" />
+          {/* Testimonial Card with iPad Responsive Design */}
+          <div className="bg-[#2c2c2c] p-6 md:p-8 rounded-2xl border border-gray-800 shadow-lg overflow-hidden">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+              {/* Enhanced Avatar with Gradient - Sized for iPad */}
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-xl md:text-2xl relative overflow-hidden bg-gradient-to-br from-[#f28474] via-[#f28474cc] to-[#20B2AA] shadow-md">
                 <span className="relative z-10">{testimonials[currentTestimonialIndex].author.charAt(0)}</span>
+                
+                {/* Subtle glow effect */}
+                <motion.div 
+                  className="absolute inset-0 bg-white opacity-0"
+                  animate={{
+                    opacity: [0, 0.3, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                />
               </div>
               
               <div className="flex-grow relative">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentTestimonialIndex}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
-                    className="flex items-center justify-between"
+                    className="flex flex-col"
                   >
-                    <div className="flex-grow">
-                      <p className="text-gray-300/90 italic mb-1">{testimonials[currentTestimonialIndex].quote}</p>
-                      <div className="flex items-center text-sm text-gray-400">
-                        <span className="font-semibold text-white">{testimonials[currentTestimonialIndex].author}</span>
-                        <span className="mx-2">•</span>
-                        <span>{testimonials[currentTestimonialIndex].title}</span>
-                        <span className="mx-2">•</span>
-                        <span>{testimonials[currentTestimonialIndex].institution}</span>
-                      </div>
+                    {/* Quote with enhanced styling for iPad */}
+                    <p className="text-gray-300/90 italic mb-3 text-base md:text-lg relative pl-4 border-l-2 border-[#F28474]/40">
+                      "{testimonials[currentTestimonialIndex].quote}"
+                    </p>
+                    
+                    {/* Author info with responsive layout for iPad */}
+                    <div className="flex flex-col md:flex-row md:items-center text-sm text-gray-400 mt-2">
+                      <span className="font-semibold text-white mb-1 md:mb-0">{testimonials[currentTestimonialIndex].author}</span>
+                      <span className="hidden md:inline mx-2">•</span>
+                      <span className="mb-1 md:mb-0">{testimonials[currentTestimonialIndex].title}</span>
+                      <span className="hidden md:inline mx-2">•</span>
+                      <span>{testimonials[currentTestimonialIndex].institution}</span>
                     </div>
                   </motion.div>
                 </AnimatePresence>
               </div>
               
-              {/* Navigation buttons */}
-              <div className="flex gap-2 flex-shrink-0">
+              {/* Navigation buttons - Enhanced for iPad touch */}
+              <div className="flex gap-2 flex-shrink-0 mt-4 md:mt-0 self-center md:self-auto">
                 <button 
                   onClick={prevTestimonial} 
-                  className="p-2 rounded-full bg-[#F28474]/20 hover:bg-[#F28474]/40 transition-colors"
+                  className="p-2 rounded-full bg-[#F28474]/20 hover:bg-[#F28474]/40 transition-colors active:scale-95 touch-manipulation"
                   aria-label="Previous testimonial"
                 >
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
                 <button 
                   onClick={nextTestimonial} 
-                  className="p-2 rounded-full bg-[#F28474]/20 hover:bg-[#F28474]/40 transition-colors"
+                  className="p-2 rounded-full bg-[#F28474]/20 hover:bg-[#F28474]/40 transition-colors active:scale-95 touch-manipulation"
                   aria-label="Next testimonial"
                 >
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
@@ -531,7 +545,7 @@ const PartnerWithUs = () => {
             </div>
           </div>
           
-          {/* Pagination dots */}
+          {/* Enhanced Pagination dots - More touch friendly for iPad */}
           <div className="flex justify-center mt-4 gap-2">
             {testimonials.map((_, index) => (
               <button
@@ -540,10 +554,10 @@ const PartnerWithUs = () => {
                   setCurrentTestimonialIndex(index);
                   setAutoplayTestimonials(false);
                 }}
-                className={`w-2 h-2 rounded-full transition-all ${
+                className={`h-2 md:h-3 rounded-full transition-all ${
                   currentTestimonialIndex === index 
-                    ? "bg-[#F28474] w-6" 
-                    : "bg-gray-600 hover:bg-gray-500"
+                    ? "bg-[#F28474] w-6 md:w-8" 
+                    : "bg-gray-600 hover:bg-gray-500 w-2 md:w-3"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
@@ -552,95 +566,40 @@ const PartnerWithUs = () => {
         </div>
       </motion.div>
 
-      {/* Call to action */}
+      {/* Call to action - Enhanced for iPad */}
       <motion.div
-        // className="mt-20 md:mt-24 px-6 py-12 rounded-2xl mx-4 md:mx-16 lg:mx-32 relative overflow-hidden"
+        className="mt-16 md:mt-20 flex justify-center" 
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
       >
-        {/* Background gradient */}
-        {/* <div className="absolute inset-0 bg-[#2c2c2c] rounded-2xl" /> */}
-        
-        {/* Animated border */}
-        <motion.div 
-          // className="absolute inset-0 border border-[#F28474]/30 rounded-2xl"
-          // animate={{
-          //   boxShadow: [
-          //     "0 0 20px rgba(242, 132, 116, 0.2)",
-          //     "0 0 30px rgba(242, 132, 116, 0.4)",
-          //     "0 0 20px rgba(242, 132, 116, 0.2)"
-          //   ]
-          // }}
-          // transition={{ 
-          //   duration: 4, 
-          //   repeat: Infinity,
-          //   repeatType: "reverse" 
-          // }}
-        />
-        
-        <div className="">
-          {/* <motion.h2 
-            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-[#F28474]"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Ready to Transform Education Together?
-          </motion.h2> */}
+        <motion.button
+          className="py-3 px-8 md:py-4 md:px-10 rounded-full font-semibold text-base md:text-lg shadow-lg overflow-hidden relative group"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          whileHover={{ 
+            scale: 1.05,
+            transition: { duration: 0.3 }
+          }}
+          whileTap={{ scale: 0.97 }}
+          viewport={{ once: true }}
+        >
+          {/* Gradient background for button */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#D14540] to-[#C03A36] opacity-90" />
           
-          {/* <motion.p
-            className="text-base md:text-lg max-w-3xl mx-auto mb-8 text-gray-300/80"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            Schedule a consultation with our partnership team and start your journey towards educational excellence.
-          </motion.p>
-           */}
-          <motion.button
-            // className="relative py-4 px-10 overflow-hidden rounded-full font-semibold text-lg group shadow-lg shadow-black/30"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0px 15px 30px rgba(255, 112, 112, 0.3)"
-            }}
-            whileTap={{ scale: 0.97 }}
-            viewport={{ once: true }}
-          >
-            {/* Modified: Gradient background for button */}
-            {/* <div className="absolute inset-0 bg-gradient-to-r from-[#D14540] to-[#C03A36] opacity-90" /> */}
-            
-            {/* Hover overlay */}
-            <motion.div 
-              // className="absolute inset-0 bg-gradient-to-r bg-gradient-to-r from-[#D14540] to-[#C03A36] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              // animate={{
-              //   backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-              // }}
-              transition={{ 
-                duration: 3, 
-                repeat: Infinity,
-                repeatType: "loop" 
-              }}
-            />
-            
-            {/* Text and icon */}
-            <span className="relative z-10 flex items-center gap-2 text-white">
-              {/* Schedule Consultation */}
-              {/* <svg className="w-5 h-5 inline-block group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"> */}
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              {/* </svg> */}
-            </span>
-          </motion.button>
-        </div>
+          <span className="relative z-10 flex items-center gap-2 text-white">
+            Schedule Consultation
+            <svg className="w-5 h-5 inline-block group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </motion.button>
       </motion.div>
+      
     </motion.div>
   );
 };
 
-export default PartnerWithUs; 
+export default PartnerWithUs;

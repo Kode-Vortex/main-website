@@ -208,7 +208,7 @@ const VisionSection = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <span className="text-indigo-400 text-sm uppercase tracking-widest font-medium">
+            <span className="text-indigo-400 text-4xl uppercase tracking-widest font-medium">
               Our Purpose
             </span>
             <motion.div
@@ -350,7 +350,7 @@ const VisionSection = () => {
             ease: "linear"
           }}
           style={{
-            background: 'radial-gradient(circle at center, rgba(139, 92, 246, 0.25) 0%, transparent 70%)',
+            // background: 'radial-gradient(circle at center, rgba(139, 92, 246, 0.25) 0%, transparent 70%)',
             backgroundSize: '150% 150%'
           }}
         />
