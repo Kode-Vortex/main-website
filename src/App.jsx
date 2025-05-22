@@ -22,6 +22,10 @@ import Register1 from "./AuthenticationPages/Register/Register1";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import ForgotPasswordPage from "./AuthenticationPages/ForgotPasswordPage/ForgotPasswordPage";
 import PageNotFound from "./Components/PageNotFound/PageNotFound";
+import ServicePage from "./pages/ServicePage/ServicePage";
+import EventPage from "./pages/EventPage/EventPage";
+import FifthSection from "./pages/EventPage/section/FifthSection";
+import SixthSection from "./pages/EventPage/section/SixthSection";
 const App = () => {
   const [user, setUser] = useState();
 
@@ -71,7 +75,9 @@ const App = () => {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
 
-            <Route path="/training" element={<TrainingPage />} />
+            <Route path="/events" element={<EventPage/>} />
+            <Route path="/event-register" element={<FifthSection/>}/>
+            <Route path="/payment" element={<SixthSection/>}/>
             <Route
               path="/internship"
               element={

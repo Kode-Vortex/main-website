@@ -232,8 +232,7 @@ const ContactUsPage = () => {
             whileHover={{ scale: 1.05, color: "#4d9bad" }}
           >
             <p className="text-white font-outfit text-[20px] hover:text-blue-300 transition-colors duration-300">
-              vijay.singh@kodevortex.in
-            </p>
+            contact.kodevortex@gmail.com            </p>
           </motion.div>
           
           <div className="flex flex-col space-y-4 pt-6">

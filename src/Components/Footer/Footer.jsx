@@ -309,9 +309,11 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-400 mb-6">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Provident nisi nobis quas obcaecati, at perspiciatis hic totam
-              similique
+            Your Gateway to 
+Innovation and 
+Success Revolutionizing 
+Learning and Software 
+Solutions
             </p>
 
             {/* Social Media Icons */}
@@ -350,9 +352,9 @@ const Footer = () => {
 
             {/* Contact Information */}
             <div className="text-gray-400 flex items-center">
-              <span>+91-999999999</span>
+              <span>+91-9639129214</span>
               <span className="mx-2">|</span>
-              <span>+91-999999999</span>
+              <span>+91-9137500132</span>
             </div>
           </div>
 
@@ -460,7 +462,7 @@ const Footer = () => {
                 placeholder="Your email"
                 className="px-4 py-2 w-full md:w-64 rounded-l outline-none text-gray-800"
               />
-              <button className="bg-blue-600 px-4 py-2 rounded-r hover:bg-blue-700 transition">
+              <button className="bg-blue-800 px-4 py-2.5 rounded-r hover:bg-blue-850 transition">
                 Subscribe
               </button>
             </div>

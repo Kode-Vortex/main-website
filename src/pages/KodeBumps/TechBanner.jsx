@@ -86,35 +86,38 @@ const TransformCard = () => {
           viewport={{ amount: 0.2 }}
           className="w-full py-6 xl:py-0 flex justify-center xl:justify-center z-10"
         >
-          <motion.button
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0px 15px 30px rgba(242, 132, 116, 0.3)"
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="relative overflow-hidden bg-[#e05e4e] text-white text-sm sm:text-base px-5 py-3 w-full sm:w-[20rem] md:w-[30rem] rounded-full shadow-md transition duration-300 group"
-          >
-            {/* Button background animation */}
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-r from-[#F28474] to-[#20B2AA] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-              }}
-              transition={{ 
-                duration: 3, 
-                repeat: Infinity,
-                repeatType: "loop" 
-              }}
-            />
-            
-            {/* Text and icon */}
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              Get in touch with us now to discuss how we can collaborate!
-              <svg className="w-5 h-5 inline-block group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </span>
-          </motion.button>
+          <motion.a
+  href="/KB_Brochure.pdf"
+  download
+  whileHover={{ 
+    scale: 1.05,
+    boxShadow: "0px 15px 30px rgba(242, 132, 116, 0.3)"
+  }}
+  whileTap={{ scale: 0.95 }}
+  className="relative overflow-hidden bg-[#e05e4e] text-white text-sm sm:text-base px-5 py-3 w-full sm:w-[20rem] md:w-[30rem] rounded-full shadow-md transition duration-300 group cursor-pointer"
+>
+  {/* Button background animation */}
+  <motion.div 
+    className="absolute inset-0 bg-gradient-to-r from-[#F28474] to-[#20B2AA] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+    animate={{
+      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+    }}
+    transition={{ 
+      duration: 3, 
+      repeat: Infinity,
+      repeatType: "loop" 
+    }}
+  />
+
+  {/* Text and icon */}
+  <span className="relative z-10 flex items-center text-center justify-center gap-2">
+    Get in touch with us now to discuss how we can collaborate!
+    <svg className="w-5 h-5 inline-block group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  </span>
+</motion.a>
+
         </motion.div>
       </motion.div>
     </div>

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaGamepad, FaCode, FaBrain, FaRocket } from "react-icons/fa";
 import AlgoAcharya from "./AlgoAcharya";
 import LAKSHYARITHM from "./LAKSHYARITHM";

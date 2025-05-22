@@ -183,14 +183,14 @@ const Navbar = ({ user, setUser }) => {
           <hr className="w-[1px] h-8 bg-white" />
 
           <Link
-            to="/training"
+            to="/events"
             className={`px-4 text-lg py-2 rounded-full ${
-              location.pathname === "/training"
+              location.pathname === "/events"
                 ? "border-b-2 border-[#056777] hover:border-b-4 hover:border-[#3da9b9] navbar-link-active"
                 : "hover:border-b-4 hover:border-[#3da9b9]"
             }`}
           >
-            Trainings
+            Events & Workshop
           </Link>
           <hr className="w-[1px] h-8 bg-white" />
 
@@ -426,15 +426,15 @@ const Navbar = ({ user, setUser }) => {
               <hr className="w-full h-[1px] bg-white opacity-20" />
 
               <Link
-                to="/training"
-                onClick={() => handleLinkClick("/training")}
+                to="/events"
+                onClick={() => handleLinkClick("/events")}
                 className={`w-full text-center text-white px-4 text-lg py-2 rounded-full ${
-                  location.pathname === "/training"
+                  location.pathname === "/events"
                     ? "border-b-2 border-[#056777] hover:border-b-4 hover:border-[#3da9b9] navbar-link-active"
                     : "hover:border-b-4 hover:border-[#3da9b9]"
                 }`}
               >
-                Trainings
+                Events & Workshop
               </Link>
               <hr className="w-full h-[1px] bg-white opacity-20" />
 

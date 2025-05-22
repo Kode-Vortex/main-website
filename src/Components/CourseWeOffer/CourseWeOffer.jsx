@@ -164,7 +164,7 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 3000,
   // centerMode: true,
-  // centerPadding: "0%", // Adjust this value to control the spacing between slides
+  // centerPadding: "50px", // Adjust this value to control the spacing between slides
   arrows: false,
   responsive: [
     {
@@ -246,7 +246,7 @@ const CourseWeOffer = () => {
         </motion.div>
       </div>
 
-      <div className=" mt-24 md:mt-12 pt-4">
+      <div className=" mt-24 md:mt-12  pt-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{
@@ -258,38 +258,37 @@ const CourseWeOffer = () => {
         >
           <Slider {...settings} className="  ">
             {projects.map((project, index) => (
-              <div
-                key={index}
-                className="animated-border-box mb-6 bg-slate-900 flex flex-col items-center justify-evenly   text-white w-full md:w-[100%] lg:w-[100%] h-[35rem] md:h-[580px] rounded-xl shadow-lg p-4 md:p-6 relative overflow-hidden"
-              >
-                <div className="relative flex flex-col  items-center">
-                  <span className="absolute  left-1/2 transform -translate-x-1/2 text-xs bg-green-100 text-green-800  font-semibold px-4 text-center py-1 rounded-full">
-                    {project.label}
-                  </span>
-                  <div className="flex justify-center my-8 md:my-8 ">
-                    <img
-                      src={project.image}
-                      alt={project.heading}
-                      className="w-32 h-32 md:w-52 md:h-52 object-contain rounded-xl border-4 border-transparent transition-all duration-500 ease-in-out
-              hover:shadow-[0_0_15px_rgba(0,240,255,0.8)]"
-                    />
-                  </div>
-                  <h3 className="text-lg md:text-xl font-bold mb-2 text-center px-2">
-                    {project.heading}
-                  </h3>
-                  <p className="text-base md:text-lg py-3 text-gray-200 text-center px-2">
-                    {project.description}
-                  </p>
-                </div>
-                <div className="flex flex-wrap justify-center  items-end gap-2 mt-4">
-                  {project.techStack.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 font-bold text-xs rounded-full"
-                    >
-                      {tech}
+              <div key={index} className="px-2">
+                <div className="animated-border-box mb-6 bg-slate-900  flex flex-col items-center justify-evenly   text-white w-full md:w-[100%] lg:w-[100%]   h-[35rem] md:h-[580px] rounded-xl shadow-lg p-4 md:p-6 relative overflow-hidden">
+                  <div className="relative flex flex-col  items-center">
+                    <span className="absolute  left-1/2 transform -translate-x-1/2 text-xs bg-green-100 text-green-800  font-semibold px-4 text-center py-1 rounded-full">
+                      {project.label}
                     </span>
-                  ))}
+                    <div className="flex justify-center my-8 md:my-8 ">
+                      <img
+                        src={project.image}
+                        alt={project.heading}
+                        className="w-32 h-32 md:w-52 md:h-52 object-contain rounded-xl border-4 border-transparent transition-all duration-500 ease-in-out
+              hover:shadow-[0_0_15px_rgba(0,240,255,0.8)]"
+                      />
+                    </div>
+                    <h3 className="text-lg md:text-xl font-bold mb-2 text-center px-2">
+                      {project.heading}
+                    </h3>
+                    <p className="text-base md:text-lg py-3 text-gray-200 text-center px-2">
+                      {project.description}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap justify-center  items-end gap-2 mt-4">
+                    {project.techStack.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 bg-gray-100 text-gray-700 font-bold text-xs rounded-full"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
