@@ -75,7 +75,6 @@ const Navbar = ({ user, setUser }) => {
   useEffect(() => {
     const fetchUserProfile = async () => {
 
-      console.log("harsh berej");
       
       try {
         const response = await axios.get(

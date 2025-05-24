@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const Topsection = () => {
+const TopSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
@@ -96,4 +96,4 @@ const Topsection = () => {
   );
 };
 
-export default Topsection;
+export default TopSection;

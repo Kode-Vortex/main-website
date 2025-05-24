@@ -6,12 +6,11 @@ import FeaturesSection from "./comp/FeaturesSection"
 import IntegrationCategoriesSection from "./comp/IntegrationCategoriesSection"
 import TeamPotentialSection from "./comp/TeamPotentialSection"
 import TestimonialSlider from "./comp/TestimonialSlider"
-import Topsection from "./comp/topsection"
-
+import TopSection from "./comp/topsection"
 const ServicePage = () => {
   return (
     <div>
-      <Topsection/>
+      <TopSection/>
       <FeaturesSection/>
       <TeamPotentialSection/>
       <BusinessWebsite/>
