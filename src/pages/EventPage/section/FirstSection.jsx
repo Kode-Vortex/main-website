@@ -1,8 +1,15 @@
-import {Link} from "react-router-dom"
+import {Link , useNavigate} from "react-router-dom"
 import { useState,useEffect } from "react";
 const FirstSection = () => {
    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0 });
+  const navigate = useNavigate();
 
+  const gotoreg = () => {
+    navigate("/event-register");
+     window.location.reload();
+  }
+
+ 
   // Set your target date/time here
   const targetDate = new Date("2025-05-30T10:00:00");
   useEffect(() => {
@@ -25,7 +32,6 @@ const FirstSection = () => {
     return () => clearInterval(interval); // cleanup
   }, [targetDate]);
   return (
-    <div id="root">
     <section id="hero" className="relative pt-28  flex items-center justify-center overflow-hidden bg-neutral-900 text-white">
       <div className="absolute inset-0 z-0">
         <img 
@@ -49,9 +55,9 @@ const FirstSection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-            <Link to="/event-register" className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-cyan-500/20">
+            <button onClick={gotoreg} className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-cyan-500/20">
               Register Now
-            </Link>
+            </button>
             <a href="#workshops" className="px-8 py-3 bg-transparent border border-cyan-400 rounded-md text-cyan-400 font-semibold hover:bg-cyan-400/10 transition-all duration-300 transform hover:-translate-y-1">
               Explore Workshops
             </a>
@@ -74,15 +80,7 @@ const FirstSection = () => {
         </div>
       </div>
       
-      {/* <div className="absolute bottom-10 left-0 right-0 flex justify-center">
-        <a href="index.html#workshops" className="animate-bounce text-cyan-400">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </a>
-      </div> */}
     </section>
-  </div>
   )
 }
 

@@ -26,7 +26,9 @@ const Register = () => {
     event.preventDefault();
     try {
       // const url = process.env.REACT_APP_URL;
-      const url = "http://localhost:4444/register";
+      
+      const url = "https://main-server-mu.vercel.app/register";
+      
       const response = await axios.post(url, payload);
       if (response.status === 200) {
         toast.success(response.data.message);

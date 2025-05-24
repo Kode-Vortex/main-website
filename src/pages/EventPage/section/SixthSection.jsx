@@ -1,6 +1,85 @@
-import React from 'react'
-
+import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const SixthSection = () => {
+  const location = useLocation();
+  const formData = location.state
+  const navigate = useNavigate();  
+
+// const handlePayment = () => {
+
+//     const options = {
+//       key: "rzp_live_W4h3jLZ9R1jxWF", // Replace with your Razorpay key
+//       amount: 299, // Amount in paise (₹299.00)
+//       currency: "INR",
+//       name: "Workshop Registration",
+//       description: "Secure your workshop seat",
+//       handler: function (response) {
+//         alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+//         // You can show your payment success modal here or update state
+//       },
+//       prefill: {
+//   name: formData?.name || "",
+//   email: formData?.email || "",
+//   contact: formData?.contact || ""
+// },
+//       theme: {
+//         color: "#0ea5e9", // cyan-500
+//       },
+//     };
+
+//     const rzp = new window.Razorpay(options);
+//     rzp.open();
+//   };
+
+const handlePayment = async () => {
+    try {
+      
+      const { data } = await axios.post("https://main-server-mu.vercel.app/create-order", {
+        formData ,amount: 1, // in INR
+      });
+
+      console.log(data.newPayment);
+      
+
+      const options = {
+        key: "rzp_live_W4h3jLZ9R1jxWF", // Replace with your live key
+        amount: data.order.amount,
+        currency: data.order.currency,
+        name: "Workshop Registration",
+        description: "Secure your workshop seat",
+        order_id: data.order.id,
+        handler: async function (response) {
+          alert(`Payment successful! ID: ${response.razorpay_payment_id}`);
+          await axios.post("https://main-server-mu.vercel.app/update-status", {
+            orderId: response.razorpay_order_id,
+            paymentId: response.razorpay_payment_id,
+            status: "paid",
+            paymentData: data.newPayment, 
+    
+          });
+
+          navigate("/");
+
+        },
+        prefill: {
+          name: formData?.fullName || "",
+          email: formData?.email || "",
+          contact: formData?.whatsappPhone || "",
+        },
+        theme: {
+          color: "#0ea5e9",
+        },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (err) {
+      console.error("Payment initiation failed", err);
+      alert("Payment initiation failed.");
+    }
+  };
+
   return (
 <div id="root">
   <section id="payment" className="py-20 bg-neutral-900 text-white">
@@ -50,7 +129,8 @@ const SixthSection = () => {
                 </div>
                 
                 <div className="space-y-3">
-                  <button id="razorpay-button" className="w-full px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-cyan-500/20 flex items-center justify-center">
+                  <button         onClick={handlePayment}
+  id="razorpay-button" className="w-full px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-cyan-500/20 flex items-center justify-center">
                     <span>Pay ₹299 Securely</span>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />

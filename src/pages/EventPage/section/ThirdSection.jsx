@@ -1,5 +1,10 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 const ThirdSection = () => {
+  const navigate = useNavigate();
+   const gotoreg = () => {
+    navigate("/event-register");
+     window.location.reload();
+  }
   return (
 <div id="root">
   <section id="schedule" className="pb-20 pt-32 bg-neutral-800 text-white">
@@ -73,9 +78,9 @@ const ThirdSection = () => {
                   <span className="text-cyan-400 font-bold text-xl">₹299</span>
                   <span className="text-gray-500 ml-2">per participant</span>
                 </div>
-                <Link to="/event-register"  className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-cyan-500/20">
+                <button onClick={gotoreg}  className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-cyan-500/20">
                   Register Now
-                </Link>
+                </button>
               </div>
             </div>
           </div>

@@ -75,9 +75,10 @@ const App = () => {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
 
-            <Route path="/events" element={<EventPage/>} />
-            <Route path="/event-register" element={<FifthSection/>}/>
-            <Route path="/payment" element={<SixthSection/>}/>
+            <Route path="events" element={<EventPage/>} />
+            <Route path="event-register" element={<FifthSection/>}/>
+
+            <Route path="payment" element={<SixthSection/>}/>
             <Route
               path="/internship"
               element={
@@ -86,10 +87,14 @@ const App = () => {
                 </>
               }
             />
+
+
             <Route path="/about-us" element={<Aboutuspage />} />
             <Route path="/contact-us" element={<ContactUsPage />} />
             <Route path="/kodebumps" element={<KodeBumps />} />
           </Route>
+
+
           <Route
             path="/login"
             element={

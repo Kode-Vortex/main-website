@@ -40,11 +40,11 @@ const Register1 = () => {
     try {
       const { fullname , email , phone_no , password , message } = registerCredentials;
 
-     console.log(fullname , email , phone_no , password , message);
      
       
   
-      const response = await axios.post("https://main-server-mu.vercel.app/register", 
+      const response = await axios.post(
+        "https://main-server-mu.vercel.app/register", 
         { fullname , email , phone_no , password , message }, 
         {
           method :"post",

@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const FourthSection = () => {
+
+  const navigate = useNavigate()
+   const gotoreg = () => {
+    navigate("/event-register");
+     window.location.reload();
+  }
   return (
 <div id="root">
   <section id="benefits" className="py-20 bg-neutral-900 text-white">
@@ -126,12 +132,12 @@ const FourthSection = () => {
       </div>
 
       <div className="mt-16 text-center">
-        <Link to="/event-register" className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-cyan-500/20 inline-flex items-center">
+        <button onClick={gotoreg} className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-cyan-500/20 inline-flex items-center">
           <span>Secure Your Spot Now</span>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path  d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
-        </Link>
+        </button>
       </div>
     </div>
   </section>
