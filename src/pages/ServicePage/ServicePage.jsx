@@ -1,4 +1,3 @@
-import BusinessTransformationHero from "./comp/BusinessTransformationHero"
 import BusinessWebsite from "./comp/BusinessWebsite"
 import ConnectivitySection from "./comp/ConnectivitySection"
 import FAQSection from "./comp/FAQSection"
