@@ -57,20 +57,7 @@ const Navbar = ({ user, setUser }) => {
     };
   }, [isMobileMenuOpen]);
 
-  // Close dropdown menus when clicking outside
-  // useEffect(() => {
-  //   const handleClickOutside = (event) => {
-  //     if (accountRef.current && !accountRef.current.contains(event.target)) {
-  //       setopenAccount(false);
-  //     }
-  //   };
-  
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, []);
-  
+
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -143,6 +130,30 @@ const Navbar = ({ user, setUser }) => {
     return userProfile?.fullname?.charAt(0).toUpperCase() || "U";
   };
 
+  const homenavi = () => {
+    navigate("/");
+    window.location.reload();
+  }
+  const eventnavi = () => {
+    navigate("/events");
+    window.location.reload();
+  }
+
+  const internshipnavi = () => {
+    navigate("/internship");
+    window.location.reload();
+  }
+
+  const aboutnavi = () => {
+    navigate("/about-us");
+    window.location.reload();
+  }
+
+  const contactnavi = () => {
+    navigate("/contact-us");
+    window.location.reload();
+  }
+
   return (
     <nav className="flex fixed z-50 w-full bg-black justify-between px-[4%] mb-4 pt-4 items-center font-sans">
       <div className="flex items-center">
@@ -169,8 +180,8 @@ const Navbar = ({ user, setUser }) => {
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center font-sans space-x-0.5 text-sm text-white">
           <hr className="w-[1px] h-8 bg-white" />
-          <Link
-            to="/"
+          <button
+          onClick={homenavi}
             className={`px-4 text-lg py-2 rounded-full ${
               location.pathname === "/"
                 ? "border-b-2 mx-2 border-[#056777] hover:border-b-4 hover:border-[#3da9b9] navbar-link-active"
@@ -178,11 +189,11 @@ const Navbar = ({ user, setUser }) => {
             }`}
           >
             Home
-          </Link>
+          </button>
           <hr className="w-[1px] h-8 bg-white" />
 
-          <Link
-            to="/events"
+          <button
+          onClick={eventnavi}
             className={`px-4 text-lg py-2 rounded-full ${
               location.pathname === "/events"
                 ? "border-b-2 border-[#056777] hover:border-b-4 hover:border-[#3da9b9] navbar-link-active"
@@ -190,11 +201,11 @@ const Navbar = ({ user, setUser }) => {
             }`}
           >
             Events & Workshop
-          </Link>
+          </button>
           <hr className="w-[1px] h-8 bg-white" />
 
-          <Link
-            to="/internship"
+          <button
+          onClick={internshipnavi}
             className={`px-4 text-lg py-2 rounded-full ${
               location.pathname === "/internship"
                 ? "border-b-2 border-[#056777] hover:border-b-4 hover:border-[#3da9b9] navbar-link-active"
@@ -202,11 +213,11 @@ const Navbar = ({ user, setUser }) => {
             }`}
           >
             Internship
-          </Link>
+          </button>
           <hr className="w-[1px] h-8 bg-white" />
 
-          <Link
-            to="/about-us"
+          <button
+          onClick={aboutnavi}
             className={`px-4 text-lg py-2 rounded-full ${
               location.pathname === "/about-us"
                 ? "border-b-2 border-[#056777] hover:border-b-4 hover:border-[#3da9b9] navbar-link-active"
@@ -214,11 +225,11 @@ const Navbar = ({ user, setUser }) => {
             }`}
           >
             About us
-          </Link>
+          </button>
           <hr className="w-[1px] h-8 bg-white" />
 
-          <Link
-            to="/contact-us"
+          <button
+            onClick={contactnavi}
             className={`px-4 text-lg py-2 rounded-full ${
               location.pathname === "/contact-us"
                 ? "border-b-2 border-[#056777] hover:border-b-4 hover:border-[#3da9b9] navbar-link-active"
@@ -226,7 +237,7 @@ const Navbar = ({ user, setUser }) => {
             }`}
           >
             Contact us
-          </Link>
+          </button>
 
           <Link to="/kodebumps">
                 <div className="butt text-white rounded-full">

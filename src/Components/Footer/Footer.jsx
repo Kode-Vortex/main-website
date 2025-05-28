@@ -318,32 +318,32 @@ Solutions
 
             {/* Social Media Icons */}
             <div className="flex space-x-4 mb-4">
+              
+             
               <a
-                href="#"
-                className="bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition"
-              >
-                <FaFacebook className="text-gray-400" />
-              </a>
-              <a
-                href="#"
+                href="https://twitter.com/kodeVortex"
+                target="_blank"
                 className="bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition"
               >
                 <FaTwitter className="text-gray-400" />
               </a>
               <a
-                href="#"
+                href="https://youtube.com/@kodevortex?si=PKz-yTp_5tH5QLFW"
+                target="_blank"
                 className="bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition"
               >
                 <FaYoutube className="text-gray-400" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/kodevortex"
+                target="_blank"
                 className="bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition"
               >
                 <FaLinkedin className="text-gray-400" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/kodevortex"
+                target="_blank"
                 className="bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition"
               >
                 <FaInstagram className="text-gray-400" />

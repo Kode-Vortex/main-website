@@ -1,4 +1,6 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import first from "./first.jpg"
+import wave from "./3rdwave.jpg"
 const ThirdSection = () => {
   const navigate = useNavigate();
    const gotoreg = () => {
@@ -23,17 +25,7 @@ const ThirdSection = () => {
             <h3 className="text-2xl font-bold mb-6 font-inter text-cyan-400">Workshop Timeline</h3>
             
             <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-12 h-12 bg-cyan-400/20 rounded-full flex items-center justify-center mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-1">Days</h4>
-                  <p className="text-gray-400">Monday, Wednesday, Friday</p>
-                </div>
-              </div>
+              
               
               <div className="flex items-start">
                 <div className="flex-shrink-0 w-12 h-12 bg-cyan-400/20 rounded-full flex items-center justify-center mr-4">
@@ -75,8 +67,14 @@ const ThirdSection = () => {
             <div className="mt-8 pt-6 border-t border-neutral-700">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-cyan-400 font-bold text-xl">₹299</span>
-                  <span className="text-gray-500 ml-2">per participant</span>
+<div className="flex items-center gap-2">
+                      <span className="text-cyan-500 text-2xl line-through">
+                        ₹599
+                      </span>
+                      <span className="text-cyan-400 text-2xl font-bold">
+                        ₹299
+                      </span>
+                    </div>                  <span className="text-gray-500 ml-2">per participant</span>
                 </div>
                 <button onClick={gotoreg}  className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md text-white font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-cyan-500/20">
                   Register Now
@@ -89,9 +87,9 @@ const ThirdSection = () => {
         <div className="order-1 md:order-2 grid grid-cols-1 gap-6">
           <div className="relative rounded-xl overflow-hidden group">
             <img 
-              src="https://images.unsplash.com/photo-1607969892192-8aa9fe65ee26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MzQ2fDB8MXxzZWFyY2h8MXx8d29ya3Nob3AlMjUyMHNjaGVkdWxlJTI1MjBjYWxlbmRhciUyNTIwZGFyayUyNTIwbmVvbiUyNTIwbWluaW1hbGlzdHxlbnwwfDB8fHwxNzQ3NzYzOTEyfDA&ixlib=rb-4.1.0&q=80&w=1080" 
+              src="https://i.pinimg.com/736x/b1/76/01/b17601d741a4d61f769f1891a32c030e.jpg" 
               alt="Workshop schedule" 
-              className="w-full h-auto rounded-xl transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-96 rounded-xl transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/80 to-transparent flex items-end">
               <div className="p-6">
@@ -103,9 +101,9 @@ const ThirdSection = () => {
           
           <div className="relative rounded-xl overflow-hidden group">
             <img 
-              src="https://images.unsplash.com/photo-1591380816222-28cec94b49c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MzQ2fDB8MXxzZWFyY2h8Mnx8d29ya3Nob3AlMjUyMHNjaGVkdWxlJTI1MjBjYWxlbmRhciUyNTIwZGFyayUyNTIwbmVvbiUyNTIwbWluaW1hbGlzdHxlbnwwfDB8fHwxNzQ3NzYzOTEyfDA&ixlib=rb-4.1.0&q=80&w=1080" 
+              src={first} 
               alt="Online workshop format" 
-              className="w-full h-auto rounded-xl transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-96 rounded-xl transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/80 to-transparent flex items-end">
               <div className="p-6">

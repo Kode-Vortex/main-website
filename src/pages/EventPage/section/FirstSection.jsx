@@ -11,7 +11,7 @@ const FirstSection = () => {
 
  
   // Set your target date/time here
-  const targetDate = new Date("2025-05-30T10:00:00");
+  const targetDate = new Date("2025-06-19T10:00:00");
   useEffect(() => {
     const updateTimer = () => {
       const now = new Date();
@@ -73,7 +73,10 @@ const FirstSection = () => {
               <span className="text-gray-400 text-sm">hours left! </span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-cyan-400 text-3xl font-bold">₹299</span>
+<div className="flex items-center gap-2">
+  <span className="text-cyan-500 text-3xl line-through">₹599</span>
+  <span className="text-cyan-400 text-3xl font-bold">₹299</span>
+</div>
               <span className="text-gray-400 text-sm">Only</span>
             </div>
           </div>
