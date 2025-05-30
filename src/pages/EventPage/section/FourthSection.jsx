@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import cer from "./certificte.jpg";
+import cer from "./certificte.png";
 import pro from "./pro.jpg";
 
 const FourthSection = () => {

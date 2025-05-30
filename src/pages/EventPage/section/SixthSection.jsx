@@ -6,31 +6,6 @@ const SixthSection = () => {
   const formData = location.state
   const navigate = useNavigate();  
 
-// const handlePayment = () => {
-
-//     const options = {
-//       key: "rzp_live_W4h3jLZ9R1jxWF", // Replace with your Razorpay key
-//       amount: 299, // Amount in paise (₹299.00)
-//       currency: "INR",
-//       name: "Workshop Registration",
-//       description: "Secure your workshop seat",
-//       handler: function (response) {
-//         alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
-//         // You can show your payment success modal here or update state
-//       },
-//       prefill: {
-//   name: formData?.name || "",
-//   email: formData?.email || "",
-//   contact: formData?.contact || ""
-// },
-//       theme: {
-//         color: "#0ea5e9", // cyan-500
-//       },
-//     };
-
-//     const rzp = new window.Razorpay(options);
-//     rzp.open();
-//   };
 
 const handlePayment = async () => {
     try {

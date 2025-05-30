@@ -40,12 +40,7 @@ const FifthSection = () => {
             <div className="bg-neutral-900 rounded-xl p-8 border border-neutral-700 shadow-lg">
               <div className="mb-6 flex items-center justify-between">
                 <h3 className="text-2xl font-bold font-inter text-cyan-400">Registration Form</h3>
-                <div className="flex items-center bg-neutral-800 px-3 py-1 rounded-full">
-                  <span className="inline-block w-3 h-3 bg-cyan-400 rounded-full mr-2 animate-pulse"></span>
-                  <span className="text-sm text-gray-300">
-                    <span>87</span> seats remaining
-                  </span>
-                </div>
+                
               </div>
 
               <form className="space-y-6" onSubmit={handleSubmit}>
@@ -195,7 +190,7 @@ const FifthSection = () => {
           <div className="order-1 md:order-2 space-y-6">
           <div className="relative rounded-xl overflow-hidden group h-64">
             <img 
-              src="https://images.unsplash.com/photo-1475070929565-c985b496cb9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MzQ2fDB8MXxzZWFyY2h8MXx8ZGFyayUyNTIwcmVnaXN0cmF0aW9uJTI1MjBmb3JtJTI1MjBuZW9uJTI1MjBjeWFuJTI1MjBtaW5pbWFsaXN0fGVufDB8MHx8fDE3NDc3NjQwMjJ8MA&ixlib=rb-4.1.0&q=80&w=1080" 
+              src="https://i.pinimg.com/736x/dc/5e/e6/dc5ee614f60435570471df39e73d58ea.jpg" 
               alt="Workshop registration" 
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
@@ -209,7 +204,7 @@ const FifthSection = () => {
           
           <div className="relative rounded-xl overflow-hidden group h-64">
             <img 
-              src="https://images.unsplash.com/photo-1518343265568-51eec52d40da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MzQ2fDB8MXxzZWFyY2h8Mnx8ZGFyayUyNTIwcmVnaXN0cmF0aW9uJTI1MjBmb3JtJTI1MjBuZW9uJTI1MjBjeWFuJTI1MjBtaW5pbWFsaXN0fGVufDB8MHx8fDE3NDc3NjQwMjJ8MA&ixlib=rb-4.1.0&q=80&w=1080" 
+              src="https://i.pinimg.com/736x/8e/c1/12/8ec112bbf962efdcfce0c99691768883.jpg" 
               alt="Limited seats available" 
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
