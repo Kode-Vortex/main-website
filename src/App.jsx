@@ -32,7 +32,7 @@ const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:4444/get-user", {
+        const response = await axios.get("https://main-server-mu.vercel.app/get-user", {
           withCredentials: true,
         });
         if (response.status === 200) {

@@ -12,6 +12,7 @@ const handlePayment = async () => {
       
       const { data } = await axios.post("https://main-server-mu.vercel.app/create-order", {
         formData ,amount: 1, // in INR
+        
       });
 
       console.log(data.newPayment);
