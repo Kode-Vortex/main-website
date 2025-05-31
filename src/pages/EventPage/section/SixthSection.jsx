@@ -11,7 +11,7 @@ const handlePayment = async () => {
     try {
       
       const { data } = await axios.post("https://main-server-mu.vercel.app/create-order", {
-        formData ,amount: 1, // in INR
+        formData ,amount: 299, // in INR
         
       });
 
@@ -78,11 +78,11 @@ const handlePayment = async () => {
                 <div className="bg-neutral-700/30 rounded-lg p-4">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-gray-300">Workshop Fee</span>
-                    <span className="font-semibold">₹299</span>
+                    <span className="font-semibold">₹599</span>
                   </div>
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-300">GST (18%)</span>
-                    <span className="font-semibold">₹0</span>
+                    <span className="text-gray-300">Discount</span>
+                    <span className="font-semibold">-₹300</span>
                   </div>
                   <div className="border-t border-neutral-600 my-2 pt-2"></div>
                   <div className="flex justify-between items-center">
