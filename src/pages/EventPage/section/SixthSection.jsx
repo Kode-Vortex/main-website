@@ -18,7 +18,7 @@ const handlePayment = async () => {
       
 
       const options = {
-        key: "rzp_live_W4h3jLZ9R1jxWF", // Replace with your live key
+        key: "rzp_live_tyHcWktmlT8kR0", // Replace with your live key
         amount: data.order.amount,
         currency: data.order.currency,
         name: "Workshop Registration",

@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
 const SecondSection = () => {
+    const navigate = useNavigate();  
+
   const gotoreg = () => {
     navigate("/event-register");
     window.location.reload();
